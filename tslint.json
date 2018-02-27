@@ -52,7 +52,7 @@
     "no-string-literal": true,
     "no-switch-case-fall-through": true,
     "no-unused-expression": true,
-    "no-use-before-declare": true,
+    "no-use-before-declare": false,
     "no-var-keyword": true,
     "radix": true,
     "switch-default": true,
@@ -74,7 +74,7 @@
     "object-literal-sort-keys": false,
     "trailing-comma": [
       true, {
-        "multiline": "never",
+        "multiline": "always",
         "singleline": "never"
       }
     ],
@@ -103,7 +103,7 @@
     ],
     "semicolon": [
       true,
-      "never"
+      "always"
     ],
     "variable-name": [
       true,

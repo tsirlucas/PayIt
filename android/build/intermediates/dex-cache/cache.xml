@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="false"
+        jar="/Users/lucascorreia/Documents/workspace/college/PayIt/android/app/build/intermediates/exploded-aar/com.facebook.fresco/fresco/1.3.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="fe85b87215e405f5917d40ae4960488ac9224b74">
+        <dex dex="/Users/lucascorreia/Documents/workspace/college/PayIt/android/app/build/intermediates/pre-dexed/debug/com.facebook.fresco-fresco-1.3.0_0835b313a17a123428234c969b551ffd5e22c453.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/lucascorreia/Documents/workspace/college/PayIt/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="d86429b0f0b3f3cafbeb78dda1b9d89119ccb05d">
+        <dex dex="/Users/lucascorreia/Documents/workspace/college/PayIt/android/app/build/intermediates/pre-dexed/debug/com.android.support-appcompat-v7-23.0.1_96c5741560fb2660b7b0c69afac4d0a9d695adde.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/lucascorreia/.gradle/caches/modules-2/files-2.1/com.facebook.fbui.textlayoutbuilder/staticlayout-proxy/1.0/f162442a19fff13995fbd51ba414d9ee05579080/staticlayout-proxy-1.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="f162442a19fff13995fbd51ba414d9ee05579080">
+        <dex dex="/Users/lucascorreia/Documents/workspace/college/PayIt/android/app/build/intermediates/pre-dexed/debug/staticlayout-proxy-1.0_e21f1f94ea8003cef0a680857f6b0a0666f3d947.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/lucascorreia/Documents/workspace/college/PayIt/android/app/build/intermediates/exploded-aar/com.facebook.fresco/imagepipeline-base/1.3.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="72128af126ddd7d6252da9357fe560d3abcdfb0c">
+        <dex dex="/Users/lucascorreia/Documents/workspace/college/PayIt/android/app/build/intermediates/pre-dexed/debug/com.facebook.fresco-imagepipeline-base-1.3.0_0c6469f8e6f54ff26d00ff5d989819dadcdd6a04.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/lucascorreia/.gradle/caches/modules-2/files-2.1/com.parse.bolts/bolts-tasks/1.4.0/d85884acf6810a3bbbecb587f239005cbc846dc4/bolts-tasks-1.4.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="d85884acf6810a3bbbecb587f239005cbc846dc4">
+        <dex dex="/Users/lucascorreia/Documents/workspace/college/PayIt/android/app/build/intermediates/pre-dexed/debug/bolts-tasks-1.4.0_f1779de93bcd8b33e35b04bbbca1692084412cea.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/lucascorreia/.gradle/caches/modules-2/files-2.1/com.squareup.okio/okio/1.13.0/a9283170b7305c8d92d25aff02a6ab7e45d06cbe/okio-1.13.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="a9283170b7305c8d92d25aff02a6ab7e45d06cbe">
+        <dex dex="/Users/lucascorreia/Documents/workspace/college/PayIt/android/app/build/intermediates/pre-dexed/debug/okio-1.13.0_2a87856f66c61ba80f83ce0c48f3d9488b2b8483.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/lucascorreia/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp3/okhttp-urlconnection/3.6.0/3f9b16b774f2c36cfd86dd2053d0b3059531dacc/okhttp-urlconnection-3.6.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="3f9b16b774f2c36cfd86dd2053d0b3059531dacc">
+        <dex dex="/Users/lucascorreia/Documents/workspace/college/PayIt/android/app/build/intermediates/pre-dexed/debug/okhttp-urlconnection-3.6.0_a4dcd24ae22cf7fd1c774b508398e3565b9454c8.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/lucascorreia/Documents/workspace/college/PayIt/android/app/build/intermediates/exploded-aar/com.facebook.fresco/imagepipeline/1.3.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="48c7f54c2515a2312d3a4481d10c43fbb807f3af">
+        <dex dex="/Users/lucascorreia/Documents/workspace/college/PayIt/android/app/build/intermediates/pre-dexed/debug/com.facebook.fresco-imagepipeline-1.3.0_fe27ed936f3d31584c2e3c8dcc9ed9087e2be6dc.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/lucascorreia/Documents/workspace/college/PayIt/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.52.0/jars/libs/infer-annotations-4.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="9809e90be788acdb479b2b44e2112f3295a03068">
+        <dex dex="/Users/lucascorreia/Documents/workspace/college/PayIt/android/app/build/intermediates/pre-dexed/debug/infer-annotations-4.0_3e1d2f0503082499130db7a9a5eb4e0c027ea8a1.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/lucascorreia/.gradle/caches/modules-2/files-2.1/com.google.code.findbugs/jsr305/3.0.0/5871fb60dc68d67da54a663c3fd636a10a532948/jsr305-3.0.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="5871fb60dc68d67da54a663c3fd636a10a532948">
+        <dex dex="/Users/lucascorreia/Documents/workspace/college/PayIt/android/app/build/intermediates/pre-dexed/debug/jsr305-3.0.0_b7e8b0a3a130f6d47b51b7a285959b2fc83a5962.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/lucascorreia/Documents/workspace/college/PayIt/android/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.0.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="c31e21b53ff2f74664e498248d01453a32e32d48">
+        <dex dex="/Users/lucascorreia/Documents/workspace/college/PayIt/android/app/build/intermediates/pre-dexed/debug/com.android.support-support-v4-23.0.1_6e13df9fffe7af00e9ae9038709ed882195ca478.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/lucascorreia/Documents/workspace/college/PayIt/android/app/build/intermediates/exploded-aar/com.facebook.fbui.textlayoutbuilder/textlayoutbuilder/1.0.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="f90b593491e4044903f0bbf68dc3fa2790b151b9">
+        <dex dex="/Users/lucascorreia/Documents/workspace/college/PayIt/android/app/build/intermediates/pre-dexed/debug/com.facebook.fbui.textlayoutbuilder-textlayoutbuilder-1.0.0_373f9566e7a859cf71f5c05d321ac3e5452ac73b.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Volumes/HD ARQUIVOS/System/ANDROID_PATH/android-sdk/extras/android/m2repository/com/android/support/support-annotations/23.0.1/support-annotations-23.0.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="1fce89a6428c51467090d7f424e4c9c3dbd55f7e">
+        <dex dex="/Users/lucascorreia/Documents/workspace/college/PayIt/android/app/build/intermediates/pre-dexed/debug/support-annotations-23.0.1_a7072c11568f04858ed84ac458059cd519fa959b.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/lucascorreia/Documents/workspace/college/PayIt/android/app/build/intermediates/exploded-aar/com.facebook.fresco/drawee/1.3.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="c65a2e39d54023bac3aef64a2f0cff89289c7ff6">
+        <dex dex="/Users/lucascorreia/Documents/workspace/college/PayIt/android/app/build/intermediates/pre-dexed/debug/com.facebook.fresco-drawee-1.3.0_a0cb00a6cf44cfa7e01ca09a4859c0ea4ac8e227.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/lucascorreia/Documents/workspace/college/PayIt/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.52.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="af61eb11ffb4296cab0c93218248a3dfcec0a84c">
+        <dex dex="/Users/lucascorreia/Documents/workspace/college/PayIt/android/app/build/intermediates/pre-dexed/debug/com.facebook.react-react-native-0.52.0_e5bbcbe619c4008b21c8a84266081762379431f6.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/lucascorreia/.gradle/caches/modules-2/files-2.1/javax.inject/javax.inject/1/6975da39a7040257bd51d21a231b76c915872d38/javax.inject-1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="6975da39a7040257bd51d21a231b76c915872d38">
+        <dex dex="/Users/lucascorreia/Documents/workspace/college/PayIt/android/app/build/intermediates/pre-dexed/debug/javax.inject-1_35727843356cb063834658fb720fc04eefdb7eb1.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/lucascorreia/Documents/workspace/college/PayIt/android/app/build/intermediates/exploded-aar/com.facebook.soloader/soloader/0.1.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="8f615bca00639150c9eb6175d4b5471193f70794">
+        <dex dex="/Users/lucascorreia/Documents/workspace/college/PayIt/android/app/build/intermediates/pre-dexed/debug/com.facebook.soloader-soloader-0.1.0_83eb3586dc69a68fb35e998957e5a18fb04e79df.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/lucascorreia/Documents/workspace/college/PayIt/android/app/build/intermediates/exploded-aar/com.facebook.fresco/fbcore/1.3.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="37345de2ed2772f385eaeec37a9c2ff0fea99ad7">
+        <dex dex="/Users/lucascorreia/Documents/workspace/college/PayIt/android/app/build/intermediates/pre-dexed/debug/com.facebook.fresco-fbcore-1.3.0_667b68e310f5677a76804a45a57071b3b8d3af67.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/lucascorreia/Documents/workspace/college/PayIt/android/app/build/intermediates/exploded-aar/com.facebook.fresco/imagepipeline-okhttp3/1.3.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="c03c08c9934b23c8c09c803345ec51a74119127b">
+        <dex dex="/Users/lucascorreia/Documents/workspace/college/PayIt/android/app/build/intermediates/pre-dexed/debug/com.facebook.fresco-imagepipeline-okhttp3-1.3.0_d66223a3c3054ed10e459c5bf134d872aa2d31ae.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/lucascorreia/Documents/workspace/college/PayIt/android/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.0.1/jars/libs/internal_impl-23.0.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="aa92916125166649d8ad4ba3940c3dd7515596d3">
+        <dex dex="/Users/lucascorreia/Documents/workspace/college/PayIt/android/app/build/intermediates/pre-dexed/debug/internal_impl-23.0.1_449ebbbb21559c469ff828e13fad007226ca7e62.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/lucascorreia/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp3/okhttp/3.6.0/69edde9fc4b01c9fd51d25b83428837478c27254/okhttp-3.6.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="69edde9fc4b01c9fd51d25b83428837478c27254">
+        <dex dex="/Users/lucascorreia/Documents/workspace/college/PayIt/android/app/build/intermediates/pre-dexed/debug/okhttp-3.6.0_35927f45a46f600fd56827606865555a3b8b4b2c.jar" />
+    </item>
+
+</items>

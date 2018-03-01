@@ -12,6 +12,10 @@
 .env.test.local
 .env.production.local
 
+# Webstorm/VSCode
+.idea
+.history
+
 # TypeScript
 lib/
 # OSX

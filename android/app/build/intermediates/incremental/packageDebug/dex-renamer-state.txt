@@ -1,4 +1,0 @@
-#Mon Feb 26 20:25:41 BRT 2018
-base.0=/Users/lucascorreia/Documents/workspace/college/PayIt/android/app/build/intermediates/transforms/dex/debug/folders/1000/1f/main
-renamed.0=classes.dex
-file.0=/Users/lucascorreia/Documents/workspace/college/PayIt/android/app/build/intermediates/transforms/dex/debug/folders/1000/1f/main/classes.dex

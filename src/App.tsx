@@ -1,41 +1,21 @@
 import * as React from 'react';
-import {Text, StatusBar} from 'react-native';
-import {Header, Body, Title, Container, Content, Footer, FooterTab, Button, Icon} from 'native-base';
+import { Content } from 'native-base';
+import { Router, Scene } from 'react-native-router-flux';
+
+import { Home, Bills, Settings } from './components/pages';
+import { TabBarComponent, NavbarComponent } from './components/common/Layout';
 
 export default class App extends React.Component {
   render() {
     return (
-      <Container style={{backgroundColor: '#F5EEEE'}}>
-        <Header style={{backgroundColor: '#5FB97D'}}>
-          <StatusBar backgroundColor="#30925C" barStyle="light-content"/>
-          <Body>
-          <Title>Title</Title>
-          </Body>
-        </Header>
-        <Content>
-          <Text>{getMessage('Hello world!')}</Text>
-        </Content>
-        <Footer>
-          <FooterTab style={{backgroundColor: '#5FB97D'}}>
-            <Button vertical>
-              <Icon name="home" style={{color: 'white'}}/>
-              <Text style={{color: 'white'}}>Dashboard</Text>
-            </Button>
-            <Button vertical>
-              <Icon name="calendar" style={{color: 'white'}}/>
-              <Text style={{color: 'white'}}>Bills</Text>
-            </Button>
-            <Button vertical>
-              <Icon name="settings" style={{color: 'white'}}/>
-              <Text style={{color: 'white'}}>Settings</Text>
-            </Button>
-          </FooterTab>
-        </Footer>
-      </Container>
+      <Router sceneStyle={{ backgroundColor: '#F5EEEE' }}>
+        <Scene component={null} tabs key='tabs' tabBarPosition='bottom'
+          contentComponent={Content} tabBarComponent={TabBarComponent} navBar={NavbarComponent}>
+          <Scene key='home' path='/' title='Home' component={Home} />
+          <Scene key='bills' path='/bills' title='Bills' component={Bills} />
+          <Scene key='settings' path='/settings' title='Settings' component={Settings} />
+        </Scene>
+      </Router>
     );
   }
 }
-
-const getMessage = (message: string): string => {
-  return message;
-};

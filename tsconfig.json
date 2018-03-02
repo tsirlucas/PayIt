@@ -1,19 +1,24 @@
 {
   "compilerOptions": {
-    "target": "es2015",
-    "module": "es2015",
+    "target": "es2018",
+    "module": "esnext",
     "moduleResolution": "node",
     "jsx": "react",
     "outDir": "lib",
     "rootDir": "src",
     "allowSyntheticDefaultImports": true,
-    "noImplicitAny": false,
+    "noImplicitAny": true,
     "preserveConstEnums": true,
     "allowJs": false,
     "sourceMap": true,
     "noImplicitReturns": true,
     "noUnusedParameters": true,
-    "noUnusedLocals": true
+    "noUnusedLocals": true,
+    "baseUrl": ".",
+    "paths": {
+      "components": ["src/components/index.ts"],
+      "components/*": ["src/components/*"],
+    }
   },
   "filesGlob": [
     "typings/index.d.ts",

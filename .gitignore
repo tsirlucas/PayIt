@@ -41,7 +41,6 @@ DerivedData
 *.ipa
 *.xcuserstate
 project.xcworkspace
-ios/build
 
 # Android/IntelliJ
 #
@@ -50,8 +49,6 @@ build/
 .gradle
 local.properties
 *.iml
-android/build
-android/app/build
 
 # node.js
 #

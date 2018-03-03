@@ -11,7 +11,7 @@
     "test": "node node_modules/jest/bin/jest.js",
     "tsc": "tsc",
     "clean": "rimraf artifacts",
-    "build": "npm run clean && npm run tsc --"
+    "build": "yarn run clean && yarn run tsc --"
   },
   "jest": {
     "preset": "react-native",
@@ -51,5 +51,6 @@
     "native-base": "^2.3.9",
     "react": "16.2.0",
     "react-native": "0.54.0"
+    "react-native-router-flux": "^4.0.0-beta.28"
   }
 }

@@ -1,8 +1,12 @@
 {
   "compilerOptions": {
     "target": "es2018",
-    "module": "commonjs",
+    "module": "esnext",
+    "lib": ["es5", "es6", "es2018", "esnext"],
     "moduleResolution": "node",
+    "typeRoots": [
+      "node_modules/@types",
+    ],
     "jsx": "react",
     "outDir": "lib",
     "rootDir": "src",

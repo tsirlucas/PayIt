@@ -5,8 +5,10 @@
     "lib": ["es5", "es6", "es2018", "esnext"],
     "moduleResolution": "node",
     "typeRoots": [
+      "custom_typings",
       "node_modules/@types",
     ],
+    "skipLibCheck": true,
     "jsx": "react",
     "outDir": "lib",
     "rootDir": "src",
@@ -25,7 +27,7 @@
     }
   },
   "filesGlob": [
-    "typings/index.d.ts",
+    "custom_typings/**/*",
     "src/**/*.ts",
     "src/**/*.tsx"
   ],

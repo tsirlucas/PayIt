@@ -93,6 +93,16 @@ def enableSeparateBuildPerCPUArchitecture = true
  */
 def enableProguardInReleaseBuilds = true
 
+def getAppVersionCode { ->
+  def code = project.hasOwnProperty('versionCode') ? versionCode.toInteger() : -1
+  return code
+}
+
+def getAppVersionName { ->
+  def name = project.hasOwnProperty('versionName') ? versionName : "1.0.0"
+  return name
+}
+
 android {
     compileSdkVersion 23
     buildToolsVersion "23.0.1"
@@ -101,8 +111,8 @@ android {
         applicationId "com.payit"
         minSdkVersion 16
         targetSdkVersion 22
-        versionCode 1
-        versionName "1.0"
+        versionCode getAppVersionCode()
+        versionName getAppVersionName()
         ndk {
             abiFilters "armeabi-v7a", "x86"
         }

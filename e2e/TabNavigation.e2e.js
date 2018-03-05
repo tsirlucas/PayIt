@@ -10,7 +10,9 @@ describe('TabNavigation', () => {
 
   beforeAll(async () => {
     await driver.init(config);
-    await driver.sleep(3000); // wait for app to load
+    while (!await driver.hasElementByAccessibilityId('nav bar')) {
+      await driver.sleep(1000); // wait for app to load
+    }
   })
   afterAll(async () => await driver.quit());
 

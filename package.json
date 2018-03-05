@@ -28,7 +28,7 @@
 			"android-emulator": {
 				"platformName": "Android",
 				"deviceName": "AndroidEmulator",
-				"app": "./android/app/build/outputs/apk/app-x86-release.apk"
+				"app": "./android/app/build/outputs/apk/app-x86-debug.apk"
 			}
 		}
 	},

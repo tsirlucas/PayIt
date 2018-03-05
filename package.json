@@ -8,38 +8,37 @@
     "ios": "react-native run-ios",
     "rnlink": "react-native link",
     "lint": "tslint src/**/*.ts",
-    "test": "jest",
+    "test": "jest --config ./jest.config.json",
+    "appium-doctor": "appium-doctor",
+    "e2e": "jest --testRegex=\"/e2e/.*.e2e.js\"",
+    "e2e:android": "E2E_DEVICE=\"android-emulator\" yarn e2e",
+    "e2e:ios": "E2E_DEVICE=\"ios-emulator\" yarn e2e",
     "tsc": "tsc",
     "clean": "rimraf lib",
     "build": "yarn clean && yarn tsc"
   },
-  "jest": {
-    "preset": "react-native",
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js"
-    ],
-    "transform": {
-      "^.+\\.(js)$": "<rootDir>/node_modules/babel-jest",
-      "^.+\\.(ts|tsx)$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
-    },
-    "transformIgnorePatterns": [
-      "node_modules/(?!react-native)/"
-    ],
-    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
-    "testPathIgnorePatterns": [
-      "\\.snap$",
-      "<rootDir>/node_modules/",
-      "<rootDir>/lib/"
-    ],
-    "cacheDirectory": ".jest/cache"
-  },
+  "e2e": {
+		"devices": {
+			"ios-emulator": {
+				"platformName": "iOS",
+				"platformVersion": "10.3",
+				"deviceName": "iPhone Simulator",
+				"app": "./ios/build/Build/Products/Release-iphonesimulator/PayIt.app"
+			},
+			"android-emulator": {
+				"platformName": "Android",
+				"deviceName": "AndroidEmulator",
+				"app": "./android/app/build/outputs/apk/app-x86-release.apk"
+			}
+		}
+	},
   "devDependencies": {
     "@types/jest": "22.1.3",
     "@types/react": "16.0.38",
     "@types/react-native": "0.52.16",
     "@types/react-test-renderer": "16.0.1",
+    "appium": "1.7.2",
+    "appium-doctor": "1.4.3",
     "babel-core": "6.26.0",
     "babel-jest": "22.4.1",
     "babel-preset-react-native-stage-0": "1.0.1",
@@ -50,7 +49,8 @@
     "rimraf": "2.6.2",
     "ts-jest": "22.4.0",
     "tslint": "5.9.1",
-    "typescript": "2.7.2"
+    "typescript": "2.7.2",
+    "wd": "^1.5.0"
   },
   "dependencies": {
     "native-base": "2.3.9",

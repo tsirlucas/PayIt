@@ -27,6 +27,6 @@ it('should render Tabbar without crashing', () => {
       ],
     },
   } as SceneProps;
-  const rendered = renderer.create(<NavbarComponent {...props} />).toJSON();
+  const rendered = renderer.create(<TabBarComponent {...props} />).toJSON();
   expect(rendered).toBeTruthy();
 });

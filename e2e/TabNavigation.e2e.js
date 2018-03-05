@@ -5,6 +5,11 @@ const port = 4723;
 const driver = wd.promiseChainRemote('localhost', port);
 jasmine.DEFAULT_TIMEOUT_INTERVAL = 60000;
 
+const tapElementByAccessibilityId = async(id) => {
+  const button = await driver.elementByAccessibilityId(id);
+  await button.tap();
+}
+
 describe('TabNavigation', () => {
   // timeout(200000)
 
@@ -25,18 +30,15 @@ describe('TabNavigation', () => {
   });
 
   it('should be able to navigate to bills', async () => {
-    const button = await driver.elementByAccessibilityId('bills button');
-    await button.tap();
+    await tapElementByAccessibilityId('bills button');
     expect(await driver.hasElementByAccessibilityId('Bills title')).toBe(true);
   });
   it('should be able to navigate to settings', async () => {
-    const button = await driver.elementByAccessibilityId('settings button');
-    await button.tap();
+    await tapElementByAccessibilityId('settings button');
     expect(await driver.hasElementByAccessibilityId('Settings title')).toBe(true);
   });
   it('should be able to navigate to home', async () => {
-    const button = await driver.elementByAccessibilityId('home button');
-    await button.tap();
+    await tapElementByAccessibilityId('home button');
     expect(await driver.hasElementByAccessibilityId('Home title')).toBe(true);
   });
 });

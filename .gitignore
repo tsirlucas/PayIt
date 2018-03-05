@@ -61,4 +61,4 @@ yarn-error.log*
 
 # Jest
 .jest/
-reports/
+coverage/

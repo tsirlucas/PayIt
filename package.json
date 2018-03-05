@@ -21,9 +21,9 @@
 		"devices": {
 			"ios-emulator": {
 				"platformName": "iOS",
-				"platformVersion": "10.3",
-				"deviceName": "iPhone Simulator",
-				"app": "./ios/build/Build/Products/Release-iphonesimulator/PayIt.app"
+				"platformVersion": "11.2",
+				"deviceName": "iPhone 7",
+				"app": "./ios/build/Build/Products/Debug-iphonesimulator/PayIt.app"
 			},
 			"android-emulator": {
 				"platformName": "Android",

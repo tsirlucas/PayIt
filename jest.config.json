@@ -18,5 +18,11 @@
     "<rootDir>/node_modules/",
     "<rootDir>/lib/"
   ],
-  "cacheDirectory": ".jest/cache"
+  "cacheDirectory": ".jest/cache",
+  "collectCoverage": true,
+  "collectCoverageFrom":  [
+    "src/**/*.{ts,tsx}",
+    "!src/**/index.ts"
+  ],
+  "coverageDirectory": "reports/coverage"
 }

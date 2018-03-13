@@ -7,13 +7,13 @@ export class FirebaseSingleton {
   static getInstance() {
     if (!this.instance) {
       this.instance = new FirebaseSingleton();
-      Firebase.auth()
-        .signInAnonymouslyAndRetrieveData()
-        .then(credential => {
-          if (credential) {
-            console.log('default app user ->', credential.user.toJSON());
-          }
-        });
+      // Firebase.auth()
+      //   .signInAnonymouslyAndRetrieveData()
+      //   .then(credential => {
+      //     if (credential) {
+      //       console.log('default app user ->', credential.user.toJSON());
+      //     }
+      //   });
     }
 
     return this.instance;

@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "395773363693",
+    "firebase_url": "https://payit-database.firebaseio.com",
+    "project_id": "payit-database",
+    "storage_bucket": "payit-database.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:395773363693:android:b15e5a8e95972f20",
+        "android_client_info": {
+          "package_name": "com.payit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "395773363693-kfapahqfncast0i8567mfb7aunpuqkr4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAYQ6W2Je-Y1vpT6aHnoGkagWtZCTmrt80"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

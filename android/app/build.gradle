@@ -86,12 +86,22 @@ apply from: "../../node_modules/react-native/react.gradle"
  * Upload all the APKs to the Play Store and people will download
  * the correct one based on the CPU architecture of their device.
  */
-def enableSeparateBuildPerCPUArchitecture = false
+def enableSeparateBuildPerCPUArchitecture = true
 
 /**
  * Run Proguard to shrink the Java bytecode in release builds.
  */
-def enableProguardInReleaseBuilds = false
+def enableProguardInReleaseBuilds = true
+
+def getAppVersionCode = { ->
+  def code = project.hasProperty('versionCode') ? versionCode.toInteger() : -1
+  return code
+}
+
+def getAppVersionName = { ->
+  def name = project.hasProperty('versionName') ? versionName : "1.0.0"
+  return name
+}
 
 android {
     compileSdkVersion 23
@@ -101,10 +111,18 @@ android {
         applicationId "com.payit"
         minSdkVersion 16
         targetSdkVersion 22
-        versionCode 1
-        versionName "1.0"
+        versionCode getAppVersionCode()
+        versionName getAppVersionName()
         ndk {
             abiFilters "armeabi-v7a", "x86"
+        }
+    }
+    signingConfigs {
+        release {
+            storeFile file(MYAPP_RELEASE_STORE_FILE)
+            storePassword System.getenv("PAYIT_ANDROID_KEYSTORE")
+            keyAlias MYAPP_RELEASE_KEY_ALIAS
+            keyPassword System.getenv("PAYIT_ANDROID_KEYSTORE")
         }
     }
     splits {
@@ -119,6 +137,7 @@ android {
         release {
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
+            signingConfig signingConfigs.release
         }
     }
     // applicationVariants are e.g. debug, release
@@ -137,7 +156,15 @@ android {
 }
 
 dependencies {
+    compile(project(':react-native-firebase')) {
+        transitive = false
+    }
     compile fileTree(dir: "libs", include: ["*.jar"])
+
+     // Firebase dependencies
+    compile "com.google.android.gms:play-services-base:11.8.0"
+    compile "com.google.firebase:firebase-core:11.8.0"
+  
     compile "com.android.support:appcompat-v7:23.0.1"
     compile "com.facebook.react:react-native:+"  // From node_modules
 }
@@ -148,3 +175,5 @@ task copyDownloadableDepsToLibs(type: Copy) {
     from configurations.compile
     into 'libs'
 }
+
+apply plugin: 'com.google.gms.google-services'

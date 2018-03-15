@@ -1,0 +1,34 @@
+{
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/bower_components": true,
+    "**/dmp": true
+  },
+  "editor.formatOnSave": true,
+
+  // TS import formater
+  "importSorter.importStringConfiguration.maximumNumberOfImportExpressionsPerLine.type": "newLineEachExpressionAfterCountLimit",
+  "importSorter.importStringConfiguration.maximumNumberOfImportExpressionsPerLine.count": 100,
+  "importSorter.importStringConfiguration.tabSize": 2,
+  "importSorter.importStringConfiguration.trailingComma": "multiLine",
+  "importSorter.generalConfiguration.sortOnBeforeSave": true,
+  "importSorter.sortConfiguration.customOrderingRules.rules": [
+    {
+      "regex": "^(react)",
+      "orderLevel": 10,
+      "numberOfEmptyLinesAfterGroup": 0
+    },
+    {
+      "regex": "^(src|components|service|core|models)",
+      "orderLevel": 25,
+    },
+    {
+      "regex": "^[.]",
+      "orderLevel": 30
+    }
+  ],
+  "importSorter.importStringConfiguration.spacingPerImportExpression.afterStartingBracket": 0,
+  "importSorter.importStringConfiguration.spacingPerImportExpression.beforeEndingBracket": 0,
+  "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": false,
+  "importSorter.sortConfiguration.joinImportPaths": false,
+}

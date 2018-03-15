@@ -1,9 +1,8 @@
 import React from 'react';
-import { Text } from 'react-native';
+import {Text} from 'react-native';
+import {SceneProps} from 'react-native-router-flux';
 import renderer from 'react-test-renderer';
-import { SceneProps } from 'react-native-router-flux';
-
-import { NavbarComponent, TabBarComponent } from './Layout';
+import {NavbarComponent, TabBarComponent} from './Layout';
 
 it('should render Navbar without crashing', () => {
   const props = {
@@ -20,11 +19,7 @@ it('should render Tabbar without crashing', () => {
     key: 'key',
     component: Bar,
     navigationState: {
-      routes: [
-        { key: 'Tab1' },
-        { key: 'Tab2' },
-        { key: 'Tab3' },
-      ],
+      routes: [{key: 'Tab1'}, {key: 'Tab2'}, {key: 'Tab3'}],
     },
   } as SceneProps;
   const rendered = renderer.create(<TabBarComponent {...props} />).toJSON();

@@ -5,10 +5,10 @@ const port = 4723;
 const driver = wd.promiseChainRemote('localhost', port);
 jasmine.DEFAULT_TIMEOUT_INTERVAL = 60000;
 
-const tapElementByAccessibilityId = async(id) => {
+const tapElementByAccessibilityId = async (id) => {
   const button = await driver.elementByAccessibilityId(id);
   await button.tap();
-}
+};
 
 describe('TabNavigation', () => {
   // timeout(200000)
@@ -18,7 +18,7 @@ describe('TabNavigation', () => {
     while (!await driver.hasElementByAccessibilityId('nav bar')) {
       await driver.sleep(1000); // wait for app to load
     }
-  })
+  });
   afterAll(async () => await driver.quit());
 
   it('should render tabs', async () => {

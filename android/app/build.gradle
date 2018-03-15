@@ -75,7 +75,7 @@ import com.android.build.OutputFile
 project.ext.react = [
     entryFile: "index.js"
 ]
-
+apply from: project(':react-native-config').projectDir.getPath() + "/dotenv.gradle"
 apply from: "../../node_modules/react-native/react.gradle"
 
 /**
@@ -119,9 +119,9 @@ android {
     }
     signingConfigs {
         release {
-            storeFile file(MYAPP_RELEASE_STORE_FILE)
+            storeFile file(MYAPP_STORE_FILE)
             storePassword System.getenv("PAYIT_ANDROID_KEYSTORE")
-            keyAlias MYAPP_RELEASE_KEY_ALIAS
+            keyAlias MYAPP_KEY_ALIAS
             keyPassword System.getenv("PAYIT_ANDROID_KEYSTORE")
         }
     }
@@ -156,6 +156,8 @@ android {
 }
 
 dependencies {
+    compile project(':react-native-config')
+    compile project(':react-native-google-signin')
     compile(project(':react-native-firebase')) {
         transitive = false
     }
@@ -164,6 +166,8 @@ dependencies {
      // Firebase dependencies
     compile "com.google.android.gms:play-services-base:11.8.0"
     compile "com.google.firebase:firebase-core:11.8.0"
+    compile "com.google.firebase:firebase-auth:11.8.0"
+    compile "com.google.firebase:firebase-firestore:11.8.0"
   
     compile "com.android.support:appcompat-v7:23.0.1"
     compile "com.facebook.react:react-native:+"  // From node_modules

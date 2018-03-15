@@ -1,1 +1,1 @@
-export * from './Bills';
+export * from './Bills.container';

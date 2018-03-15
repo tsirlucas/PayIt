@@ -3,6 +3,7 @@
     "target": "es2018",
     "module": "esnext",
     "lib": ["es2015", "es2018", "esnext"],
+    "noEmit": true,
     "moduleResolution": "node",
     "typeRoots": [
       "custom_typings",
@@ -10,8 +11,6 @@
     ],
     "skipLibCheck": true,
     "jsx": "react",
-    "outDir": "lib",
-    "rootDir": "src",
     "allowSyntheticDefaultImports": true,
     "noImplicitAny": true,
     "preserveConstEnums": true,
@@ -22,10 +21,18 @@
     "noUnusedLocals": true,
     "baseUrl": ".",
     "paths": {
+      "src": ["src"],
+      "src/*": ["src/*"],
       "components": ["src/components/index.ts"],
       "components/*": ["src/components/*"],
+      "pages": ["src/components/pages/index.ts"],
+      "pages/*": ["src/components/pages/*"],
       "services": ["src/services/index.ts"],
-      "services/*": ["src/services/*"]
+      "services/*": ["src/services/*"],
+      "core": ["src/core/index.ts"],
+      "core/*": ["src/core/*"],
+      "models": ["src/models/index.ts"],
+      "models/*": ["src/models/*"],
     }
   },
   "filesGlob": [

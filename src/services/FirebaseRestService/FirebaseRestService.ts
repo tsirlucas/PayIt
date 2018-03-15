@@ -19,18 +19,14 @@ export class FirebaseRestService {
     return {id: doc.id, ...doc.data()};
   }
 
-  async add<T extends FirebaseEntityPattern>(collection: T) {
-    const doc = await this.collection.doc();
-    await doc.set(Object.assign(collection, {id: doc.id}));
-    const addedDoc = await doc.get();
-    return {...addedDoc.data(), id: doc.id};
-  }
-
-  async update<T extends FirebaseEntityPattern>(collectionId: string, newData: T) {
+  async set<T extends FirebaseEntityPattern>(collectionId: string, newData: T) {
     const docRef = this.collection.doc(collectionId);
-    await docRef.update(newData);
-    const updatedDoc = await docRef.get();
-    return {id: updatedDoc.id, ...updatedDoc.data()};
+    const doc = await docRef.get();
+    if (!doc.exists) {
+      await docRef.set(newData);
+    } else {
+      await docRef.update(newData);
+    }
   }
 
   delete(collectionId: string) {

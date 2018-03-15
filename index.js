@@ -1,1 +1,4 @@
-import './lib/index';
+import {AppRegistry} from 'react-native';
+import App from './src/App';
+
+AppRegistry.registerComponent('PayIt', () => App);

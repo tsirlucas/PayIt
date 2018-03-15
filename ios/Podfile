@@ -8,6 +8,8 @@ target 'PayIt' do
   # Pods for PayIt
   pod 'Firebase/Core'
 
+  pod 'react-native-config', :path => '../node_modules/react-native-config'
+
   target 'PayItTests' do
     inherit! :search_paths
     # Pods for testing

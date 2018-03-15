@@ -5,7 +5,6 @@
 	};
 	objectVersion = 46;
 	objects = {
-
 /* Begin PBXBuildFile section */
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
 		00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
@@ -41,6 +40,11 @@
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
 		D6351589FAEF4CDFAADAB514 /* Entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0846D865E8734939BCE1B670 /* Entypo.ttf */; };
 		FAB807BF9DC44B21A8E801DF /* libRNFirebase.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B752DD970FD49A18CBBCBE5 /* libRNFirebase.a */; };
+		3E6976BB55F643349A083A40 /* libRNGoogleSignin.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8387B014FB1C407499804454 /* libRNGoogleSignin.a */; };
+		00B68E3103A74CBB8ABDD495 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F0C3FC95EB734E40BA0B8C81 /* libz.tbd */; };
+		31539239B47A4858B0906CC9 /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F9B0965B18843A2BE141F83 /* SafariServices.framework */; };
+		AA2F24C924C246CC805537B3 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11D1E5B5204F4272A56FD99A /* SystemConfiguration.framework */; };
+		E738EBF75E4A41D59A3470CA /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB5BCFC97D154496990C7682 /* AddressBook.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -365,6 +369,12 @@
 		EEA7EAD9676F4CDE9159F8F0 /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/native-base/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
 		FA996D67284C4649B5D4EE9B /* Roboto.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Roboto.ttf; path = "../node_modules/native-base/Fonts/Roboto.ttf"; sourceTree = "<group>"; };
 		FC3615A473A47BB41A2E8E97 /* Pods-PayIt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PayIt.release.xcconfig"; path = "Pods/Target Support Files/Pods-PayIt/Pods-PayIt.release.xcconfig"; sourceTree = "<group>"; };
+		D00EAEA2921F4EC9BB76363A /* RNGoogleSignin.xcodeproj */ = {isa = PBXFileReference; name = "RNGoogleSignin.xcodeproj"; path = "../node_modules/react-native-google-signin/ios/RNGoogleSignin.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		8387B014FB1C407499804454 /* libRNGoogleSignin.a */ = {isa = PBXFileReference; name = "libRNGoogleSignin.a"; path = "libRNGoogleSignin.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		F0C3FC95EB734E40BA0B8C81 /* libz.tbd */ = {isa = PBXFileReference; name = "libz.tbd"; path = "usr/lib/libz.tbd"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = sourcecode.text-based-dylib-definition; explicitFileType = undefined; includeInIndex = 0; };
+		3F9B0965B18843A2BE141F83 /* SafariServices.framework */ = {isa = PBXFileReference; name = "SafariServices.framework"; path = "System/Library/Frameworks/SafariServices.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
+		11D1E5B5204F4272A56FD99A /* SystemConfiguration.framework */ = {isa = PBXFileReference; name = "SystemConfiguration.framework"; path = "System/Library/Frameworks/SystemConfiguration.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
+		DB5BCFC97D154496990C7682 /* AddressBook.framework */ = {isa = PBXFileReference; name = "AddressBook.framework"; path = "System/Library/Frameworks/AddressBook.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -396,6 +406,11 @@
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
 				FAB807BF9DC44B21A8E801DF /* libRNFirebase.a in Frameworks */,
 				39C907D28455398EE51261B3 /* libPods-PayIt.a in Frameworks */,
+				3E6976BB55F643349A083A40 /* libRNGoogleSignin.a in Frameworks */,
+				00B68E3103A74CBB8ABDD495 /* libz.tbd in Frameworks */,
+				31539239B47A4858B0906CC9 /* SafariServices.framework in Frameworks */,
+				AA2F24C924C246CC805537B3 /* SystemConfiguration.framework in Frameworks */,
+				E738EBF75E4A41D59A3470CA /* AddressBook.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -541,6 +556,10 @@
 				2D16E6891FA4F8E400B85C8A /* libReact.a */,
 				68BDF956D616D2169A3D7D89 /* libPods-PayIt.a */,
 				B41C6EEBFA00A5C37EDEA959 /* libPods-PayItTests.a */,
+				F0C3FC95EB734E40BA0B8C81 /* libz.tbd */,
+				3F9B0965B18843A2BE141F83 /* SafariServices.framework */,
+				11D1E5B5204F4272A56FD99A /* SystemConfiguration.framework */,
+				DB5BCFC97D154496990C7682 /* AddressBook.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -579,6 +598,7 @@
 				00C302DF1ABCB9EE00DB3ED1 /* RCTVibration.xcodeproj */,
 				139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */,
 				C5DA0E1C78974B54927E7984 /* RNFirebase.xcodeproj */,
+				D00EAEA2921F4EC9BB76363A /* RNGoogleSignin.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -1268,6 +1288,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1290,6 +1311,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = "$(inherited)";

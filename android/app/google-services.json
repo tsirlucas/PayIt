@@ -15,6 +15,26 @@
       },
       "oauth_client": [
         {
+          "client_id": "395773363693-alhama4oudemu3c7euurltb6c5rso7pi.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.payit",
+            "certificate_hash": "7ed8412a728b0ed23a0fe411472be97730410c8b"
+          }
+        },
+        {
+          "client_id": "395773363693-4972v0v37be0dfb7i5fj9bdicceuo86p.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.payit",
+            "certificate_hash": "e3b0ce45516fafd5fb17294226c86b29f902b444"
+          }
+        },
+        {
+          "client_id": "395773363693-9vdg7kj1e4isgf2g6pll7bkt8464pdbc.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
           "client_id": "395773363693-kfapahqfncast0i8567mfb7aunpuqkr4.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -29,8 +49,20 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "395773363693-9vdg7kj1e4isgf2g6pll7bkt8464pdbc.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "395773363693-j9crj02hd8ohigamc496kmn9rchvisg8.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.tsirlucas.PayIt"
+              }
+            }
+          ]
         },
         "ads_service": {
           "status": 2

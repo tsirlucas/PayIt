@@ -364,9 +364,9 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react-native@0.52.16":
-  version "0.52.16"
-  resolved "https://registry.yarnpkg.com/@types/react-native/-/react-native-0.52.16.tgz#d474cdba5b44e4b695e4c918c88d3e171772c298"
+"@types/react-native@0.52.17":
+  version "0.52.17"
+  resolved "https://registry.yarnpkg.com/@types/react-native/-/react-native-0.52.17.tgz#4714aa125af5f20b502ff3ffa75700a1cdb3d794"
   dependencies:
     "@types/react" "*"
 
@@ -5652,9 +5652,9 @@ react-native-firebase@3.2.7:
     postinstall-build "^5.0.1"
     prop-types "^15.6.0"
 
-react-native-google-signin@0.12.0:
-  version "0.12.0"
-  resolved "https://registry.yarnpkg.com/react-native-google-signin/-/react-native-google-signin-0.12.0.tgz#fc549593adbc92ed2a5a683a957f157650ece961"
+"react-native-google-signin@https://github.com/invertase/react-native-google-signin.git#v0.12.1":
+  version "0.11.0"
+  resolved "https://github.com/invertase/react-native-google-signin.git#718e31040e0557d8d26590d0a94a66c02a88bf59"
 
 react-native-iphone-x-helper@^1.0.1:
   version "1.0.2"
@@ -5667,9 +5667,9 @@ react-native-keyboard-aware-scroll-view@0.4.2:
     prop-types "^15.6.0"
     react-native-iphone-x-helper "^1.0.1"
 
-react-native-router-flux@4.0.0-beta.28:
-  version "4.0.0-beta.28"
-  resolved "https://registry.yarnpkg.com/react-native-router-flux/-/react-native-router-flux-4.0.0-beta.28.tgz#1d39cf176c88d0658af03cfa80dfb4a8eb284619"
+react-native-router-flux@4.0.0-beta.27:
+  version "4.0.0-beta.27"
+  resolved "https://registry.yarnpkg.com/react-native-router-flux/-/react-native-router-flux-4.0.0-beta.27.tgz#11862319b64a750189d04ded8cdf2f98c02f1425"
   dependencies:
     lodash.isequal "^4.5.0"
     mobx "^3.3.1"

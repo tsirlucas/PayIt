@@ -10,12 +10,14 @@ import {actions} from './user.actions';
 function* signInSaga() {
   try {
     yield GoogleSignin.hasPlayServices({autoResolve: true});
+
     yield GoogleSignin.configure({
       iosClientId: environment.settings.googleAuth.iosClientId,
       webClientId: environment.settings.googleAuth.webClientId,
     });
 
     const googleAuth = yield GoogleSignin.signIn();
+
     const idToken = googleAuth.idToken;
 
     const accessToken = googleAuth.accessToken;
@@ -30,9 +32,8 @@ function* signInSaga() {
     };
 
     yield UserRestService.getInstance().setUser(parsedUser);
-
     yield put(actions.setUser(parsedUser));
-    yield call(Actions.jump, 'home');
+    yield call(Actions.reset, 'application');
   } catch (e) {
     throw e;
   }

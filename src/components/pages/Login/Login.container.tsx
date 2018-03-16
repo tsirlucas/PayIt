@@ -1,7 +1,7 @@
 import * as React from 'react';
-import {GoogleSigninButton} from 'react-native-google-signin';
+import Icon from 'react-native-vector-icons/FontAwesome';
 import {connect} from 'react-redux';
-import {View} from 'native-base';
+import {Button, Icon as NBIcon, Text, View} from 'native-base';
 
 import {
   mapDispatchToProps,
@@ -9,6 +9,7 @@ import {
   mapStateToProps,
   MapStateToProps,
 } from './Login.selectors';
+import {styles} from './Login.style';
 
 export type LoginProps = MapDispatchToProps & MapStateToProps;
 
@@ -22,12 +23,17 @@ class LoginComponent extends React.Component<LoginProps> {
           alignItems: 'center',
         }}
       >
-        <GoogleSigninButton
-          style={{width: 120, height: 44}}
-          size={GoogleSigninButton.Size.Icon}
-          color={GoogleSigninButton.Color.Dark}
-          onPress={this.props.actions.signIn}
-        />
+        <View style={styles.content}>
+          <Text style={styles.header}>Welcome Stranger!</Text>
+          <View style={styles.avatar}>
+            <Icon name="user-circle" size={100} color="rgba(0,0,0,.09)" />
+          </View>
+          <Text style={styles.text}>Please log in to continue</Text>
+          <Button iconLeft danger onPress={this.props.actions.signIn}>
+            <NBIcon name="logo-google" />
+            <Text>Log in with Google!</Text>
+          </Button>
+        </View>
       </View>
     );
   }

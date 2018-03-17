@@ -1,11 +1,13 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
+import {actions as userActions} from 'core/user';
+
 import {UnconnectedLogin} from './Login.container';
 
 function wrap() {
   const props = {
     actions: {
-      signIn: jest.fn(),
+      signIn: userActions.signIn,
     },
   };
 

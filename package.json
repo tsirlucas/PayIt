@@ -39,6 +39,7 @@
     "@types/react": "16.0.38",
     "@types/react-native": "0.52.18",
     "@types/react-native-google-signin": "0.12.1",
+    "@types/react-native-vector-icons": "4.4.3",
     "@types/react-redux": "5.0.15",
     "@types/react-test-renderer": "16.0.1",
     "appium": "1.7.2",

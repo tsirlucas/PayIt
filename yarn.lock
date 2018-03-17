@@ -358,7 +358,14 @@
     "@types/react" "*"
     "@types/react-native" "*"
 
-"@types/react-native@*", "@types/react-native@^0.52.18":
+"@types/react-native-vector-icons@^4.4.3":
+  version "4.4.3"
+  resolved "https://registry.yarnpkg.com/@types/react-native-vector-icons/-/react-native-vector-icons-4.4.3.tgz#37f6d5dd06418a144c7c082dbca9ce37c14f033f"
+  dependencies:
+    "@types/react" "*"
+    "@types/react-native" "*"
+
+"@types/react-native@*", "@types/react-native@0.52.18":
   version "0.52.18"
   resolved "https://registry.yarnpkg.com/@types/react-native/-/react-native-0.52.18.tgz#082fada6fdddc6c745a4c1a6234e4aa3b104176b"
   dependencies:

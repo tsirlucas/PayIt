@@ -40,3 +40,4 @@ class LoginComponent extends React.Component<LoginProps> {
 }
 
 export const Login = connect(mapStateToProps, mapDispatchToProps)(LoginComponent);
+export const UnconnectedLogin = LoginComponent;

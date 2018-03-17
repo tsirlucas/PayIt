@@ -1,10 +1,23 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import {Login} from './Login.container';
+import {UnconnectedLogin} from './Login.container';
 
-jest.mock('react-native-google-signin', () => {});
+function wrap() {
+  const props = {
+    actions: {
+      signIn: jest.fn(),
+    },
+  };
+
+  const enzymeWrapper = renderer.create(<UnconnectedLogin {...props} />);
+
+  return {
+    props,
+    component: enzymeWrapper,
+  };
+}
 
 it('should render Login page without crashing', () => {
-  const rendered = renderer.create(<Login />).toJSON();
+  const rendered = wrap().component.toJSON();
   expect(rendered).toBeTruthy();
 });

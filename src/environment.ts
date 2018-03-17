@@ -1,6 +1,5 @@
 import Config from 'react-native-config';
 
-console.log(Config);
 const commonvars = {
   googleAuth: {
     iosClientId: Config.IOS_CLIENT_ID,

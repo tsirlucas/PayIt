@@ -33,5 +33,8 @@
     "^core/(.*)$": "<rootDir>/src/core/$1",
     "^models/(.*)$": "<rootDir>/src/models/$1"
   },
-  "moduleDirectories": ["node_modules", "src"]
+  "moduleDirectories": ["node_modules", "src"],
+  "setupFiles": [
+    "./jest.hooks.tsx"
+  ]
 }

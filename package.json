@@ -14,7 +14,8 @@
     "e2e:android": "E2E_DEVICE=\"android-emulator\" yarn e2e",
     "e2e:ios": "E2E_DEVICE=\"ios-emulator\" yarn e2e",
     "tsc": "tsc",
-    "clean": "rimraf lib"
+    "clean": "rimraf lib",
+    "build": "yarn clean && yarn tsc"
   },
   "e2e": {
     "devices": {

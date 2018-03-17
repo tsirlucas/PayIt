@@ -24,5 +24,14 @@
     "src/**/*.{ts,tsx}",
     "!src/**/index.ts"
   ],
-  "coverageDirectory": "coverage"
+  "coverageDirectory": "coverage",
+  "moduleNameMapper": {
+    "^src/(.*)$": "<rootDir>/src/$1",
+    "^components/(.*)$": "<rootDir>/src/components/$1",
+    "^pages/(.*)$": "<rootDir>/src/components/pages/$1",
+    "^services/(.*)$": "<rootDir>/src/services/$1",
+    "^core/(.*)$": "<rootDir>/src/core/$1",
+    "^models/(.*)$": "<rootDir>/src/models/$1"
+  },
+  "moduleDirectories": ["node_modules", "src"]
 }

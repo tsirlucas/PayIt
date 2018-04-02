@@ -71,6 +71,6 @@
     "redux": "3.7.2",
     "redux-act": "1.7.3",
     "redux-saga": "0.16.0",
-    "utility-types": "1.1.0"
+    "utility-types": "2.0.0"
   }
 }

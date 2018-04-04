@@ -61,7 +61,7 @@
   },
   "dependencies": {
     "native-base": "2.4.1",
-    "react": "16.2.0",
+    "react": "16.3.1",
     "react-native": "0.54.3",
     "react-native-firebase": "3.2.7",
     "react-native-google-signin": "https://github.com/invertase/react-native-google-signin.git#v0.12.1",

@@ -81,25 +81,25 @@ PODS:
   - nanopb/decode (0.3.8)
   - nanopb/encode (0.3.8)
   - Protobuf (3.5.0)
-  - React (0.54.3):
-    - React/Core (= 0.54.3)
+  - React (0.54.4):
+    - React/Core (= 0.54.4)
   - react-native-config (0.11.5):
     - React
-  - React/Core (0.54.3):
-    - yoga (= 0.54.3.React)
-  - React/DevSupport (0.54.3):
+  - React/Core (0.54.4):
+    - yoga (= 0.54.4.React)
+  - React/DevSupport (0.54.4):
     - React/Core
     - React/RCTWebSocket
-  - React/fishhook (0.54.3)
-  - React/RCTBlob (0.54.3):
+  - React/fishhook (0.54.4)
+  - React/RCTBlob (0.54.4):
     - React/Core
-  - React/RCTNetwork (0.54.3):
+  - React/RCTNetwork (0.54.4):
     - React/Core
-  - React/RCTWebSocket (0.54.3):
+  - React/RCTWebSocket (0.54.4):
     - React/Core
     - React/fishhook
     - React/RCTBlob
-  - yoga (0.54.3.React)
+  - yoga (0.54.4.React)
 
 DEPENDENCIES:
   - Firebase/Auth

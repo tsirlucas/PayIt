@@ -1,5 +1,5 @@
 import {bindActionCreators, Dispatch} from 'redux';
-import {$call} from 'utility-types';
+import {$Call} from 'utility-types';
 
 import {actions as userActions} from 'core/user';
 
@@ -8,8 +8,6 @@ export const mapDispatchToProps = (dispatch: Dispatch<any>) => ({
   actions: bindActionCreators({signIn: userActions.signIn}, dispatch),
 });
 
-const mapStateToPropsNope = $call(mapStateToProps);
-export type MapStateToProps = typeof mapStateToPropsNope;
+export type MapStateToProps = $Call<typeof mapStateToProps>;
 
-const mapDispatchToPropsNope = $call(mapDispatchToProps);
-export type MapDispatchToProps = typeof mapDispatchToPropsNope;
+export type MapDispatchToProps = $Call<typeof mapDispatchToProps>;

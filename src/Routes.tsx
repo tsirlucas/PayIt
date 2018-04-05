@@ -3,7 +3,7 @@ import {Router, Scene, Stack} from 'react-native-router-flux';
 import {Actions} from 'react-native-router-flux';
 import {connect} from 'react-redux';
 import {Content} from 'native-base';
-import {$call} from 'utility-types';
+import {$Call} from 'utility-types';
 
 import {NavbarComponent, TabBarComponent} from 'components/common/Layout';
 import {Bills, Home, Settings} from 'components/pages';
@@ -14,8 +14,7 @@ const mapStateToProps = (state: RootState) => ({
   userUid: state.user.data.uid,
 });
 
-const mapStateToPropsNope = $call(mapStateToProps);
-export type RoutesProps = typeof mapStateToPropsNope;
+export type RoutesProps = $Call<typeof mapStateToProps>;
 
 class Routes extends React.Component<RoutesProps> {
   render() {

@@ -1,4 +1,4 @@
-import {Dimensions, StyleSheet, ViewStyle} from 'react-native';
+import {StyleSheet, ViewStyle} from 'react-native';
 import {zIndexWorkaround} from 'utils';
 
 export const style = StyleSheet.create({

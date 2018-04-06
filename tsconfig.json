@@ -33,6 +33,8 @@
       "core/*": ["src/core/*"],
       "models": ["src/models/index.ts"],
       "models/*": ["src/models/*"],
+      "utils": ["src/utils/index.ts"],
+      "utils/*": ["src/utils/*"],
     }
   },
   "filesGlob": [

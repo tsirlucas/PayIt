@@ -5,10 +5,12 @@ import {call, fork, put, takeLatest} from 'redux-saga/effects';
 import {FirebaseAuthService, UserRestService} from 'services';
 import {environment} from 'src/environment';
 
+import {actions as globalActions} from '../global/global.actions';
 import {actions} from './user.actions';
 
 function* signInSaga() {
   try {
+    yield put(globalActions.showActivityIndicator());
     yield GoogleSignin.hasPlayServices({autoResolve: true});
 
     yield GoogleSignin.configure({
@@ -36,6 +38,8 @@ function* signInSaga() {
     yield call(Actions.reset, 'application');
   } catch (e) {
     throw e;
+  } finally {
+    yield put(globalActions.hideActivityIndicator());
   }
 }
 

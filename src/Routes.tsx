@@ -5,6 +5,7 @@ import {connect} from 'react-redux';
 import {Content} from 'native-base';
 import {$Call} from 'utility-types';
 
+import {ActivityIndicator} from 'components/common/ActivityIndicator';
 import {NavbarComponent, TabBarComponent} from 'components/common/Layout';
 import {Bills, Home, Settings} from 'components/pages';
 import {RootState} from 'core';
@@ -18,8 +19,9 @@ export type RoutesProps = $Call<typeof mapStateToProps>;
 
 class Routes extends React.Component<RoutesProps> {
   render() {
-    return (
-      <Router sceneStyle={{backgroundColor: '#F5EEEE'}}>
+    return [
+      <ActivityIndicator key="activity-indicator" />,
+      <Router key="router" sceneStyle={{backgroundColor: '#F5EEEE'}}>
         <Scene key="root" hideNavBar component={undefined}>
           <Stack key="authentication" hideNavBar>
             <Scene
@@ -49,8 +51,8 @@ class Routes extends React.Component<RoutesProps> {
             </Scene>
           </Stack>
         </Scene>
-      </Router>
-    );
+      </Router>,
+    ];
   }
 
   checkAuth = (uid: string) => {

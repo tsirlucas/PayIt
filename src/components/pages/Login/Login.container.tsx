@@ -9,7 +9,7 @@ import {
   mapStateToProps,
   MapStateToProps,
 } from './Login.selectors';
-import {styles} from './Login.style';
+import {style} from './Login.style';
 
 export type LoginProps = MapDispatchToProps & MapStateToProps;
 
@@ -23,12 +23,12 @@ class LoginComponent extends React.Component<LoginProps> {
           alignItems: 'center',
         }}
       >
-        <View style={styles.content}>
-          <Text style={styles.header}>Welcome Stranger!</Text>
-          <View style={styles.avatar}>
+        <View style={style.content}>
+          <Text style={style.header}>Welcome Stranger!</Text>
+          <View style={style.avatar}>
             <Icon name="user-circle" size={100} color="rgba(0,0,0,.09)" />
           </View>
-          <Text style={styles.text}>Please log in to continue</Text>
+          <Text style={style.text}>Please log in to continue</Text>
           <Button iconLeft danger onPress={this.props.actions.signIn}>
             <NBIcon name="logo-google" />
             <Text>Log in with Google!</Text>

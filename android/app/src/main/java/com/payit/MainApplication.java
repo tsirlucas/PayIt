@@ -3,6 +3,7 @@ package com.payit;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.wheelpicker.WheelPickerPackage;
 import com.lugg.ReactNativeConfig.ReactNativeConfigPackage;
 import co.apptailor.googlesignin.RNGoogleSigninPackage;
 import io.invertase.firebase.RNFirebasePackage;
@@ -28,6 +29,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new WheelPickerPackage(),
           new ReactNativeConfigPackage(),
           new RNGoogleSigninPackage(),
           new RNFirebasePackage(),

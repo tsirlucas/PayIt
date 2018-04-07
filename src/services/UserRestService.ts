@@ -22,7 +22,11 @@ export class UserRestService {
     this.collectionStore = new FirebaseRestService('users');
   }
 
+  public getUser = async (id: string) => {
+    return this.collectionStore.get(id);
+  }
+
   public setUser = async (user: User) => {
     return this.collectionStore.set(user.uid, user);
-  };
+  }
 }

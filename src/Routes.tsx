@@ -7,6 +7,7 @@ import {$Call} from 'utility-types';
 
 import {ActivityIndicator} from 'components/common/ActivityIndicator';
 import {NavbarComponent, TabBarComponent} from 'components/common/Layout';
+import {PaydayForm} from 'components/forms/PaydayForm';
 import {Bills, Home, Settings} from 'components/pages';
 import {RootState} from 'core';
 import {Login} from 'pages/Login';
@@ -32,6 +33,14 @@ class Routes extends React.Component<RoutesProps> {
               hideNavBar
               hideTabBar
               initial
+            />
+            <Scene
+              key="payday-form"
+              path="/payday-form"
+              title="Payday"
+              component={PaydayForm}
+              hideNavBar
+              hideTabBar
             />
           </Stack>
           <Stack key="application" hideNavBar>

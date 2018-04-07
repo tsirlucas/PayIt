@@ -35,6 +35,8 @@
       "models/*": ["src/models/*"],
       "utils": ["src/utils/index.ts"],
       "utils/*": ["src/utils/*"],
+      "style": ["src/style/index.ts"],
+      "style/*": ["src/style/*"],
     }
   },
   "filesGlob": [

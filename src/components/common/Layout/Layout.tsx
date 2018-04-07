@@ -2,6 +2,7 @@ import * as React from 'react';
 import {StatusBar, Text, View} from 'react-native';
 import {Actions, SceneProps} from 'react-native-router-flux';
 import {Body, Button, Footer, FooterTab, Header, Icon, Title} from 'native-base';
+import {primaryColor} from 'style';
 
 type RoutesTypes = {
   [index: string]: string;
@@ -21,8 +22,8 @@ const icons: RoutesTypes = {
 
 export const NavbarComponent = (props: SceneProps) => (
   <View accessibilityLabel="nav bar">
-    <Header style={{backgroundColor: '#5FB97D'}}>
-      <StatusBar backgroundColor="#30925C" barStyle="light-content" />
+    <Header style={{backgroundColor: primaryColor}}>
+      <StatusBar backgroundColor={primaryColor} barStyle="light-content" />
       <Body>
         <View accessibilityLabel={`${props.title} title`}>
           <Title>{props.title}</Title>
@@ -35,7 +36,7 @@ export const NavbarComponent = (props: SceneProps) => (
 export const TabBarComponent = (props: SceneProps) => (
   <View accessibilityLabel="tab bar">
     <Footer>
-      <FooterTab style={{backgroundColor: '#5FB97D'}}>
+      <FooterTab style={{backgroundColor: primaryColor}}>
         {props.navigationState.routes.map((item: {key: string}, index: number) => (
           <Button
             key={index}

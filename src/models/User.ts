@@ -3,5 +3,5 @@ export interface User {
   displayName: string;
   email: string;
   fullName: string;
-  photo: string;
+  photoURL: string;
 }

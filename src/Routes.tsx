@@ -1,8 +1,8 @@
 import * as React from 'react';
 import {Router, Scene, Stack} from 'react-native-router-flux';
-import {Actions} from 'react-native-router-flux';
 import {connect} from 'react-redux';
 import {Content} from 'native-base';
+import {bindActionCreators, Dispatch} from 'redux';
 import {$Call} from 'utility-types';
 
 import {ActivityIndicator} from 'components/common/ActivityIndicator';
@@ -10,15 +10,24 @@ import {NavbarComponent, TabBarComponent} from 'components/common/Layout';
 import {PaydayForm} from 'components/forms/PaydayForm';
 import {Bills, Home, Settings} from 'components/pages';
 import {RootState} from 'core';
+import {actions as userActions} from 'core/user';
 import {Login} from 'pages/Login';
 
 const mapStateToProps = (state: RootState) => ({
   userUid: state.user.data.uid,
 });
 
-export type RoutesProps = $Call<typeof mapStateToProps>;
+export const mapDispatchToProps = (dispatch: Dispatch<any>) => ({
+  actions: bindActionCreators({checkAuth: userActions.checkAuth}, dispatch),
+});
+
+export type RoutesProps = $Call<typeof mapStateToProps> & $Call<typeof mapDispatchToProps>;
 
 class Routes extends React.Component<RoutesProps> {
+  componentWillMount() {
+    this.props.actions.checkAuth();
+  }
+
   render() {
     return [
       <ActivityIndicator key="activity-indicator" />,
@@ -52,7 +61,6 @@ class Routes extends React.Component<RoutesProps> {
               contentComponent={Content}
               tabBarComponent={TabBarComponent}
               navBar={NavbarComponent}
-              onEnter={() => this.checkAuth(this.props.userUid)}
             >
               <Scene key="home" path="/" title="Home" component={Home} />
               <Scene key="bills" path="/bills" title="Bills" component={Bills} />
@@ -63,12 +71,6 @@ class Routes extends React.Component<RoutesProps> {
       </Router>,
     ];
   }
-
-  checkAuth = (uid: string) => {
-    if (!uid) {
-      Actions.jump('login');
-    }
-  };
 }
 
-export default connect(mapStateToProps)(Routes);
+export default connect(mapStateToProps, mapDispatchToProps)(Routes);

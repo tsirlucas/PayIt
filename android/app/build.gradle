@@ -164,8 +164,8 @@ dependencies {
     compile(project(':react-native-google-signin')){
         exclude group: "com.google.android.gms"
     }
-    compile "com.google.android.gms:play-services-base:11.8.0"
-    compile 'com.google.android.gms:play-services-auth:11.8.0'
+    compile "com.google.android.gms:play-services-base:12.0.1"
+    compile 'com.google.android.gms:play-services-auth:12.0.1'
 
      // Firebase dependencies
     compile(project(':react-native-firebase')) {
@@ -173,9 +173,9 @@ dependencies {
         exclude group: "com.google.android.gms"
         exclude group: "com.google.firebase"
     }
-    compile "com.google.firebase:firebase-core:11.8.0"
-    compile "com.google.firebase:firebase-auth:11.8.0"
-    compile "com.google.firebase:firebase-firestore:11.8.0"
+    compile "com.google.firebase:firebase-core:12.0.1"
+    compile "com.google.firebase:firebase-auth:12.0.1"
+    compile "com.google.firebase:firebase-firestore:12.0.1"
 
     compile "com.android.support:appcompat-v7:23.0.1"
     compile "com.facebook.react:react-native:+"  // From node_modules

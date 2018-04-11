@@ -30,6 +30,18 @@ export class FirebaseAuthService {
     return this.firebaseService.auth().signOut();
   }
 
+  waitForAuthentication() {
+    return new Promise((resolve) => {
+      const interval = setInterval(() => {
+        const {currentUser} = this.firebaseService.auth();
+        if (currentUser) {
+          resolve(currentUser.uid);
+          clearInterval(interval);
+        }
+      }, 300);
+    });
+  }
+
   private constructor() {
     this.firebaseService = FirebaseSingleton.getInstance().Firebase;
   }

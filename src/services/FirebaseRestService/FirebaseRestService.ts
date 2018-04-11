@@ -33,4 +33,19 @@ export class FirebaseRestService {
     const docRef = this.collection.doc(collectionId);
     return docRef.delete();
   }
+
+  subscribeCollection = (cb: Function) => {
+    const {uid} = FirebaseSingleton.getInstance().Firebase.auth()._user;
+    return this.collection.where(`permissions.${uid}`, '>', '').onSnapshot(
+      (changes) => {
+        if (changes.docChanges.length === 0) cb({type: 'empty'});
+        changes.docChanges.map((change) => {
+          return cb({type: change.type, data: change.doc.data()});
+        });
+      },
+      (err) => {
+        throw err;
+      },
+    );
+  };
 }

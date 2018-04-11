@@ -26,7 +26,7 @@ export const NavbarComponent = (props: SceneProps) => (
       <StatusBar backgroundColor={primaryColor} barStyle="light-content" />
       <Body>
         <View accessibilityLabel={`${props.title} title`}>
-          <Title>{props.title}</Title>
+          <Title style={{color: 'white'}}>{props.title}</Title>
         </View>
       </Body>
     </Header>

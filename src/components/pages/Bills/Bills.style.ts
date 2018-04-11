@@ -1,5 +1,4 @@
 import {Platform, StyleSheet} from 'react-native';
-import {zIndexWorkaround} from 'utils';
 
 const measurements = Platform.select({
   ios: () => ({

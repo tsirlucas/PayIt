@@ -347,9 +347,9 @@
   version "22.2.2"
   resolved "https://registry.yarnpkg.com/@types/jest/-/jest-22.2.2.tgz#afe5dacbd00d65325f52da0ed3e76e259629ac9d"
 
-"@types/node@9.6.2":
-  version "9.6.2"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-9.6.2.tgz#e49ac1adb458835e95ca6487bc20f916b37aff23"
+"@types/node@9.6.3":
+  version "9.6.3"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-9.6.3.tgz#f5fd440f8a9867b65ae76d442e269622a1db00b5"
 
 "@types/react-native-google-signin@0.12.1":
   version "0.12.1"
@@ -377,9 +377,9 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react-redux@5.0.15":
-  version "5.0.15"
-  resolved "https://registry.yarnpkg.com/@types/react-redux/-/react-redux-5.0.15.tgz#420af2c702ac7aab321cf45bb7d3cb2503dd24d5"
+"@types/react-redux@5.0.16":
+  version "5.0.16"
+  resolved "https://registry.yarnpkg.com/@types/react-redux/-/react-redux-5.0.16.tgz#46f1b2043abd2b4364a857100abf5e5a6ef94bf0"
   dependencies:
     "@types/react" "*"
     redux "^3.6.0"
@@ -394,9 +394,9 @@
   version "16.0.38"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-16.0.38.tgz#76617433ea10274505f60bb86eddfdd0476ffdc2"
 
-"@types/react@16.3.5":
-  version "16.3.5"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-16.3.5.tgz#bd3b21285602ea7cadb4b9e0d9711d96fd5692cc"
+"@types/react@16.3.7":
+  version "16.3.7"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-16.3.7.tgz#3b90fc4c8382fc55f4d18a8d487dbd314eb6ec4c"
   dependencies:
     csstype "^2.0.0"
 
@@ -5658,9 +5658,9 @@ react-native-easy-grid@0.1.17:
   dependencies:
     lodash "^4.11.1"
 
-react-native-firebase@4.0.0:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/react-native-firebase/-/react-native-firebase-4.0.0.tgz#2e73f918cce561a6053ef01db732012e01e70e96"
+react-native-firebase@4.0.1:
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/react-native-firebase/-/react-native-firebase-4.0.1.tgz#95a8d87e287e421ea526161868efc95fc8ad14ec"
   dependencies:
     opencollective "^1.0.3"
     postinstall-build "^5.0.1"

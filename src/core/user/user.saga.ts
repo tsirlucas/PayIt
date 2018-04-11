@@ -13,24 +13,28 @@ import {actions as globalActions} from '../global/global.actions';
 import {actions} from './user.actions';
 
 function* storeUser(user: User) {
-  const firebaseUser = yield UserRestService.getInstance().getUser(user.uid);
+  try {
+    const firebaseUser = yield UserRestService.getInstance().getUser(user.uid);
+    if (firebaseUser.payday) {
+      yield call(Actions.reset, 'application');
 
-  if (firebaseUser.payday) {
-    yield call(Actions.reset, 'application');
-    yield put(actions.setUser(firebaseUser));
-  } else {
-    const parsedUser = {
-      uid: user.uid,
-      displayName: user.displayName.split(' ')[0],
-      email: user.email,
-      fullName: user.displayName,
-      photoURL: user.photoURL,
-    };
+      yield put(actions.setUser(firebaseUser));
+    } else {
+      const parsedUser = {
+        uid: user.uid,
+        displayName: user.displayName.split(' ')[0],
+        email: user.email,
+        fullName: user.displayName,
+        photoURL: user.photoURL,
+      };
 
-    yield UserRestService.getInstance().setUser(parsedUser);
-    yield put(actions.setUser(parsedUser));
+      yield UserRestService.getInstance().setUser(parsedUser);
+      yield put(actions.setUser(parsedUser));
 
-    yield call(Actions.replace, 'payday-form');
+      yield call(Actions.replace, 'payday-form');
+    }
+  } catch (e) {
+    throw e;
   }
 }
 

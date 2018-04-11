@@ -10,7 +10,7 @@ import {NavbarComponent, TabBarComponent} from 'components/common/Layout';
 import {PaydayForm} from 'components/forms/PaydayForm';
 import {Bills, Home, Settings} from 'components/pages';
 import {RootState} from 'core';
-import {actions as userActions} from 'core/user';
+import {actions as globalActions} from 'core/global';
 import {Login} from 'pages/Login';
 
 const mapStateToProps = (state: RootState) => ({
@@ -18,14 +18,14 @@ const mapStateToProps = (state: RootState) => ({
 });
 
 export const mapDispatchToProps = (dispatch: Dispatch<any>) => ({
-  actions: bindActionCreators({checkAuth: userActions.checkAuth}, dispatch),
+  actions: bindActionCreators({initApplication: globalActions.initApplication}, dispatch),
 });
 
 export type RoutesProps = $Call<typeof mapStateToProps> & $Call<typeof mapDispatchToProps>;
 
 class Routes extends React.Component<RoutesProps> {
   componentWillMount() {
-    this.props.actions.checkAuth();
+    this.props.actions.initApplication();
   }
 
   render() {

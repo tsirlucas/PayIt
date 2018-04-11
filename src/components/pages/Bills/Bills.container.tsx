@@ -2,7 +2,7 @@ import * as React from 'react';
 import {ScrollView} from 'react-native';
 import {View} from 'react-native';
 import {connect} from 'react-redux';
-import {Body, List, ListItem, StyleProvider, Text, Thumbnail} from 'native-base';
+import {Body, List, ListItem, Text, Thumbnail} from 'native-base';
 
 import {MapStateToProps, mapStateToProps} from './Bills.selectors';
 import {style} from './Bills.style';

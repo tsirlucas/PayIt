@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Platform, StatusBar, Text, View} from 'react-native';
+import {StatusBar, Text, View} from 'react-native';
 import {Actions, SceneProps} from 'react-native-router-flux';
 import {Body, Button, Footer, FooterTab, Header, Icon, Title} from 'native-base';
 import {primaryColor} from 'style';

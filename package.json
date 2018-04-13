@@ -60,7 +60,7 @@
     "wd": "1.6.2"
   },
   "dependencies": {
-    "native-base": "2.4.1",
+    "native-base": "2.4.2",
     "react": "16.3.1",
     "react-native": "0.54.4",
     "react-native-firebase": "4.0.1",

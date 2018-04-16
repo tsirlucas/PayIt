@@ -19,6 +19,7 @@ function* storeUser(user: User) {
       yield call(Actions.reset, 'application');
 
       yield put(actions.setUser(firebaseUser));
+      yield put(actions.pushNotificationSetup(user.uid));
     } else {
       const parsedUser = {
         uid: user.uid,
@@ -62,17 +63,38 @@ function* signInSaga() {
   }
 }
 
+function* pushNotificationSetupSaga(action: Action<string>) {
+  try {
+    const enabled = yield FirebaseAuthService.getInstance().hasPushPermission();
+
+    if (enabled) {
+      try {
+        yield FirebaseAuthService.getInstance().requestPushPermission();
+        const fcmToken = yield FirebaseAuthService.getInstance().getRegistrationToken();
+        if (fcmToken) {
+          yield UserRestService.getInstance().setRegistrationToken(action.payload, fcmToken);
+        }
+      } catch (error) {
+        // User has rejected permissions
+      }
+    }
+  } catch (e) {
+    throw e;
+  }
+}
+
 function* setPaydaySaga(action: Action<number>) {
   try {
     yield put(globalActions.showActivityIndicator());
 
     const user = yield select((state: RootState) => state.user.data);
-    const newUser = {...user, payday: action.payload};
+    const newUser = {...user, payday: action.payload} as User;
 
     yield UserRestService.getInstance().setUser(newUser);
 
     yield put(actions.setUser(newUser));
     yield call(Actions.reset, 'application');
+    yield put(actions.pushNotificationSetup(newUser.uid));
   } catch (e) {
     throw e;
   } finally {
@@ -110,6 +132,7 @@ function* userFlow() {
   yield takeLatest(actions.signIn, signInSaga);
   yield takeLatest(actions.checkAuth, checkAuthSaga);
   yield takeLatest(actions.setPayday, setPaydaySaga);
+  yield takeLatest(actions.pushNotificationSetup, pushNotificationSetupSaga);
 }
 
 export function* userSaga() {

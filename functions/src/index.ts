@@ -5,3 +5,4 @@ admin.initializeApp(functions.config().firebase);
 
 export * from './onCronTrigger';
 export * from './onBillChange';
+export * from './sendPendenciesAlerts';

@@ -19,33 +19,41 @@ export const onCronTrigger = functions.https.onRequest((req, res) => {
     return null;
   }
 
-  res.send('Pendencies updates triggered');
-
   const firestore = admin.firestore();
 
-  const pendenciesPromise = firestore.ref(`/pendencies`).get();
+  const documentsPromise = firestore.collection('/pendencies').get();
 
-  return pendenciesPromise.then((pendencies) => {
-    const updatePromise = pendencies.map((userPendencies) => {
-      return updateUserPendencies(firestore, userPendencies);
+  res.send('Pendencies updates triggered');
+
+  return documentsPromise.then((documents) => {
+    const promises = [];
+    documents.forEach((doc) => {
+      promises.push(updateUserPendencies(firestore, doc.data()));
     });
-
-    return Promise.all(updatePromise);
+    return Promise.all(promises);
   });
 });
 
 const updateUserPendencies = async (firestore: FirebaseFirestore.Firestore, pendencies) => {
-  const user = await firestore.ref(`/users/${pendencies.id}`).get();
-  const bills = await firestore.ref(`/bills`).get();
+  const userSnapshot = await firestore.doc(`/users/${pendencies.id}`).get();
+  const user = userSnapshot.data();
+  const billsCollection = await firestore.collection('/bills').get();
+  const bills = {};
+
+  billsCollection.forEach((doc) => {
+    const bill = doc.data();
+    bills[bill.id] = bill;
+  });
+  const data = pendencies.data || {};
 
   const {payday} = user;
 
-  const updatedPendencies = Object.keys(pendencies.data).reduce((curr, next) => {
-    const bill = bills[pendencies.data[next].billId];
-    return {...curr, ...computePendencies(bill, pendencies.data, payday)};
+  const updatedPendencies = Object.keys(data).reduce((curr, next) => {
+    const bill = bills[data[next].billId];
+    return {...curr, ...computePendencies(bill, data, payday)};
   }, {});
 
-  return firestore.ref(`/pendencies/${user.uid}`).set({
+  return firestore.doc(`/pendencies/${user.uid}`).set({
     id: user.uid,
     data: updatedPendencies,
   });

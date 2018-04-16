@@ -17,7 +17,7 @@ export const computePendencies = (bill, pendencies, payday) => {
   const type = checkPaid(currPendency) || getType(today, generationMoment, expirationMoment);
 
   const newPendency = {
-    ...currPendency,
+    ...buildPendency(bill, expirationString),
     type,
     warning: hasWarning(payday, expirationMoment),
   };

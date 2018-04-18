@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {Platform, StyleSheet, Text, View} from 'react-native';
 
 type Props = {
   text: string;
@@ -21,6 +21,7 @@ export class Balloon extends React.Component<Props> {
 const style = StyleSheet.create({
   text: {
     fontSize: 30,
+    color: Platform.select({android: 'rgba(0, 0, 0, 0.7)', ios: 'rgba(0, 0, 0, 0.8)'}),
   },
   container: {
     height: 55,

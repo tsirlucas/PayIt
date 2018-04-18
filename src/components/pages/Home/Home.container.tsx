@@ -34,9 +34,11 @@ class HomeComponent extends React.Component<MapStateToProps> {
     const {pendencies} = this.props;
     if (pendencies === null) return <Text>Loading...</Text>;
     return (
-      <Container>
-        <Balloon text={this.getGreetingText()} />
-        <Image style={style.image} source={images.wavingMan} />
+      <Container style={style.container}>
+        <View>
+          <Balloon text={this.getGreetingText()} />
+          <Image style={style.image} source={images.wavingMan} />
+        </View>
         {Object.keys(pendencies).length > 0 ? (
           <PendenciesList data={this.getDataArray()} />
         ) : (
@@ -49,8 +51,10 @@ class HomeComponent extends React.Component<MapStateToProps> {
 
 const NoPendencies = () => (
   <View style={style.noPendenciesView}>
-    <View style={style.noPendencies}>
-      <Text style={[style.bigFont, style.greenFont, {textAlign: 'center'}]}>No pendencies!</Text>
+    <View style={style.noPendenciesSubView}>
+      <View style={style.noPendencies}>
+        <Text style={[style.bigFont, style.greenFont, {textAlign: 'center'}]}>No pendencies!</Text>
+      </View>
     </View>
   </View>
 );

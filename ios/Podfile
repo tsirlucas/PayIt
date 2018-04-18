@@ -10,7 +10,8 @@ target 'PayIt' do
   pod 'Firebase/Core'
   pod 'Firebase/Firestore'
   pod 'Firebase/Auth'
-
+  pod 'Firebase/Messaging'
+  
   pod "yoga", :path => "../node_modules/react-native/ReactCommon/yoga"
   pod 'React', :path => '../node_modules/react-native', :subspecs => [
 	'Core',

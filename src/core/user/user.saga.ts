@@ -65,17 +65,22 @@ function* signInSaga() {
 
 function* pushNotificationSetupSaga(action: Action<string>) {
   try {
-    const enabled = yield FirebaseAuthService.getInstance().hasPushPermission();
+    let enabled = yield FirebaseAuthService.getInstance().hasPushPermission();
 
-    if (enabled) {
+    if (!enabled) {
       try {
         yield FirebaseAuthService.getInstance().requestPushPermission();
-        const fcmToken = yield FirebaseAuthService.getInstance().getRegistrationToken();
-        if (fcmToken) {
-          yield UserRestService.getInstance().setRegistrationToken(action.payload, fcmToken);
-        }
+        enabled = yield FirebaseAuthService.getInstance().hasPushPermission();
       } catch (error) {
         // User has rejected permissions
+      }
+    }
+
+    if (enabled) {
+      const fcmToken = yield FirebaseAuthService.getInstance().getRegistrationToken();
+
+      if (fcmToken) {
+        yield UserRestService.getInstance().setRegistrationToken(action.payload, fcmToken);
       }
     }
   } catch (e) {

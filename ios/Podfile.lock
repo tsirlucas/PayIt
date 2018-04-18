@@ -92,25 +92,25 @@ PODS:
   - nanopb/decode (0.3.8)
   - nanopb/encode (0.3.8)
   - Protobuf (3.5.0)
-  - React (0.54.4):
-    - React/Core (= 0.54.4)
+  - React (0.55.3):
+    - React/Core (= 0.55.3)
   - react-native-config (0.11.5):
     - React
-  - React/Core (0.54.4):
-    - yoga (= 0.54.4.React)
-  - React/DevSupport (0.54.4):
+  - React/Core (0.55.3):
+    - yoga (= 0.55.3.React)
+  - React/DevSupport (0.55.3):
     - React/Core
     - React/RCTWebSocket
-  - React/fishhook (0.54.4)
-  - React/RCTBlob (0.54.4):
+  - React/fishhook (0.55.3)
+  - React/RCTBlob (0.55.3):
     - React/Core
-  - React/RCTNetwork (0.54.4):
+  - React/RCTNetwork (0.55.3):
     - React/Core
-  - React/RCTWebSocket (0.54.4):
+  - React/RCTWebSocket (0.55.3):
     - React/Core
     - React/fishhook
     - React/RCTBlob
-  - yoga (0.54.4.React)
+  - yoga (0.55.3.React)
 
 DEPENDENCIES:
   - Firebase/Auth
@@ -152,9 +152,9 @@ SPEC CHECKSUMS:
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   Protobuf: 8a9838fba8dae3389230e1b7f8c104aa32389c03
-  React: c237e42de9c70e5cac6eeb52b4cfd3a0910c1f00
+  React: aa2040dbb6f317b95314968021bd2888816e03d5
   react-native-config: 408003951fd9d8b1dfd7ebf535f67c315f44d823
-  yoga: 55da126afc384965b96bff46652464373b330add
+  yoga: a23273df0088bf7f2bb7e5d7b00044ea57a2a54a
 
 PODFILE CHECKSUM: b14988b573b30b0af49ca8cef37d85c1dee5be6c
 

@@ -30,6 +30,18 @@ export class FirebaseAuthService {
     return this.firebaseService.auth().signOut();
   }
 
+  hasPushPermission() {
+    return this.firebaseService.messaging().hasPermission();
+  }
+
+  requestPushPermission() {
+    return this.firebaseService.messaging().requestPermission();
+  }
+
+  getRegistrationToken() {
+    return this.firebaseService.messaging().getToken();
+  }
+
   waitForAuthentication() {
     return new Promise((resolve) => {
       const interval = setInterval(() => {

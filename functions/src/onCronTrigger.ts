@@ -2,6 +2,8 @@ import * as admin from 'firebase-admin';
 import * as functions from 'firebase-functions';
 import * as secureCompare from 'secure-compare';
 
+import {IndexedPendencies} from 'models';
+
 import {computePendencies} from './computePendencies';
 
 export const onCronTrigger = functions.https.onRequest((req, res) => {
@@ -34,7 +36,10 @@ export const onCronTrigger = functions.https.onRequest((req, res) => {
   });
 });
 
-const updateUserPendencies = async (firestore: FirebaseFirestore.Firestore, pendencies) => {
+const updateUserPendencies = async (
+  firestore: FirebaseFirestore.Firestore,
+  pendencies: IndexedPendencies,
+) => {
   const userSnapshot = await firestore.doc(`/users/${pendencies.id}`).get();
   const user = userSnapshot.data();
   const billsCollection = await firestore.collection('/bills').get();

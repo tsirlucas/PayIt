@@ -2,6 +2,8 @@ import * as admin from 'firebase-admin';
 import * as functions from 'firebase-functions';
 import * as secureCompare from 'secure-compare';
 
+import {IndexedPendencies} from 'models';
+
 import {computePendencies} from './computePendencies';
 
 export const sendPendenciesAlerts = functions.https.onRequest((req, res) => {
@@ -34,7 +36,10 @@ export const sendPendenciesAlerts = functions.https.onRequest((req, res) => {
   });
 });
 
-const sendUserAlert = async (firestore: FirebaseFirestore.Firestore, pendencies) => {
+const sendUserAlert = async (
+  firestore: FirebaseFirestore.Firestore,
+  pendencies: IndexedPendencies,
+) => {
   const userSnapshot = await firestore.doc(`/users/${pendencies.id}`).get();
   const user = userSnapshot.data();
 

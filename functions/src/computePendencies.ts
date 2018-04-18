@@ -1,6 +1,8 @@
 import * as moment from 'moment';
 
-export const computePendencies = (bill, pendencies, payday) => {
+import {Bill, IndexedPendencies} from 'models';
+
+export const computePendencies = (bill: Bill, pendencies: IndexedPendencies, payday: number) => {
   const today = moment();
 
   const month = today.month();
@@ -59,9 +61,10 @@ const getType = (today, generationDay, expirationDay) => {
 
 const checkPaid = ({type}) => (type === 'PAID' ? type : null);
 
-const buildPendency = (bill, expiration, warning?) => ({
+const buildPendency = (bill: Bill, expiration: string, warning?: boolean) => ({
   description: bill.description,
   billId: bill.id,
   expirationDay: expiration,
+  type: null as string,
   warning,
 });

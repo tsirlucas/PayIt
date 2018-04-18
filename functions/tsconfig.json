@@ -5,10 +5,22 @@
     "noImplicitReturns": true,
     "outDir": "lib",
     "sourceMap": true,
-    "target": "es6"
+    "target": "es6",
+    "baseUrl": ".",
+    "paths": {
+      "models": ["../src/models/index.ts"],
+      "models/*": ["../src/models/*"],
+    },
+    "typeRoots": [
+      "./node_modules/@types",
+    ],
   },
+  "filesGlob": [
+    "src/**/*.ts",
+    "src/**/*.tsx"
+  ],
   "compileOnSave": true,
   "include": [
-    "src"
+    "./src"
   ]
 }

@@ -1,3 +1,4 @@
+import {Action} from 'redux-act';
 import {eventChannel} from 'redux-saga';
 import {fork, put, take, takeLatest} from 'redux-saga/effects';
 
@@ -6,17 +7,17 @@ import {BillsRestService} from 'services';
 import {actions as userActions} from '../user/user.actions';
 import {actions} from './bills.actions';
 
-function createBillsChannel() {
+function createBillsChannel(filter: [string, string, string]) {
   return eventChannel((emit) => {
     return BillsRestService.getInstance().subscribe((changes: any) => {
       emit(changes);
-    });
+    }, filter);
   });
 }
 
-function* subscribeBillsSaga() {
+function* subscribeBillsSaga(action: Action<[string, string, string]>) {
   try {
-    const billsChannel = createBillsChannel();
+    const billsChannel = createBillsChannel(action.payload);
 
     while (true) {
       yield takeLatest(userActions.signOut, billsChannel.close);

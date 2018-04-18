@@ -6944,9 +6944,9 @@ react-native-easy-grid@0.1.17:
   dependencies:
     lodash "^4.11.1"
 
-react-native-firebase@4.0.1:
-  version "4.0.1"
-  resolved "https://registry.yarnpkg.com/react-native-firebase/-/react-native-firebase-4.0.1.tgz#95a8d87e287e421ea526161868efc95fc8ad14ec"
+react-native-firebase@4.0.3:
+  version "4.0.3"
+  resolved "https://registry.yarnpkg.com/react-native-firebase/-/react-native-firebase-4.0.3.tgz#141fbf7e27e93e5b95d7a87d92a3b50c258fd92f"
   dependencies:
     opencollective "^1.0.3"
     postinstall-build "^5.0.1"

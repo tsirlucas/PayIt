@@ -55,6 +55,6 @@ const updateUserPendencies = async (firestore: FirebaseFirestore.Firestore, pend
 
   return firestore.doc(`/pendencies/${user.uid}`).set({
     id: user.uid,
-    data: updatedPendencies,
+    data: {...data, ...updatedPendencies},
   });
 };

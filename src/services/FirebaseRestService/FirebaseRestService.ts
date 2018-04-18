@@ -34,9 +34,21 @@ export class FirebaseRestService {
     return docRef.delete();
   }
 
-  subscribeCollection = (cb: Function) => {
-    const {uid} = FirebaseSingleton.getInstance().Firebase.auth()._user;
-    return this.collection.where(`permissions.${uid}`, '>', '').onSnapshot(
+  subscribeDocument = (id: string, cb: Function) => {
+    return this.collection.doc(id).onSnapshot(
+      (change) => {
+        console.log(change);
+        if (!change.exists) cb({type: 'empty'});
+        return cb({type: 'modified', data: change.data()});
+      },
+      (err) => {
+        throw err;
+      },
+    );
+  };
+
+  subscribeCollection = (cb: Function, filter: [string, string, string]) => {
+    return this.collection.where(filter[0], filter[1] as any, filter[2]).onSnapshot(
       (changes) => {
         if (changes.docChanges.length === 0) cb({type: 'empty'});
         changes.docChanges.map((change) => {

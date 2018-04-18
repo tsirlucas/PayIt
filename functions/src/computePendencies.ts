@@ -7,11 +7,18 @@ export const computePendencies = (bill, pendencies, payday) => {
   const {expirationDay, generationDay} = bill;
 
   const expirationMoment = moment({date: expirationDay, month});
-  const generationMoment = moment({date: generationDay, month});
+  let generationMoment = moment({date: generationDay, month});
+
+  if (generationDay > expirationDay) {
+    // bill is generated in the end of prev month and expires this month
+    generationMoment = generationMoment.subtract(1, 'month');
+  }
+
   const paydayMoment = moment({date: payday, month});
 
   const expirationString = expirationMoment.format('YYYY-MM-DD');
-  const pendencyKey = `${bill.id}-${expirationString}`;
+  const expirationStringWODay = expirationMoment.format('YYYY-MM');
+  const pendencyKey = `${bill.id}-${expirationStringWODay}`;
 
   const currPendency = pendencies[pendencyKey] || buildPendency(bill, expirationString);
   const type = checkPaid(currPendency) || getType(today, generationMoment, expirationMoment);
@@ -19,7 +26,7 @@ export const computePendencies = (bill, pendencies, payday) => {
   const newPendency = {
     ...buildPendency(bill, expirationString),
     type,
-    warning: hasWarning(payday, expirationMoment),
+    warning: hasWarning(paydayMoment, expirationMoment),
   };
 
   return {[pendencyKey]: newPendency};
@@ -30,7 +37,7 @@ const isDelayed = (today, expirationDay) => {
 };
 
 const hasWarning = (payday, expirationDay) => {
-  return expirationDay.diff(payday) > 0;
+  return payday.diff(expirationDay) > 0;
 };
 
 const isIdeal = (today, generationDay, expirationDay) => {

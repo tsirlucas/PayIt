@@ -13,6 +13,8 @@ import {RootState} from 'core';
 import {actions as globalActions} from 'core/global';
 import {Login} from 'pages/Login';
 
+import {I18n} from './i18n';
+
 const mapStateToProps = (state: RootState) => ({
   userUid: state.user.data.uid,
 });
@@ -62,9 +64,24 @@ class Routes extends React.Component<RoutesProps> {
               tabBarComponent={TabBarComponent}
               navBar={NavbarComponent}
             >
-              <Scene key="home" path="/" title="Home" component={Home} />
-              <Scene key="bills" path="/bills" title="Bills" component={Bills} />
-              <Scene key="settings" path="/settings" title="Settings" component={Settings} />
+              <Scene
+                key="home"
+                path="/"
+                title={I18n.t('global.routes.titles.home')}
+                component={Home}
+              />
+              <Scene
+                key="bills"
+                path="/bills"
+                title={I18n.t('global.routes.titles.bills')}
+                component={Bills}
+              />
+              <Scene
+                key="settings"
+                path="/settings"
+                title={I18n.t('global.routes.titles.settings')}
+                component={Settings}
+              />
             </Scene>
           </Stack>
         </Scene>

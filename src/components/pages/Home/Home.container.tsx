@@ -8,6 +8,7 @@ import {Pendency} from 'models';
 import {Balloon} from './components';
 import {MapStateToProps, mapStateToProps} from './Home.selectors';
 import {style} from './Home.style';
+import {I18n} from './i18n';
 
 const images = {
   wavingMan: require('../../../assets/img/home.png'),
@@ -27,7 +28,14 @@ class HomeComponent extends React.Component<MapStateToProps> {
   };
 
   getGreetingText = () => {
-    return `Hello ${this.props.userName}, you have`;
+    if (!this.hasPendencies)
+      return I18n.t('home.greetingNoPendencies', {name: this.props.userName});
+    return I18n.t('home.greeting', {name: this.props.userName});
+  };
+
+  hasPendencies = () => {
+    const {delayed, ideal, next} = this.props.pendencies;
+    return delayed.length > 0 || ideal.length > 0 || next.length > 0;
   };
 
   render() {
@@ -39,11 +47,7 @@ class HomeComponent extends React.Component<MapStateToProps> {
           <Balloon text={this.getGreetingText()} />
           <Image style={style.image} source={images.wavingMan} />
         </View>
-        {Object.keys(pendencies).length > 0 ? (
-          <PendenciesList data={this.getDataArray()} />
-        ) : (
-          <NoPendencies />
-        )}
+        {this.hasPendencies() ? <PendenciesList data={this.getDataArray()} /> : <NoPendencies />}
       </Container>
     );
   }
@@ -53,7 +57,9 @@ const NoPendencies = () => (
   <View style={style.noPendenciesView}>
     <View style={style.noPendenciesSubView}>
       <View style={style.noPendencies}>
-        <Text style={[style.bigFont, style.greenFont, {textAlign: 'center'}]}>No pendencies!</Text>
+        <Text style={[style.bigFont, style.greenFont, {textAlign: 'center'}]}>
+          {I18n.t('home.noPendencies')}
+        </Text>
       </View>
     </View>
   </View>
@@ -70,7 +76,7 @@ const PendenciesList = (props: {data: ArrayData}) => (
         <Text style={[style.bigFont, style[item.title], {textAlign: 'center'}]}>
           {item.data.length}
           {'\n'}
-          {item.title.charAt(0).toUpperCase() + item.title.slice(1)} Bills
+          {I18n.t(`home.label.${item.title}`, {count: item.data.length})}
         </Text>
       </ListItem>
     )}

@@ -22,6 +22,8 @@ target 'PayIt' do
 
   pod 'react-native-config', :path => '../node_modules/react-native-config'
 
+  pod 'RNI18n', :path => '../node_modules/react-native-i18n'
+
   target 'PayItTests' do
     inherit! :search_paths
     # Pods for testing

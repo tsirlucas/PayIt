@@ -4,14 +4,16 @@ import {Actions, SceneProps} from 'react-native-router-flux';
 import {Body, Button, Footer, FooterTab, Header, Icon, Title} from 'native-base';
 import {primaryColor} from 'style';
 
+import {I18n} from 'src/i18n';
+
 type RoutesTypes = {
   [index: string]: string;
 };
 
 const titles: RoutesTypes = {
-  home: 'Home',
-  bills: 'Bills',
-  settings: 'Settings',
+  home: I18n.t('global.routes.titles.home'),
+  bills: I18n.t('global.routes.titles.bills'),
+  settings: I18n.t('global.routes.titles.settings'),
 };
 
 const icons: RoutesTypes = {

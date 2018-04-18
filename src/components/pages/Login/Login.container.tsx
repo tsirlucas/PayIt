@@ -3,6 +3,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import {connect} from 'react-redux';
 import {Button, Icon as NBIcon, Text, View} from 'native-base';
 
+import {I18n} from './i18n';
 import {
   mapDispatchToProps,
   MapDispatchToProps,
@@ -24,14 +25,14 @@ class LoginComponent extends React.Component<LoginProps> {
         }}
       >
         <View style={style.content}>
-          <Text style={style.header}>Welcome Stranger!</Text>
+          <Text style={style.header}>{I18n.t('login.greeting')}</Text>
           <View style={style.avatar}>
             <Icon name="user-circle" size={100} color="rgba(0,0,0,.09)" />
           </View>
-          <Text style={style.text}>Please log in to continue</Text>
+          <Text style={style.text}>{I18n.t('login.label')}</Text>
           <Button iconLeft danger onPress={this.props.actions.signIn}>
             <NBIcon name="logo-google" />
-            <Text>Log in with Google!</Text>
+            <Text>{I18n.t('login.googleLogin')}</Text>
           </Button>
         </View>
       </View>

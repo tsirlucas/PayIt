@@ -6,6 +6,7 @@ import {Button, Container} from 'native-base';
 import {WheelPicker} from 'components/common';
 
 import {FormHeader} from '../FormHeader';
+import {I18n} from './i18n';
 import {mapDispatchToProps, MapDispatchToProps} from './PaydayForm.selectors';
 import {style} from './PaydayForm.style';
 
@@ -26,9 +27,9 @@ class PaydayFormComponent extends React.Component<MapDispatchToProps, State> {
     return (
       <Container style={style.container}>
         <FormHeader
-          header="Payday"
-          subHeader="Now tell me in which day do you receive your payment"
-          secSubHeader="Don't worry, it can be changed later ;)"
+          header={I18n.t('paydayForm.header')}
+          subHeader={I18n.t('paydayForm.subHeader')}
+          secSubHeader={`${I18n.t('paydayForm.secSubHeader')} ;)`}
         />
         <WheelPicker
           data={this.state.itemList}
@@ -41,7 +42,7 @@ class PaydayFormComponent extends React.Component<MapDispatchToProps, State> {
           onValueChange={this.onPickerSelect}
         />
         <Button onPress={this.onSubmit} style={style.confirmButton} block light bordered>
-          <Text style={style.confirmButtonText}>Confirm</Text>
+          <Text style={style.confirmButtonText}>{I18n.t('paydayForm.confirmButton')}</Text>
         </Button>
       </Container>
     );

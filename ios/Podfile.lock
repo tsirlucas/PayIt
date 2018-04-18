@@ -110,6 +110,8 @@ PODS:
     - React/Core
     - React/fishhook
     - React/RCTBlob
+  - RNI18n (2.0.12):
+    - React
   - yoga (0.55.3.React)
 
 DEPENDENCIES:
@@ -122,6 +124,7 @@ DEPENDENCIES:
   - React/Core (from `../node_modules/react-native`)
   - React/DevSupport (from `../node_modules/react-native`)
   - React/RCTNetwork (from `../node_modules/react-native`)
+  - RNI18n (from `../node_modules/react-native-i18n`)
   - yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 EXTERNAL SOURCES:
@@ -129,6 +132,8 @@ EXTERNAL SOURCES:
     :path: ../node_modules/react-native
   react-native-config:
     :path: ../node_modules/react-native-config
+  RNI18n:
+    :path: ../node_modules/react-native-i18n
   yoga:
     :path: ../node_modules/react-native/ReactCommon/yoga
 
@@ -154,8 +159,9 @@ SPEC CHECKSUMS:
   Protobuf: 8a9838fba8dae3389230e1b7f8c104aa32389c03
   React: aa2040dbb6f317b95314968021bd2888816e03d5
   react-native-config: 408003951fd9d8b1dfd7ebf535f67c315f44d823
+  RNI18n: db9be06a40336f04d136f24dd5de3f5eb9f3207c
   yoga: a23273df0088bf7f2bb7e5d7b00044ea57a2a54a
 
-PODFILE CHECKSUM: b14988b573b30b0af49ca8cef37d85c1dee5be6c
+PODFILE CHECKSUM: d258439c549a965d187721a11c623c9ceb62cd91
 
 COCOAPODS: 1.4.0

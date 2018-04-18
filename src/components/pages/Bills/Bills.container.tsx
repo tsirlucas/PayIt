@@ -3,21 +3,31 @@ import {ScrollView} from 'react-native';
 import {View} from 'react-native';
 import {connect} from 'react-redux';
 import {Body, List, ListItem, Text, Thumbnail} from 'native-base';
+import {colors} from 'style/vars';
 
 import {MapStateToProps, mapStateToProps} from './Bills.selectors';
 import {style} from './Bills.style';
+import {I18n} from './i18n';
 
 const imagesMap = {
   default: require('assets/img/default-bill-image.png'),
 };
 
 const priorityBarColors: {[index: number]: string} = {
-  1: '#62B1F6',
-  2: '#f0ad4e',
-  3: '#d9534f',
+  1: colors.info,
+  2: colors.danger,
+  3: colors.warning,
 };
 
 class BillsComponent extends React.Component<MapStateToProps> {
+  getFormattedValue = (value: number) => {
+    return `${I18n.t('bills.valueSymbol')}${I18n.toNumber(value, {
+      delimiter: I18n.t('bills.valueDelimiter'),
+      separator: I18n.t('bills.valueSeparator'),
+      strip_insignificant_zeros: true,
+    })}`;
+  };
+
   render() {
     if (this.props.bills === null) return <Text>Loading...</Text>;
 
@@ -33,8 +43,10 @@ class BillsComponent extends React.Component<MapStateToProps> {
               <Thumbnail square size={80} source={imagesMap.default} />
               <Body>
                 <Text>{bill.description}</Text>
-                <Text note>{`Expiration day: ${bill.expirationDay}`}</Text>
-                <Text note>{`Value: $${bill.value}`}</Text>
+                <Text note>{`${I18n.t('bills.expirationDayLabel')}: ${bill.expirationDay}`}</Text>
+                <Text note>{`${I18n.t('bills.valueLabel')}: ${this.getFormattedValue(
+                  bill.value,
+                )}`}</Text>
               </Body>
               <View
                 style={[style.priorityBar, {backgroundColor: priorityBarColors[bill.priority]}]}

@@ -8,4 +8,5 @@ export const actions = {
   checkAuth: createAction('user/CHECK_AUTH'),
   setUser: createAction<User>('user/SET_USER'),
   setPayday: createAction<number>('user/SET_PAYDAY'),
+  pushNotificationSetup: createAction<string>('user/PUSH_NOTIFICATION_SETUP'),
 };

@@ -63,3 +63,6 @@ yarn-error.log*
 # Jest
 .jest/
 coverage/
+
+# Firebase
+functions/node_modules

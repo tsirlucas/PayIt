@@ -30,5 +30,6 @@ export class BillsRestService {
     return this.collectionStore.set(bill.id, bill);
   };
 
-  public subscribe = (cb: Function) => this.collectionStore.subscribeCollection(cb);
+  public subscribe = (cb: Function, filter: [string, string, string]) =>
+    this.collectionStore.subscribeCollection(cb, filter);
 }

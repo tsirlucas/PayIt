@@ -3,6 +3,8 @@ import {Image, View} from 'react-native';
 import {connect} from 'react-redux';
 import {Container, List, ListItem, Text} from 'native-base';
 
+import {Pendency} from 'models';
+
 import {Balloon} from './components';
 import {MapStateToProps, mapStateToProps} from './Home.selectors';
 import {style} from './Home.style';
@@ -10,6 +12,8 @@ import {style} from './Home.style';
 const images = {
   wavingMan: require('../../../assets/img/home.png'),
 };
+
+type ArrayData = {title: string; data: Pendency[]}[];
 
 class HomeComponent extends React.Component<MapStateToProps> {
   getDataArray = () => {
@@ -19,7 +23,7 @@ class HomeComponent extends React.Component<MapStateToProps> {
       {title: 'ideal', data: ideal},
       {title: 'next', data: next},
     ];
-    return data.filter((item) => Object.keys(item.data).length > 0);
+    return data.filter((item) => item.data.length > 0);
   };
 
   getGreetingText = () => {
@@ -51,7 +55,7 @@ const NoPendencies = () => (
   </View>
 );
 
-const PendenciesList = (props) => (
+const PendenciesList = (props: {data: ArrayData}) => (
   <List
     style={style.list}
     contentContainerStyle={style.listContent}
@@ -60,7 +64,7 @@ const PendenciesList = (props) => (
     renderRow={(item) => (
       <ListItem style={style.listItem}>
         <Text style={[style.bigFont, style[item.title], {textAlign: 'center'}]}>
-          {Object.keys(item.data).length}
+          {item.data.length}
           {'\n'}
           {item.title.charAt(0).toUpperCase() + item.title.slice(1)} Bills
         </Text>

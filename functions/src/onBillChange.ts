@@ -1,10 +1,12 @@
 import * as admin from 'firebase-admin';
 import * as functions from 'firebase-functions';
 
+import {Bill, IndexedPendencies, User, UserPendencies} from 'models';
+
 import {computePendencies} from './computePendencies';
 
 export const onBillChange = functions.firestore.document('bills/{billId}').onWrite((event) => {
-  const newBillValue = event.after.data();
+  const newBillValue: Bill = event.after.data() as Bill;
   const users = Object.keys(newBillValue.permissions);
 
   const firestore = admin.firestore();
@@ -18,7 +20,12 @@ export const onBillChange = functions.firestore.document('bills/{billId}').onWri
 
   const changes = Promise.all(requestedDataByUser).then((results) => {
     const [user, pendencies] = results[0];
-    return updateUserPendencies(firestore, user.data(), pendencies.data() as any, newBillValue);
+    return updateUserPendencies(
+      firestore,
+      user.data() as User,
+      pendencies.data() as UserPendencies,
+      newBillValue as Bill,
+    );
   });
 
   return changes;
@@ -26,9 +33,9 @@ export const onBillChange = functions.firestore.document('bills/{billId}').onWri
 
 const updateUserPendencies = (
   firestore: FirebaseFirestore.Firestore,
-  user,
-  pendencies = {data: null},
-  bill,
+  user: User,
+  pendencies: UserPendencies = {id: null as string, data: null as IndexedPendencies},
+  bill: Bill,
 ) => {
   const {payday} = user;
   const data = pendencies.data || {};

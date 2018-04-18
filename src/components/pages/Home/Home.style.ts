@@ -1,7 +1,7 @@
-import {Platform, StyleSheet} from 'react-native';
+import {StyleSheet} from 'react-native';
 import {colors} from 'style/vars';
 
-export const style = StyleSheet.create({
+export const style: {[index: string]: Object} = StyleSheet.create({
   bigFont: {
     fontSize: 23,
   },

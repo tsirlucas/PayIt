@@ -1,18 +1,18 @@
 import {combineReducers} from 'redux';
 import {createReducer} from 'redux-act';
 
-import {CategorizedPendencies, IndexedPendencies, UserPendencies} from 'models';
+import {CategorizedPendencies, UserPendencies} from 'models';
 
 import {actions} from './pendencies.actions';
 
 export const initialState = {
-  data: null as IndexedPendencies,
+  data: null as CategorizedPendencies,
 };
 
 export type PendenciesState = typeof initialState;
 
 const data = createReducer({}, initialState.data)
-  .on(actions.setPendencies, (_state: IndexedPendencies, payload: UserPendencies) => {
+  .on(actions.setPendencies, (_state, payload: UserPendencies) => {
     const initialValue = {
       delayed: [],
       ideal: [],
@@ -26,7 +26,7 @@ const data = createReducer({}, initialState.data)
       return curr;
     }, initialValue);
   })
-  .on(actions.setEmptyPendencies, () => ({} as IndexedPendencies));
+  .on(actions.setEmptyPendencies, () => ({} as CategorizedPendencies));
 
 export const pendencies = combineReducers<PendenciesState>({
   data,

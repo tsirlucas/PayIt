@@ -7,7 +7,7 @@ import {BillsRestService} from 'services';
 import {actions as userActions} from '../user/user.actions';
 import {actions} from './bills.actions';
 
-function createBillsChannel(filter: string[]) {
+function createBillsChannel(filter: [string, string, string]) {
   return eventChannel((emit) => {
     return BillsRestService.getInstance().subscribe((changes: any) => {
       emit(changes);
@@ -15,7 +15,7 @@ function createBillsChannel(filter: string[]) {
   });
 }
 
-function* subscribeBillsSaga(action: Action<string[]>) {
+function* subscribeBillsSaga(action: Action<[string, string, string]>) {
   try {
     const billsChannel = createBillsChannel(action.payload);
 

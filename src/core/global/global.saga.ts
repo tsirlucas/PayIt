@@ -1,4 +1,3 @@
-import {delay} from 'redux-saga';
 import {fork, put, takeLatest} from 'redux-saga/effects';
 
 import {FirebaseAuthService} from 'src/services';

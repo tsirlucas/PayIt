@@ -1,6 +1,6 @@
 import * as moment from 'moment';
 
-import {Bill, IndexedPendencies} from 'models';
+import {Bill, IndexedPendencies, Pendency} from 'models';
 
 export const computePendencies = (bill: Bill, pendencies: IndexedPendencies, payday: number) => {
   const today = moment();
@@ -34,21 +34,29 @@ export const computePendencies = (bill: Bill, pendencies: IndexedPendencies, pay
   return {[pendencyKey]: newPendency};
 };
 
-const isDelayed = (today, expirationDay) => {
+const isDelayed = (today: moment.Moment, expirationDay: moment.Moment) => {
   return today.diff(expirationDay) > 0;
 };
 
-const hasWarning = (payday, expirationDay) => {
+const hasWarning = (payday: moment.Moment, expirationDay: moment.Moment) => {
   return payday.diff(expirationDay) > 0;
 };
 
-const isIdeal = (today, generationDay, expirationDay) => {
+const isIdeal = (
+  today: moment.Moment,
+  generationDay: moment.Moment,
+  expirationDay: moment.Moment,
+) => {
   const isGenerated = today.diff(generationDay) >= 0;
   const isNotDelayed = !isDelayed(today, expirationDay);
   return isNotDelayed && isGenerated;
 };
 
-const getType = (today, generationDay, expirationDay) => {
+const getType = (
+  today: moment.Moment,
+  generationDay: moment.Moment,
+  expirationDay: moment.Moment,
+) => {
   switch (true) {
     case isDelayed(today, expirationDay):
       return 'DELAYED';
@@ -59,7 +67,7 @@ const getType = (today, generationDay, expirationDay) => {
   }
 };
 
-const checkPaid = ({type}) => (type === 'PAID' ? type : null);
+const checkPaid = ({type}: Pendency) => (type === 'PAID' ? type : null);
 
 const buildPendency = (bill: Bill, expiration: string, warning?: boolean) => ({
   description: bill.description,

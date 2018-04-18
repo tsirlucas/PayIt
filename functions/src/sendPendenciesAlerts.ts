@@ -2,9 +2,7 @@ import * as admin from 'firebase-admin';
 import * as functions from 'firebase-functions';
 import * as secureCompare from 'secure-compare';
 
-import {IndexedPendencies} from 'models';
-
-import {computePendencies} from './computePendencies';
+import {UserPendencies} from 'models';
 
 export const sendPendenciesAlerts = functions.https.onRequest((req, res) => {
   const key = req.query.key;
@@ -28,9 +26,9 @@ export const sendPendenciesAlerts = functions.https.onRequest((req, res) => {
   res.send('Pendencies alerts triggered');
 
   return documentsPromise.then((documents) => {
-    const promises = [];
+    const promises: Promise<void>[] = [];
     documents.forEach((doc) => {
-      promises.push(sendUserAlert(firestore, doc.data()));
+      promises.push(sendUserAlert(firestore, doc.data() as UserPendencies));
     });
     return Promise.all(promises);
   });
@@ -38,7 +36,7 @@ export const sendPendenciesAlerts = functions.https.onRequest((req, res) => {
 
 const sendUserAlert = async (
   firestore: FirebaseFirestore.Firestore,
-  pendencies: IndexedPendencies,
+  pendencies: UserPendencies,
 ) => {
   const userSnapshot = await firestore.doc(`/users/${pendencies.id}`).get();
   const user = userSnapshot.data();
@@ -71,7 +69,7 @@ const sendUserAlert = async (
   }
   if (message.length) {
     message = `${message}. Tap to manage.`;
-    const result = await admin.messaging().sendToDevice(user.fcmToken, {
+    await admin.messaging().sendToDevice(user.fcmToken, {
       notification: {
         sound: 'default',
         priority: 'high',
@@ -79,6 +77,5 @@ const sendUserAlert = async (
         body: message,
       },
     });
-    console.log(result);
   }
 };

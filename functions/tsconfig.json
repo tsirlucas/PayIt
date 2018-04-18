@@ -1,0 +1,35 @@
+{
+  "compilerOptions": {
+    "lib": ["es6"],
+    "module": "commonjs",
+    "outDir": "lib",
+    "moduleResolution": "node",
+    "skipLibCheck": true,
+    "allowSyntheticDefaultImports": true,
+    "noImplicitAny": true,
+    "preserveConstEnums": true,
+    "allowJs": false,
+    "sourceMap": true,
+    "noImplicitReturns": true,
+    "noUnusedParameters": true,
+    "noUnusedLocals": true,
+    "target": "es2017",
+    "baseUrl": ".",
+    "paths": {
+      "models": ["../src/models/index.ts"],
+      "models/*": ["../src/models/*"],
+    },
+    "typeRoots": [
+      "./custom_typings",
+      "./node_modules/@types",
+    ],
+  },
+  "filesGlob": [
+    "src/**/*.ts",
+    "src/**/*.tsx"
+  ],
+  "compileOnSave": true,
+  "include": [
+    "./src"
+  ]
+}

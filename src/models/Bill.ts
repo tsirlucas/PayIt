@@ -2,6 +2,7 @@ export interface Bill {
   id: string;
   description: string;
   priority: number;
+  generationDay: number;
   expirationDay: number;
   frequency: string;
   lastPaid: any;

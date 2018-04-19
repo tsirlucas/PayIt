@@ -1,6 +1,7 @@
+import {Actions} from 'react-native-router-flux';
 import {Action} from 'redux-act';
 import {eventChannel} from 'redux-saga';
-import {fork, put, take, takeLatest} from 'redux-saga/effects';
+import {call, fork, put, take, takeLatest} from 'redux-saga/effects';
 
 import {PendenciesRestService} from 'services';
 
@@ -38,8 +39,18 @@ function* subscribePendenciesSaga(action: Action<string>) {
   }
 }
 
+function* openPendenciesModalSaga(action: Action<string>) {
+  try {
+    console.log(`pendencies-modal/${action.payload}`);
+    yield call(Actions.push, 'pendencies-modal', {type: action.payload});
+  } catch (err) {
+    throw err;
+  }
+}
+
 function* pendenciesFlow() {
   yield takeLatest(actions.subscribe, subscribePendenciesSaga);
+  yield takeLatest(actions.openPendenciesModal, openPendenciesModalSaga);
 }
 
 export function* pendenciesSaga() {

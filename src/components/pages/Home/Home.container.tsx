@@ -6,7 +6,12 @@ import {Container, List, ListItem, Text} from 'native-base';
 import {Pendency} from 'models';
 
 import {Balloon} from './components';
-import {MapStateToProps, mapStateToProps} from './Home.selectors';
+import {
+  MapDispatchToProps,
+  mapDispatchToProps,
+  MapStateToProps,
+  mapStateToProps,
+} from './Home.selectors';
 import {style} from './Home.style';
 import {I18n} from './i18n';
 
@@ -16,7 +21,7 @@ const images = {
 
 type ArrayData = {title: string; data: Pendency[]}[];
 
-class HomeComponent extends React.Component<MapStateToProps> {
+class HomeComponent extends React.Component<MapStateToProps & MapDispatchToProps> {
   getDataArray = () => {
     const {delayed, ideal, next} = this.props.pendencies;
     const data = [
@@ -47,7 +52,14 @@ class HomeComponent extends React.Component<MapStateToProps> {
           <Balloon text={this.getGreetingText()} />
           <Image style={style.image} source={images.wavingMan} />
         </View>
-        {this.hasPendencies() ? <PendenciesList data={this.getDataArray()} /> : <NoPendencies />}
+        {this.hasPendencies() ? (
+          <PendenciesList
+            data={this.getDataArray()}
+            openPendenciesModal={this.props.actions.openPendenciesModal}
+          />
+        ) : (
+          <NoPendencies />
+        )}
       </Container>
     );
   }
@@ -65,14 +77,14 @@ const NoPendencies = () => (
   </View>
 );
 
-const PendenciesList = (props: {data: ArrayData}) => (
+const PendenciesList = (props: {data: ArrayData; openPendenciesModal: Function}) => (
   <List
     style={style.list}
     contentContainerStyle={style.listContent}
     dataArray={props.data}
     horizontal={true}
     renderRow={(item) => (
-      <ListItem style={style.listItem}>
+      <ListItem style={style.listItem} onPress={() => props.openPendenciesModal(item.title)}>
         <Text style={[style.bigFont, style[item.title], {textAlign: 'center'}]}>
           {item.data.length}
           {'\n'}
@@ -83,4 +95,4 @@ const PendenciesList = (props: {data: ArrayData}) => (
   />
 );
 
-export const Home = connect(mapStateToProps)(HomeComponent);
+export const Home = connect(mapStateToProps, mapDispatchToProps)(HomeComponent);

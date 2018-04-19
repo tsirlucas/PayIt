@@ -1,4 +1,4 @@
 export default {
-  expirationDayLabel: 'Expiration day',
+  expirationDayLabel: 'Expiration',
   valueLabel: 'Value',
 };

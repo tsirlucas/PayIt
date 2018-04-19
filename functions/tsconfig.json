@@ -13,7 +13,7 @@
     "noImplicitReturns": true,
     "noUnusedParameters": true,
     "noUnusedLocals": true,
-    "target": "es2017",
+    "target": "es5",
     "baseUrl": ".",
     "paths": {
       "models": ["../src/models/index.ts"],

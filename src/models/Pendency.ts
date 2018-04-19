@@ -3,6 +3,7 @@ export interface Pendency {
   expirationDay: string;
   description: string;
   type: string;
+  value: number;
   warning: boolean;
 }
 

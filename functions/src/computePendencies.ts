@@ -22,12 +22,20 @@ export const computePendencies = (bill: Bill, pendencies: IndexedPendencies, pay
   const expirationStringWODay = expirationMoment.format('YYYY-MM');
   const pendencyKey = `${bill.id}-${expirationStringWODay}`;
 
-  const currPendency = pendencies[pendencyKey] || buildPendency(bill, expirationString);
+  const newPendencyData = buildPendency(bill, expirationString);
+  const currPendency = pendencies[pendencyKey] || ({} as Pendency);
+
+  const updatedPendency = {...currPendency, ...newPendencyData};
+
   const type = checkPaid(currPendency) || getType(today, generationMoment, expirationMoment);
+  let value = currPendency.value;
+
+  if (!value || (type === 'NEXT' || type === 'NONE')) value = bill.value;
 
   const newPendency = {
-    ...buildPendency(bill, expirationString),
+    ...updatedPendency,
     type,
+    value,
     warning: hasWarning(paydayMoment, expirationMoment),
   };
 
@@ -73,6 +81,5 @@ const buildPendency = (bill: Bill, expiration: string, warning?: boolean) => ({
   description: bill.description,
   billId: bill.id,
   expirationDay: expiration,
-  type: null as string,
-  warning,
+  warning: warning,
 });

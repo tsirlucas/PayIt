@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {StatusBar, Text, View} from 'react-native';
 import {Actions, SceneProps} from 'react-native-router-flux';
-import {Body, Button, Footer, FooterTab, Header, Icon, Title} from 'native-base';
+import {Body, Button, Footer, FooterTab, Header, Icon, Left, Right, Title} from 'native-base';
 import {primaryColor} from 'style';
 
 import {I18n} from 'src/i18n';
@@ -26,11 +26,23 @@ export const NavbarComponent = (props: SceneProps) => (
   <View accessibilityLabel="nav bar">
     <Header style={{backgroundColor: primaryColor}}>
       <StatusBar backgroundColor={primaryColor} barStyle="light-content" />
+
+      <Left>
+        {props.scene.index > 0 && (
+          <Button transparent onPress={Actions.pop}>
+            <Icon name="arrow-back" color="white" style={{color: 'white'}} />
+          </Button>
+        )}
+      </Left>
+
       <Body>
         <View accessibilityLabel={`${props.title} title`}>
-          <Title style={{color: 'white'}}>{props.title}</Title>
+          <Title style={{color: 'white'}}>
+            {props.title || I18n.t(`global.routes.titles.${props[props.dynamicTitle]}`)}
+          </Title>
         </View>
       </Body>
+      <Right />
     </Header>
   </View>
 );

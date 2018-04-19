@@ -4,6 +4,7 @@ import {View} from 'react-native';
 import {connect} from 'react-redux';
 import {Body, List, ListItem, Text, Thumbnail} from 'native-base';
 import {colors} from 'style/vars';
+import {getFormattedMoney} from 'utils';
 
 import {MapStateToProps, mapStateToProps} from './Bills.selectors';
 import {style} from './Bills.style';
@@ -20,14 +21,6 @@ const priorityBarColors: {[index: number]: string} = {
 };
 
 class BillsComponent extends React.Component<MapStateToProps> {
-  getFormattedValue = (value: number) => {
-    return `${I18n.t('bills.valueSymbol')}${I18n.toNumber(value, {
-      delimiter: I18n.t('bills.valueDelimiter'),
-      separator: I18n.t('bills.valueSeparator'),
-      strip_insignificant_zeros: true,
-    })}`;
-  };
-
   render() {
     if (this.props.bills === null) return <Text>Loading...</Text>;
 
@@ -44,7 +37,7 @@ class BillsComponent extends React.Component<MapStateToProps> {
               <Body>
                 <Text>{bill.description}</Text>
                 <Text note>{`${I18n.t('bills.expirationDayLabel')}: ${bill.expirationDay}`}</Text>
-                <Text note>{`${I18n.t('bills.valueLabel')}: ${this.getFormattedValue(
+                <Text note>{`${I18n.t('bills.valueLabel')}: ${getFormattedMoney(
                   bill.value,
                 )}`}</Text>
               </Body>

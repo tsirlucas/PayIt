@@ -1,4 +1,4 @@
-import {UserPendencies} from 'models';
+import {Pendency, UserPendencies} from 'models';
 import {FirebaseRestService} from 'services/FirebaseRestService';
 
 export interface PendenciesSubscribeUpdate {
@@ -28,6 +28,10 @@ export class PendenciesRestService {
 
   public setPendency = async (pendency: UserPendencies) => {
     return this.collectionStore.set(pendency.id, pendency);
+  };
+
+  public setPendencyAsPaid = async (userId: string, pendencyId: string) => {
+    return this.collectionStore.set(userId, {[`data.${pendencyId}.type`]: 'PAID'});
   };
 
   public subscribeDocument = (id: string, cb: Function) =>

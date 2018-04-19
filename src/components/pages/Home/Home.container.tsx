@@ -33,7 +33,7 @@ class HomeComponent extends React.Component<MapStateToProps & MapDispatchToProps
   };
 
   getGreetingText = () => {
-    if (!this.hasPendencies)
+    if (!this.hasPendencies())
       return I18n.t('home.greetingNoPendencies', {name: this.props.userName});
     return I18n.t('home.greeting', {name: this.props.userName});
   };
@@ -45,7 +45,9 @@ class HomeComponent extends React.Component<MapStateToProps & MapDispatchToProps
 
   render() {
     const {pendencies} = this.props;
+    console.log(pendencies);
     if (pendencies === null) return <Text>Loading...</Text>;
+    console.log(pendencies);
     return (
       <Container style={style.container}>
         <View>

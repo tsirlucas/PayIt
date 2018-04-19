@@ -1,9 +1,10 @@
 import {Actions} from 'react-native-router-flux';
 import {Action} from 'redux-act';
 import {eventChannel} from 'redux-saga';
-import {call, fork, put, take, takeLatest} from 'redux-saga/effects';
+import {call, fork, put, select, take, takeLatest} from 'redux-saga/effects';
 
 import {PendenciesRestService} from 'services';
+import {RootState} from 'src/core/rootReducer';
 
 import {actions as userActions} from '../user/user.actions';
 import {actions} from './pendencies.actions';
@@ -41,8 +42,16 @@ function* subscribePendenciesSaga(action: Action<string>) {
 
 function* openPendenciesModalSaga(action: Action<string>) {
   try {
-    console.log(`pendencies-modal/${action.payload}`);
     yield call(Actions.push, 'pendencies-modal', {type: action.payload});
+  } catch (err) {
+    throw err;
+  }
+}
+
+function* payPendencySaga(action: Action<string>) {
+  try {
+    const id = yield select((state: RootState) => state.user.data.uid);
+    yield PendenciesRestService.getInstance().setPendencyAsPaid(id, action.payload);
   } catch (err) {
     throw err;
   }
@@ -51,6 +60,7 @@ function* openPendenciesModalSaga(action: Action<string>) {
 function* pendenciesFlow() {
   yield takeLatest(actions.subscribe, subscribePendenciesSaga);
   yield takeLatest(actions.openPendenciesModal, openPendenciesModalSaga);
+  yield takeLatest(actions.payPendency, payPendencySaga);
 }
 
 export function* pendenciesSaga() {

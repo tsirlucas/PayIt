@@ -1,4 +1,5 @@
 export interface Pendency {
+  id: string;
   billId: string;
   expirationDay: string;
   description: string;

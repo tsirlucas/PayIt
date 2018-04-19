@@ -7,4 +7,5 @@ export const actions = {
   setEmptyPendencies: createAction('pendencies/SET_EMPTY_BILLS'),
   subscribe: createAction<string>('pendencies/SUBSCRIBE_BILLS'),
   openPendenciesModal: createAction<string>('pendencies/OPEN_PENDENCIES_MODAL'),
+  payPendency: createAction<string>('pendencies/PAY_PENDENCY'),
 };

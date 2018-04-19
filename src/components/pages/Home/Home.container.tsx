@@ -45,9 +45,9 @@ class HomeComponent extends React.Component<MapStateToProps & MapDispatchToProps
 
   render() {
     const {pendencies} = this.props;
-    console.log(pendencies);
+
     if (pendencies === null) return <Text>Loading...</Text>;
-    console.log(pendencies);
+    
     return (
       <Container style={style.container}>
         <View>

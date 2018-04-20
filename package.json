@@ -43,7 +43,7 @@
     "@types/react-native-vector-icons": "4.6.0",
     "@types/react-redux": "5.0.16",
     "@types/react-test-renderer": "16.0.1",
-    "appium": "1.7.2",
+    "appium": "1.8.0",
     "appium-doctor": "1.4.3",
     "babel-core": "6.26.0",
     "babel-jest": "22.4.1",

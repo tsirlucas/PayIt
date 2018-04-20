@@ -1,4 +1,4 @@
-import {Pendency, UserPendencies} from 'models';
+import {UserPendencies} from 'models';
 import {FirebaseRestService} from 'services/FirebaseRestService';
 
 export interface PendenciesSubscribeUpdate {

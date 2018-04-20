@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Lightbox, Modal, Router, Scene, Stack} from 'react-native-router-flux';
+import {Modal, Router, Scene, Stack} from 'react-native-router-flux';
 import {connect} from 'react-redux';
 import {Content} from 'native-base';
 import {bindActionCreators, Dispatch} from 'redux';

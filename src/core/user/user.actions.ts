@@ -10,4 +10,5 @@ export const actions = {
   setPayday: createAction<{value: number; edit: boolean}>('user/SET_PAYDAY'),
   changeUserName: createAction<string>('user/CHANGE_USER_NAME'),
   pushNotificationSetup: createAction<string>('user/PUSH_NOTIFICATION_SETUP'),
+  storeI18nSetup: createAction('user/STORE_I18N_SETUP'),
 };

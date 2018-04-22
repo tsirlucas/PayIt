@@ -5,4 +5,5 @@ export interface User {
   fullName: string;
   photoURL: string;
   payday?: number;
+  i18n?: string;
 }

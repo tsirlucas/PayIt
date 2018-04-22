@@ -1,4 +1,5 @@
 import {GoogleSignin} from 'react-native-google-signin';
+import {getLanguages} from 'react-native-i18n';
 import {Actions} from 'react-native-router-flux';
 import {Action} from 'redux-act';
 import {eventChannel} from 'redux-saga';
@@ -20,6 +21,7 @@ function* storeUser(user: User) {
 
       yield put(actions.setUser(firebaseUser));
       yield put(actions.pushNotificationSetup(user.uid));
+      yield put(actions.storeI18nSetup());
     } else {
       const parsedUser = {
         uid: user.uid,
@@ -103,6 +105,7 @@ function* setPaydaySaga(action: Action<{value: number; edit: boolean}>) {
     } else {
       yield call(Actions.reset, 'application');
       yield put(actions.pushNotificationSetup(newUser.uid));
+      yield put(actions.storeI18nSetup());
     }
   } catch (e) {
     throw e;
@@ -154,12 +157,27 @@ function* changeUserNameSaga(action: Action<string>) {
   }
 }
 
+function* storeI18nSetupSaga() {
+  try {
+    const locales = yield getLanguages();
+    const user = yield select((state: RootState) => state.user.data);
+    const newUser = {...user, i18n: locales[0]};
+
+    yield UserRestService.getInstance().setUser(newUser);
+
+    yield put(actions.setUser(newUser));
+  } catch (e) {
+    throw e;
+  }
+}
+
 function* userFlow() {
   yield takeLatest(actions.signIn, signInSaga);
   yield takeLatest(actions.checkAuth, checkAuthSaga);
   yield takeLatest(actions.setPayday, setPaydaySaga);
   yield takeLatest(actions.changeUserName, changeUserNameSaga);
   yield takeLatest(actions.pushNotificationSetup, pushNotificationSetupSaga);
+  yield takeLatest(actions.storeI18nSetup, storeI18nSetupSaga);
 }
 
 export function* userSaga() {

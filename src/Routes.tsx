@@ -1,5 +1,4 @@
 import * as React from 'react';
-import {Platform} from 'react-native';
 import {Modal, Router, Scene, Stack} from 'react-native-router-flux';
 import {connect} from 'react-redux';
 import {Content} from 'native-base';
@@ -85,7 +84,7 @@ class Routes extends React.Component<RoutesProps> {
                   component={Bills}
                   navBar={NavbarComponent}
                   rightAction={{
-                    icon: Platform.select({ios: 'ios-add', android: 'md-add'}),
+                    text: 'create',
                     action: this.props.actions.createBill,
                   }}
                 />

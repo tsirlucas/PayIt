@@ -1,7 +1,6 @@
 import * as React from 'react';
 import {Alert, Platform, ScrollView} from 'react-native';
 import {Actions} from 'react-native-router-flux';
-import Icon from 'react-native-vector-icons/Ionicons';
 import {connect} from 'react-redux';
 import {Body, Button, List, ListItem, Text, Thumbnail} from 'native-base';
 import {primaryColor} from 'style';
@@ -65,15 +64,9 @@ class PendenciesListComponent extends React.Component<Props> {
                 transparent
                 onPress={() => this.deletePendency(pendency.id)}
               >
-                <Icon
-                  name={Platform.select({
-                    ios: 'ios-checkmark-circle-outline',
-                    android: 'md-checkbox-outline',
-                  })}
-                  size={34}
-                  color={primaryColor}
-                  style={{color: primaryColor}}
-                />
+                <Text style={{color: primaryColor, fontSize: 12}}>
+                  {I18n.t('pendenciesList.confirmLabel')}
+                </Text>
               </Button>
             </ListItem>
           ))}

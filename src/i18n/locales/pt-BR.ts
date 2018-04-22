@@ -10,11 +10,14 @@ export default {
       newBill: 'Criar Conta',
       editBill: 'Editar Conta',
     },
+    actions: {
+      create: 'CRIAR',
+    },
   },
   confirmDialog: {
     title: 'Você tem certeza?',
     msg: 'Esta ação não pode ser desfeita',
-    confirm: 'Remover',
+    confirm: 'Confirmar',
     cancel: 'Cancelar',
   },
 };

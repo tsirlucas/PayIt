@@ -10,11 +10,14 @@ export default {
       newBill: 'New Bill',
       editBill: 'Edit Bill',
     },
+    actions: {
+      create: 'CREATE',
+    },
   },
   confirmDialog: {
     title: 'Are you sure?',
     msg: 'This action cannot be undone',
-    confirm: 'Remove',
+    confirm: 'Confirm',
     cancel: 'Cancel',
   },
 };

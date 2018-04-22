@@ -44,13 +44,10 @@ export const NavbarComponent = (props: SceneProps) => (
       </Body>
       {props.rightAction ? (
         <Right>
-          <Button transparent>
-            <Icon
-              name={props.rightAction.icon}
-              onPress={() => props.rightAction.action()}
-              color="white"
-              style={{color: 'white'}}
-            />
+          <Button transparent onPress={() => props.rightAction.action()}>
+            <Text style={{color: 'white'}}>
+              {I18n.t(`global.routes.actions.${props.rightAction.text}`)}
+            </Text>
           </Button>
         </Right>
       ) : (

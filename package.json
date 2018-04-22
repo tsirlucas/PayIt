@@ -39,7 +39,7 @@
     "@types/react": "16.3.12",
     "@types/react-native": "0.55.4",
     "@types/react-native-google-signin": "0.12.1",
-    "@types/react-native-i18n": "^2.0.0",
+    "@types/react-native-i18n": "2.0.0",
     "@types/react-native-vector-icons": "4.6.0",
     "@types/react-redux": "5.0.16",
     "@types/react-test-renderer": "16.0.1",
@@ -68,8 +68,8 @@
     "react-native": "0.55.3",
     "react-native-firebase": "4.0.4",
     "react-native-google-signin": "https://github.com/invertase/react-native-google-signin.git#v0.12.1",
-    "react-native-i18n": "^2.0.12",
-    "react-native-picker-select": "^3.0.0",
+    "react-native-i18n": "2.0.12",
+    "react-native-picker-select": "3.0.0",
     "react-native-router-flux": "4.0.0-beta.27",
     "react-native-vector-icons": "4.6.0",
     "react-native-wheel-picker-android": "1.1.1",
@@ -78,6 +78,6 @@
     "redux-act": "1.7.4",
     "redux-saga": "0.16.0",
     "utility-types": "2.0.0",
-    "vanilla-masker": "^1.2.0"
+    "vanilla-masker": "1.2.0"
   }
 }

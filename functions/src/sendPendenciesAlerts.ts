@@ -4,6 +4,8 @@ import * as secureCompare from 'secure-compare';
 
 import {UserPendencies} from 'models';
 
+import {I18n} from './i18n';
+
 export const sendPendenciesAlerts = functions.https.onRequest((req, res) => {
   const key = req.query.key;
 
@@ -53,24 +55,27 @@ async function sendUserAlert(firestore: FirebaseFirestore.Firestore, pendencies:
   let message = '';
   const delayedLength = catPendencies.delayed.length;
   const idealLength = catPendencies.ideal.length;
+  I18n.locale = user.i18n || 'en';
+
   if (delayedLength) {
-    message = `Hey there, you have ${delayedLength} delayed ${idealLength > 1 ? 'bills' : 'bill'}`;
+    message = I18n.t('notification.delayedStart', {count: delayedLength});
   }
 
   if (!delayedLength && idealLength) {
-    message = `Hey there, you have ${idealLength} bills in the ideal moment to pay`;
+    message = I18n.t('notification.idealStart', {message, count: idealLength});
   }
 
   if (delayedLength && idealLength) {
-    message = `${message} and ${idealLength} in the ideal moment to pay`;
+    message = I18n.t('notification.idealEnd', {message, count: idealLength});
   }
   if (message.length) {
-    message = `${message}. Tap to manage.`;
+    message = I18n.t('notification.tapAction', {message});
+
     await admin.messaging().sendToDevice(user.fcmToken, {
       notification: {
         sound: 'default',
         priority: 'high',
-        title: 'Pendencies',
+        title: I18n.t('notification.pendencies'),
         body: message,
       },
     });

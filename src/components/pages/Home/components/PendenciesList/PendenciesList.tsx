@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Alert, Platform, ScrollView} from 'react-native';
+import {Alert, ScrollView} from 'react-native';
 import {Actions} from 'react-native-router-flux';
 import {connect} from 'react-redux';
 import {Body, Button, List, ListItem, Text, Thumbnail} from 'native-base';

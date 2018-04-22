@@ -2,7 +2,7 @@ import * as React from 'react';
 import {Platform, View} from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {connect} from 'react-redux';
-import {Body, Container, Content, Icon, Left, List, ListItem, Right, Text} from 'native-base';
+import {Body, Container, Content, Left, List, ListItem, Right, Text} from 'native-base';
 
 import {I18n} from './i18n';
 import {mapStateToProps, MapStateToProps} from './Settings.selectors';

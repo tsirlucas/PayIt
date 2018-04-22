@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {Platform} from 'react-native';
 import {Modal, Router, Scene, Stack} from 'react-native-router-flux';
 import {connect} from 'react-redux';
 import {Content} from 'native-base';
@@ -8,8 +9,9 @@ import {$Call} from 'utility-types';
 import {ActivityIndicator} from 'components/common/ActivityIndicator';
 import {NavbarComponent, TabBarComponent} from 'components/common/Layout';
 import {PaydayForm} from 'components/forms/PaydayForm';
-import {Bills, Home, PendenciesList, Settings} from 'components/pages';
+import {Bills, BillsForm, Home, PendenciesList, Settings} from 'components/pages';
 import {RootState} from 'core';
+import {actions as billActions} from 'core/bills';
 import {actions as globalActions} from 'core/global';
 import {Login} from 'pages/Login';
 
@@ -20,7 +22,10 @@ const mapStateToProps = (state: RootState) => ({
 });
 
 export const mapDispatchToProps = (dispatch: Dispatch<any>) => ({
-  actions: bindActionCreators({initApplication: globalActions.initApplication}, dispatch),
+  actions: bindActionCreators(
+    {initApplication: globalActions.initApplication, createBill: billActions.newBill},
+    dispatch,
+  ),
 });
 
 export type RoutesProps = $Call<typeof mapStateToProps> & $Call<typeof mapDispatchToProps>;
@@ -56,7 +61,7 @@ class Routes extends React.Component<RoutesProps> {
             />
           </Stack>
           <Stack key="application" hideNavBar>
-            <Modal key="modal" component={undefined} navBar={NavbarComponent}>
+            <Modal key="modal" component={undefined}>
               <Scene
                 component={undefined}
                 tabs
@@ -65,33 +70,46 @@ class Routes extends React.Component<RoutesProps> {
                 contentComponent={Content}
                 tabBarComponent={TabBarComponent}
                 hideNavBar
-                // navBar={NavbarComponent}
               >
                 <Scene
                   key="home"
                   path="/"
                   title={I18n.t('global.routes.titles.home')}
                   component={Home}
+                  navBar={NavbarComponent}
                 />
                 <Scene
                   key="bills"
                   path="/bills"
                   title={I18n.t('global.routes.titles.bills')}
                   component={Bills}
+                  navBar={NavbarComponent}
+                  rightAction={{
+                    icon: Platform.select({ios: 'ios-add', android: 'md-add'}),
+                    action: this.props.actions.createBill,
+                  }}
                 />
                 <Scene
                   key="settings"
                   path="/settings"
                   title={I18n.t('global.routes.titles.settings')}
                   component={Settings}
+                  navBar={NavbarComponent}
                 />
               </Scene>
               <Scene
-                navBar={NavbarComponent}
                 dynamicTitle="type"
                 key="pendencies-modal"
                 path="pendencies-modal/:type"
                 component={PendenciesList}
+                navBar={NavbarComponent}
+              />
+              <Scene
+                key="bills-form"
+                dynamicTitle="formType"
+                path="bills-form/:formType"
+                component={BillsForm}
+                navBar={NavbarComponent}
               />
             </Modal>
           </Stack>

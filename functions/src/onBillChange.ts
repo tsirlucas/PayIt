@@ -24,19 +24,19 @@ export const onBillChange = functions.firestore.document('bills/{billId}').onWri
       firestore,
       user.data() as User,
       pendencies.data() as UserPendencies,
-      newBillValue as Bill,
+      newBillValue,
     );
   });
 
   return changes;
 });
 
-const updateUserPendencies = (
+function updateUserPendencies(
   firestore: FirebaseFirestore.Firestore,
   user: User,
   pendencies: UserPendencies = {id: null as string, data: null as IndexedPendencies},
   bill: Bill,
-) => {
+) {
   const {payday} = user;
   const data = pendencies.data || {};
   const updatedPendencies = computePendencies(bill, data, payday);
@@ -48,4 +48,4 @@ const updateUserPendencies = (
     },
     {merge: true},
   );
-};
+}

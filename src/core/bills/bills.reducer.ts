@@ -7,6 +7,7 @@ import {actions} from './bills.actions';
 
 export const initialState = {
   data: null as IndexedBills,
+  editing: null as string,
 };
 
 export type BillsState = typeof initialState;
@@ -35,6 +36,11 @@ const data = createReducer({}, initialState.data)
   )
   .on(actions.setEmptyBills, () => ({} as IndexedBills));
 
+const editing = createReducer({}, initialState.editing)
+  .on(actions.editBill, (_state, payload) => payload)
+  .on(actions.newBill, () => null);
+
 export const bills = combineReducers<BillsState>({
   data,
+  editing,
 });

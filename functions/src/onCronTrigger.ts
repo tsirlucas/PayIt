@@ -37,10 +37,10 @@ export const onCronTrigger = functions.https.onRequest((req, res) => {
   });
 });
 
-const updateUserPendencies = async (
+async function updateUserPendencies(
   firestore: FirebaseFirestore.Firestore,
   pendencies: UserPendencies,
-) => {
+) {
   const userSnapshot = await firestore.doc(`/users/${pendencies.id}`).get();
   const user = userSnapshot.data();
   const billsCollection = await firestore.collection('/bills').get();
@@ -63,4 +63,4 @@ const updateUserPendencies = async (
     id: user.uid,
     data: {...data, ...updatedPendencies},
   });
-};
+}

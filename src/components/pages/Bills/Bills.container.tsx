@@ -1,26 +1,30 @@
 import * as React from 'react';
 import {ScrollView} from 'react-native';
-import {View} from 'react-native';
 import {connect} from 'react-redux';
 import {Body, List, ListItem, Text, Thumbnail} from 'native-base';
-import {colors} from 'style/vars';
 import {getFormattedMoney} from 'utils';
 
-import {MapStateToProps, mapStateToProps} from './Bills.selectors';
-import {style} from './Bills.style';
+import {
+  mapDispatchToProps,
+  MapDispatchToProps,
+  MapStateToProps,
+  mapStateToProps,
+} from './Bills.selectors';
 import {I18n} from './i18n';
 
 const imagesMap = {
   default: require('assets/img/default-bill-image.png'),
 };
 
-const priorityBarColors: {[index: number]: string} = {
-  1: colors.info,
-  2: colors.danger,
-  3: colors.warning,
-};
+// const priorityBarColors: {[index: number]: string} = {
+//   1: colors.info,
+//   2: colors.danger,
+//   3: colors.warning,
+// };
 
-class BillsComponent extends React.Component<MapStateToProps> {
+type Props = MapStateToProps & MapDispatchToProps;
+
+class BillsComponent extends React.Component<Props> {
   render() {
     if (this.props.bills === null) return <Text>Loading...</Text>;
 
@@ -32,7 +36,7 @@ class BillsComponent extends React.Component<MapStateToProps> {
       <List>
         <ScrollView>
           {billsArray.map((bill, index) => (
-            <ListItem key={index}>
+            <ListItem key={index} onPress={() => this.props.actions.editBill(bill.id)}>
               <Thumbnail square size={80} source={imagesMap.default} />
               <Body>
                 <Text>{bill.description}</Text>
@@ -41,9 +45,9 @@ class BillsComponent extends React.Component<MapStateToProps> {
                   bill.value,
                 )}`}</Text>
               </Body>
-              <View
+              {/* <View
                 style={[style.priorityBar, {backgroundColor: priorityBarColors[bill.priority]}]}
-              />
+              /> */}
             </ListItem>
           ))}
         </ScrollView>
@@ -51,4 +55,4 @@ class BillsComponent extends React.Component<MapStateToProps> {
     );
   }
 }
-export const Bills = connect(mapStateToProps)(BillsComponent);
+export const Bills = connect(mapStateToProps, mapDispatchToProps)(BillsComponent);

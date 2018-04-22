@@ -42,6 +42,11 @@ export class FirebaseAuthService {
     return this.firebaseService.messaging().getToken();
   }
 
+  getUserId() {
+    const {currentUser} = this.firebaseService.auth();
+    return currentUser.uid;
+  }
+
   waitForAuthentication() {
     return new Promise((resolve) => {
       const interval = setInterval(() => {

@@ -7,7 +7,8 @@ export default {
       delayed: 'Contas Atrasadas',
       ideal: 'Contas Ideais',
       next: 'Contas Futuras',
+      newBill: 'Criar Conta',
+      editBill: 'Editar Conta',
     },
   },
-  backButtonLabel: 'Voltar',
 };

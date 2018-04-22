@@ -34,10 +34,7 @@ export const sendPendenciesAlerts = functions.https.onRequest((req, res) => {
   });
 });
 
-const sendUserAlert = async (
-  firestore: FirebaseFirestore.Firestore,
-  pendencies: UserPendencies,
-) => {
+async function sendUserAlert(firestore: FirebaseFirestore.Firestore, pendencies: UserPendencies) {
   const userSnapshot = await firestore.doc(`/users/${pendencies.id}`).get();
   const user = userSnapshot.data();
 
@@ -78,4 +75,4 @@ const sendUserAlert = async (
       },
     });
   }
-};
+}

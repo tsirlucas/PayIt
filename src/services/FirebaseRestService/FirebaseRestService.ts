@@ -19,7 +19,14 @@ export class FirebaseRestService {
     return {id: doc.id, ...doc.data()};
   }
 
+  async create<T extends FirebaseEntityPattern>(data: T) {
+    const docRef = this.collection.doc();
+    await docRef.set(Object.assign(data, {id: docRef.id}));
+  }
+
   async set<T extends FirebaseEntityPattern>(collectionId: string, newData: T) {
+    if (!collectionId) return await this.create(newData);
+
     const docRef = this.collection.doc(collectionId);
     const doc = await docRef.get();
     if (!doc.exists) {
@@ -37,7 +44,6 @@ export class FirebaseRestService {
   subscribeDocument = (id: string, cb: Function) => {
     return this.collection.doc(id).onSnapshot(
       (change) => {
-        console.log(change);
         if (!change.exists) cb({type: 'empty'});
         return cb({type: 'modified', data: change.data()});
       },

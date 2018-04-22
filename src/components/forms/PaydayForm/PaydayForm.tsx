@@ -1,10 +1,10 @@
 import * as React from 'react';
-import {Text} from 'react-native';
 import {connect} from 'react-redux';
-import {Button, Container} from 'native-base';
+import {Container} from 'native-base';
 
 import {WheelPicker} from 'components/common';
 
+import {ConfirmButton, confirmButtonStyle} from '../ConfirmButton';
 import {FormHeader} from '../FormHeader';
 import {I18n} from './i18n';
 import {mapDispatchToProps, MapDispatchToProps} from './PaydayForm.selectors';
@@ -25,7 +25,7 @@ class PaydayFormComponent extends React.Component<MapDispatchToProps, State> {
 
   render() {
     return (
-      <Container style={style.container}>
+      <Container style={[style.container, confirmButtonStyle.container]}>
         <FormHeader
           header={I18n.t('paydayForm.header')}
           subHeader={I18n.t('paydayForm.subHeader')}
@@ -41,9 +41,7 @@ class PaydayFormComponent extends React.Component<MapDispatchToProps, State> {
           }}
           onValueChange={this.onPickerSelect}
         />
-        <Button onPress={this.onSubmit} style={style.confirmButton} block light bordered>
-          <Text style={style.confirmButtonText}>{I18n.t('paydayForm.confirmButton')}</Text>
-        </Button>
+        <ConfirmButton onPress={this.onSubmit} />
       </Container>
     );
   }

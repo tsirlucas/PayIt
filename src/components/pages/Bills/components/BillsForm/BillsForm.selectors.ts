@@ -3,13 +3,14 @@ import {$Call} from 'utility-types';
 
 import {actions} from 'core/bills';
 import {RootState} from 'core/rootReducer';
+import {Bill} from 'src/models';
 
 export const mapStateToProps = (state: RootState) => ({
-  bills: state.bills.data,
+  bill: state.bills.editing ? state.bills.data[state.bills.editing] : (null as Bill),
 });
 
 export const mapDispatchToProps = (dispatch: Dispatch<any>) => ({
-  actions: bindActionCreators({editBill: actions.editBill, createBill: actions.newBill}, dispatch),
+  actions: bindActionCreators({saveBill: actions.saveBill}, dispatch),
 });
 
 export type MapDispatchToProps = $Call<typeof mapDispatchToProps>;

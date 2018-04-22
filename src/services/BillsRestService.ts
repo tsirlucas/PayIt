@@ -1,5 +1,5 @@
 import {Bill} from 'models';
-import {FirebaseRestService} from 'services/FirebaseRestService';
+import {FirebaseAuthService, FirebaseRestService} from 'services/FirebaseRestService';
 
 export interface BillsSubscribeUpdate {
   type: string;
@@ -27,6 +27,10 @@ export class BillsRestService {
   };
 
   public setBill = async (bill: Bill) => {
+    if (!bill.permissions) {
+      const userId = FirebaseAuthService.getInstance().getUserId();
+      bill = {...bill, permissions: {[userId]: 'AUTHOR'}};
+    }
     return this.collectionStore.set(bill.id, bill);
   };
 

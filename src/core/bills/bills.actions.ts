@@ -8,4 +8,7 @@ export const actions = {
   setEmptyBills: createAction('bills/SET_EMPTY_BILLS'),
   removeBill: createAction<Bill>('bills/REMOVE_BILL'),
   subscribe: createAction<string[]>('bills/SUBSCRIBE_BILLS'),
+  editBill: createAction<string>('bills/EDIT_BILL'),
+  newBill: createAction<string>('bills/NEW_BILL'),
+  saveBill: createAction<Bill>('bills/SAVE_BILL'),
 };

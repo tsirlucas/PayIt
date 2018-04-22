@@ -1,9 +1,12 @@
+import {Actions} from 'react-native-router-flux';
 import {Action} from 'redux-act';
 import {eventChannel} from 'redux-saga';
 import {fork, put, take, takeLatest} from 'redux-saga/effects';
 
 import {BillsRestService} from 'services';
+import {Bill} from 'src/models';
 
+import {actions as globalActions} from '../global';
 import {actions as userActions} from '../user/user.actions';
 import {actions} from './bills.actions';
 
@@ -44,8 +47,31 @@ function* subscribeBillsSaga(action: Action<[string, string, string]>) {
   }
 }
 
+function* triggerBillFormSaga(action: Action<string>) {
+  try {
+    if (action.payload) yield Actions.push('bills-form', {formType: 'editBill'});
+    else yield Actions.push('bills-form', {formType: 'newBill'});
+  } catch (err) {
+    throw err;
+  }
+}
+
+function* saveBillSaga(action: Action<Bill>) {
+  try {
+    yield put(globalActions.showActivityIndicator());
+    yield BillsRestService.getInstance().setBill(action.payload);
+    yield put(globalActions.hideActivityIndicator());
+    yield Actions.pop();
+  } catch (err) {
+    throw err;
+  }
+}
+
 function* billsFlow() {
   yield takeLatest(actions.subscribe, subscribeBillsSaga);
+  yield takeLatest(actions.editBill, triggerBillFormSaga);
+  yield takeLatest(actions.newBill, triggerBillFormSaga);
+  yield takeLatest(actions.saveBill, saveBillSaga);
 }
 
 export function* billsSaga() {

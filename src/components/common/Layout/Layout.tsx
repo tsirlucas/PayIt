@@ -42,7 +42,20 @@ export const NavbarComponent = (props: SceneProps) => (
           </Title>
         </View>
       </Body>
-      <Right />
+      {props.rightAction ? (
+        <Right>
+          <Button transparent>
+            <Icon
+              name={props.rightAction.icon}
+              onPress={() => props.rightAction.action()}
+              color="white"
+              style={{color: 'white'}}
+            />
+          </Button>
+        </Right>
+      ) : (
+        <Right />
+      )}
     </Header>
   </View>
 );

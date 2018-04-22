@@ -2,21 +2,21 @@ import * as moment from 'moment';
 
 import {Bill, IndexedPendencies, Pendency} from 'models';
 
-export const computePendencies = (bill: Bill, pendencies: IndexedPendencies, payday: number) => {
+export function computePendencies(bill: Bill, pendencies: IndexedPendencies, payday: number) {
   const today = moment();
 
   const month = today.month();
   const {expirationDay, generationDay} = bill;
 
-  const expirationMoment = moment({date: expirationDay, month});
-  let generationMoment = moment({date: generationDay, month});
+  const expirationMoment = createCleanDate(expirationDay, month);
+  let generationMoment = createCleanDate(generationDay, month);
 
   if (generationDay > expirationDay) {
     // bill is generated in the end of prev month and expires this month
     generationMoment = generationMoment.subtract(1, 'month');
   }
 
-  const paydayMoment = moment({date: payday, month});
+  const paydayMoment = createCleanDate(payday, month);
 
   const expirationString = expirationMoment.format('YYYY-MM-DD');
   const expirationStringWODay = expirationMoment.format('YYYY-MM');
@@ -40,31 +40,23 @@ export const computePendencies = (bill: Bill, pendencies: IndexedPendencies, pay
   };
 
   return {[pendencyKey]: newPendency};
-};
+}
 
-const isDelayed = (today: moment.Moment, expirationDay: moment.Moment) => {
+function isDelayed(today: moment.Moment, expirationDay: moment.Moment) {
   return today.diff(expirationDay) > 0;
-};
+}
 
-const hasWarning = (payday: moment.Moment, expirationDay: moment.Moment) => {
+function hasWarning(payday: moment.Moment, expirationDay: moment.Moment) {
   return payday.diff(expirationDay) > 0;
-};
+}
 
-const isIdeal = (
-  today: moment.Moment,
-  generationDay: moment.Moment,
-  expirationDay: moment.Moment,
-) => {
+function isIdeal(today: moment.Moment, generationDay: moment.Moment, expirationDay: moment.Moment) {
   const isGenerated = today.diff(generationDay) >= 0;
   const isNotDelayed = !isDelayed(today, expirationDay);
   return isNotDelayed && isGenerated;
-};
+}
 
-const getType = (
-  today: moment.Moment,
-  generationDay: moment.Moment,
-  expirationDay: moment.Moment,
-) => {
+function getType(today: moment.Moment, generationDay: moment.Moment, expirationDay: moment.Moment) {
   switch (true) {
     case isDelayed(today, expirationDay):
       return 'DELAYED';
@@ -73,14 +65,24 @@ const getType = (
     default:
       return 'NEXT';
   }
-};
+}
 
-const checkPaid = ({type}: Pendency) => (type === 'PAID' ? type : null);
+function createCleanDate(date: number, month: number): moment.Moment {
+  const momentDate = moment({date, month});
+  if (momentDate.isValid()) return momentDate;
+  return createCleanDate(date - 1, month);
+}
 
-const buildPendency = (bill: Bill, id: string, expiration: string, warning?: boolean) => ({
-  id,
-  description: bill.description,
-  billId: bill.id,
-  expirationDay: expiration,
-  warning: warning,
-});
+function checkPaid({type}: Pendency) {
+  return type === 'PAID' ? type : null;
+}
+
+function buildPendency(bill: Bill, id: string, expiration: string, warning?: boolean) {
+  return {
+    id,
+    description: bill.description,
+    billId: bill.id,
+    expirationDay: expiration,
+    warning: warning,
+  };
+}

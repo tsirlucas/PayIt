@@ -67,11 +67,22 @@ function* saveBillSaga(action: Action<Bill>) {
   }
 }
 
+function* deleteBillSaga(action: Action<string>) {
+  try {
+    yield put(globalActions.showActivityIndicator());
+    yield BillsRestService.getInstance().remove(action.payload);
+    yield put(globalActions.hideActivityIndicator());
+  } catch (err) {
+    throw err;
+  }
+}
+
 function* billsFlow() {
   yield takeLatest(actions.subscribe, subscribeBillsSaga);
   yield takeLatest(actions.editBill, triggerBillFormSaga);
   yield takeLatest(actions.newBill, triggerBillFormSaga);
   yield takeLatest(actions.saveBill, saveBillSaga);
+  yield takeLatest(actions.deleteBill, deleteBillSaga);
 }
 
 export function* billsSaga() {

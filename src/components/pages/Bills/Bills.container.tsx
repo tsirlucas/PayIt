@@ -1,7 +1,9 @@
 import * as React from 'react';
-import {ScrollView} from 'react-native';
+import {Platform, ScrollView} from 'react-native';
+import Icon from 'react-native-vector-icons/Ionicons';
 import {connect} from 'react-redux';
-import {Body, List, ListItem, Text, Thumbnail} from 'native-base';
+import {Body, Button, List, ListItem, Text, Thumbnail} from 'native-base';
+import {colors} from 'style';
 import {getFormattedMoney} from 'utils';
 
 import {
@@ -45,6 +47,21 @@ class BillsComponent extends React.Component<Props> {
                   bill.value,
                 )}`}</Text>
               </Body>
+              <Button
+                style={{alignSelf: 'center'}}
+                transparent
+                onPress={() => this.props.actions.deleteBill(bill.id)}
+              >
+                <Icon
+                  name={Platform.select({
+                    ios: 'ios-trash',
+                    android: 'md-trash',
+                  })}
+                  size={34}
+                  color={colors.danger}
+                  style={{color: colors.danger}}
+                />
+              </Button>
               {/* <View
                 style={[style.priorityBar, {backgroundColor: priorityBarColors[bill.priority]}]}
               /> */}

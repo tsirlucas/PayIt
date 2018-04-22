@@ -9,7 +9,10 @@ export const mapStateToProps = (state: RootState) => ({
 });
 
 export const mapDispatchToProps = (dispatch: Dispatch<any>) => ({
-  actions: bindActionCreators({editBill: actions.editBill, createBill: actions.newBill}, dispatch),
+  actions: bindActionCreators(
+    {editBill: actions.editBill, createBill: actions.newBill, deleteBill: actions.deleteBill},
+    dispatch,
+  ),
 });
 
 export type MapDispatchToProps = $Call<typeof mapDispatchToProps>;

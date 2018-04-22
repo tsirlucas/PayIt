@@ -22,16 +22,20 @@ export class BillsRestService {
     this.collectionStore = new FirebaseRestService('bills');
   }
 
-  public getBill = async (id: string) => {
+  public getBill = (id: string) => {
     return this.collectionStore.get(id);
   };
 
-  public setBill = async (bill: Bill) => {
+  public setBill = (bill: Bill) => {
     if (!bill.permissions) {
       const userId = FirebaseAuthService.getInstance().getUserId();
       bill = {...bill, permissions: {[userId]: 'AUTHOR'}};
     }
     return this.collectionStore.set(bill.id, bill);
+  };
+
+  public remove = (id: string) => {
+    return this.collectionStore.delete(id);
   };
 
   public subscribe = (cb: Function, filter: [string, string, string]) =>

@@ -11,4 +11,10 @@ export default {
       editBill: 'Editar Conta',
     },
   },
+  confirmDialog: {
+    title: 'Você tem certeza?',
+    msg: 'Esta ação não pode ser desfeita',
+    confirm: 'Remover',
+    cancel: 'Cancelar',
+  },
 };

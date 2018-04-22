@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Platform, ScrollView} from 'react-native';
+import {Alert, Platform, ScrollView} from 'react-native';
 import {Actions} from 'react-native-router-flux';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {connect} from 'react-redux';
@@ -29,6 +29,16 @@ class PendenciesListComponent extends React.Component<Props> {
     if (pendenciesToList.length === 0) Actions.pop();
   }
 
+  deletePendency = (pendencyId: string) => {
+    Alert.alert(I18n.t('global.confirmDialog.title'), I18n.t('global.confirmDialog.msg'), [
+      {text: I18n.t('global.confirmDialog.cancel'), style: 'cancel'},
+      {
+        text: I18n.t('global.confirmDialog.confirm'),
+        onPress: () => this.props.actions.payPendency(pendencyId),
+      },
+    ]);
+  };
+
   render() {
     if (this.props.pendencies === null) return <Text>Loading...</Text>;
 
@@ -53,9 +63,17 @@ class PendenciesListComponent extends React.Component<Props> {
               <Button
                 style={{alignSelf: 'center'}}
                 transparent
-                onPress={() => this.props.actions.payPendency(pendency.id)}
+                onPress={() => this.deletePendency(pendency.id)}
               >
-                <Icon name={Platform.select({ios: "ios-checkmark-circle-outline", android: "md-checkbox-outline"})} size={34} color={primaryColor} style={{color: primaryColor}} />
+                <Icon
+                  name={Platform.select({
+                    ios: 'ios-checkmark-circle-outline',
+                    android: 'md-checkbox-outline',
+                  })}
+                  size={34}
+                  color={primaryColor}
+                  style={{color: primaryColor}}
+                />
               </Button>
             </ListItem>
           ))}

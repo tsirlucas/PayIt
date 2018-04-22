@@ -11,4 +11,10 @@ export default {
       editBill: 'Edit Bill',
     },
   },
+  confirmDialog: {
+    title: 'Are you sure?',
+    msg: 'This action cannot be undone',
+    confirm: 'Remove',
+    cancel: 'Cancel',
+  },
 };

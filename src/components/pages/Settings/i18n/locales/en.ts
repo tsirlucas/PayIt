@@ -1,8 +1,14 @@
 export default {
   personal: {
     label: 'PERSONAL',
-    name: 'Name',
-    email: 'Email',
+    name: {
+      label: 'Name',
+      formTitle: 'Enter your name',
+      formMessage: "If you give an empty name, it won't be changed",
+    },
+    email: {
+      label: 'Email',
+    },
   },
   financial: {
     label: 'FINANCIAL',

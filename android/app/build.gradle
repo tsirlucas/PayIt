@@ -156,6 +156,7 @@ android {
 }
 
 dependencies {
+    compile project(':react-native-prompt-android')
     compile project(':react-native-i18n')
     compile project(':react-native-wheel-picker-android')
     compile project(':react-native-config')

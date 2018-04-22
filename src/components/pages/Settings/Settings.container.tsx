@@ -1,14 +1,45 @@
 import * as React from 'react';
 import {Platform, View} from 'react-native';
+import prompt from 'react-native-prompt-android';
+import {Actions} from 'react-native-router-flux';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {connect} from 'react-redux';
-import {Body, Container, Content, Left, List, ListItem, Right, Text} from 'native-base';
+import {Body, Container, Content, Icon, Left, List, ListItem, Right, Text} from 'native-base';
 
 import {I18n} from './i18n';
-import {mapStateToProps, MapStateToProps} from './Settings.selectors';
+import {
+  mapDispatchToProps,
+  MapDispatchToProps,
+  mapStateToProps,
+  MapStateToProps,
+} from './Settings.selectors';
 import {style} from './Settings.style';
 
-class SettingsComponent extends React.Component<MapStateToProps> {
+type Props = MapStateToProps & MapDispatchToProps;
+
+class SettingsComponent extends React.Component<Props> {
+  changeName = () => {
+    prompt(
+      I18n.t('settings.personal.name.formTitle'),
+      I18n.t('settings.personal.name.formMessage'),
+      [
+        {text: I18n.t('global.confirmDialog.cancel'), style: 'cancel'},
+        {
+          text: I18n.t('global.confirmDialog.confirm'),
+          onPress: (name) => (name ? this.props.actions.changeUserName(name) : null),
+        },
+      ],
+      {
+        cancelable: true,
+        defaultValue: this.props.user.displayName,
+      },
+    );
+  };
+
+  changePayday = () => {
+    Actions.push('payday-form-edit', {edit: true});
+  };
+
   render() {
     return (
       <Container>
@@ -16,7 +47,7 @@ class SettingsComponent extends React.Component<MapStateToProps> {
           <Text style={style.listSeparator}>{I18n.t('settings.personal.label')}</Text>
 
           <List style={style.list}>
-            <ListItem icon>
+            <ListItem icon onPress={this.changeName}>
               <Left>
                 <View style={{width: 25.7, alignItems: 'center'}}>
                   <Ionicons
@@ -26,11 +57,11 @@ class SettingsComponent extends React.Component<MapStateToProps> {
                 </View>
               </Left>
               <Body>
-                <Text>{I18n.t('settings.personal.name')}</Text>
+                <Text>{I18n.t('settings.personal.name.label')}</Text>
               </Body>
               <Right>
                 <Text>{this.props.user.displayName}</Text>
-                {/* <Icon name="arrow-forward" /> */}
+                <Icon name="arrow-forward" />
               </Right>
             </ListItem>
             <ListItem icon>
@@ -43,7 +74,7 @@ class SettingsComponent extends React.Component<MapStateToProps> {
                 </View>
               </Left>
               <Body>
-                <Text>{I18n.t('settings.personal.email')}</Text>
+                <Text>{I18n.t('settings.personal.email.label')}</Text>
               </Body>
               <Right>
                 <Text>{this.props.user.email}</Text>
@@ -54,7 +85,7 @@ class SettingsComponent extends React.Component<MapStateToProps> {
 
           <Text style={style.listSeparator}>{I18n.t('settings.financial.label')}</Text>
           <List style={style.list}>
-            <ListItem icon>
+            <ListItem icon onPress={this.changePayday}>
               <Left>
                 <View style={{width: 25.7, alignItems: 'center'}}>
                   <Ionicons
@@ -68,7 +99,7 @@ class SettingsComponent extends React.Component<MapStateToProps> {
               </Body>
               <Right>
                 <Text>{this.props.user.payday}</Text>
-                {/* <Icon name="arrow-forward" /> */}
+                <Icon name="arrow-forward" />
               </Right>
             </ListItem>
           </List>
@@ -78,4 +109,4 @@ class SettingsComponent extends React.Component<MapStateToProps> {
   }
 }
 
-export const Settings = connect(mapStateToProps)(SettingsComponent);
+export const Settings = connect(mapStateToProps, mapDispatchToProps)(SettingsComponent);

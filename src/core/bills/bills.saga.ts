@@ -60,10 +60,11 @@ function* saveBillSaga(action: Action<Bill>) {
   try {
     yield put(globalActions.showActivityIndicator());
     yield BillsRestService.getInstance().setBill(action.payload);
-    yield put(globalActions.hideActivityIndicator());
     yield Actions.pop();
   } catch (err) {
     throw err;
+  } finally {
+    yield put(globalActions.hideActivityIndicator());
   }
 }
 
@@ -71,9 +72,10 @@ function* deleteBillSaga(action: Action<string>) {
   try {
     yield put(globalActions.showActivityIndicator());
     yield BillsRestService.getInstance().remove(action.payload);
-    yield put(globalActions.hideActivityIndicator());
   } catch (err) {
     throw err;
+  } finally {
+    yield put(globalActions.hideActivityIndicator());
   }
 }
 

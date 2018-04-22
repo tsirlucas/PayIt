@@ -15,7 +15,11 @@ type State = {
   itemList: string[];
 };
 
-class PaydayFormComponent extends React.Component<MapDispatchToProps, State> {
+type NavigatorProps = {
+  edit: boolean;
+};
+
+class PaydayFormComponent extends React.Component<MapDispatchToProps & NavigatorProps, State> {
   state: State = {
     selectedItem: '0',
     itemList: Array(31)
@@ -55,7 +59,7 @@ class PaydayFormComponent extends React.Component<MapDispatchToProps, State> {
   onSubmit = () => {
     const parsedIndex = parseInt(this.state.selectedItem, 10);
     const parsedValue = parseInt(this.state.itemList[parsedIndex], 10);
-    this.props.actions.setPayday(parsedValue);
+    this.props.actions.setPayday({value: parsedValue, edit: this.props.edit});
   };
 }
 

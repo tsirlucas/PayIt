@@ -6,6 +6,7 @@ import {call, fork, put, select, take, takeLatest} from 'redux-saga/effects';
 import {PendenciesRestService} from 'services';
 import {RootState} from 'src/core/rootReducer';
 
+import {actions as globalActions} from '../global/global.actions';
 import {actions as userActions} from '../user/user.actions';
 import {actions} from './pendencies.actions';
 
@@ -50,10 +51,13 @@ function* openPendenciesModalSaga(action: Action<string>) {
 
 function* payPendencySaga(action: Action<string>) {
   try {
+    yield put(globalActions.showActivityIndicator());
     const id = yield select((state: RootState) => state.user.data.uid);
     yield PendenciesRestService.getInstance().setPendencyAsPaid(id, action.payload);
   } catch (err) {
     throw err;
+  } finally {
+    yield put(globalActions.hideActivityIndicator());
   }
 }
 

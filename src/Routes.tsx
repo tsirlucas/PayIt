@@ -97,6 +97,14 @@ class Routes extends React.Component<RoutesProps> {
                 />
               </Scene>
               <Scene
+                key="payday-form-edit"
+                path="/payday-form-edit"
+                title="Payday"
+                component={PaydayForm}
+                hideNavBar
+                hideTabBar
+              />
+              <Scene
                 dynamicTitle="type"
                 key="pendencies-modal"
                 path="pendencies-modal/:type"

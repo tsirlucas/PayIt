@@ -70,6 +70,7 @@
     "react-native-google-signin": "https://github.com/invertase/react-native-google-signin.git#v0.12.1",
     "react-native-i18n": "2.0.12",
     "react-native-picker-select": "3.0.0",
+    "react-native-prompt-android": "0.3.3",
     "react-native-router-flux": "4.0.0-beta.27",
     "react-native-vector-icons": "4.6.0",
     "react-native-wheel-picker-android": "1.1.1",

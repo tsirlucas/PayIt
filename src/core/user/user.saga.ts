@@ -88,18 +88,22 @@ function* pushNotificationSetupSaga(action: Action<string>) {
   }
 }
 
-function* setPaydaySaga(action: Action<number>) {
+function* setPaydaySaga(action: Action<{value: number; edit: boolean}>) {
   try {
     yield put(globalActions.showActivityIndicator());
 
     const user = yield select((state: RootState) => state.user.data);
-    const newUser = {...user, payday: action.payload} as User;
+    const newUser = {...user, payday: action.payload.value};
 
     yield UserRestService.getInstance().setUser(newUser);
 
     yield put(actions.setUser(newUser));
-    yield call(Actions.reset, 'application');
-    yield put(actions.pushNotificationSetup(newUser.uid));
+    if (action.payload.edit) {
+      yield call(Actions.pop);
+    } else {
+      yield call(Actions.reset, 'application');
+      yield put(actions.pushNotificationSetup(newUser.uid));
+    }
   } catch (e) {
     throw e;
   } finally {
@@ -133,10 +137,28 @@ function* checkAuthSaga() {
   }
 }
 
+function* changeUserNameSaga(action: Action<string>) {
+  try {
+    yield put(globalActions.showActivityIndicator());
+
+    const user = yield select((state: RootState) => state.user.data);
+    const newUser = {...user, displayName: action.payload};
+
+    yield UserRestService.getInstance().setUser(newUser);
+
+    yield put(actions.setUser(newUser));
+  } catch (e) {
+    throw e;
+  } finally {
+    yield put(globalActions.hideActivityIndicator());
+  }
+}
+
 function* userFlow() {
   yield takeLatest(actions.signIn, signInSaga);
   yield takeLatest(actions.checkAuth, checkAuthSaga);
   yield takeLatest(actions.setPayday, setPaydaySaga);
+  yield takeLatest(actions.changeUserName, changeUserNameSaga);
   yield takeLatest(actions.pushNotificationSetup, pushNotificationSetupSaga);
 }
 

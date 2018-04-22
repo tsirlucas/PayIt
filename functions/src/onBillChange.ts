@@ -7,28 +7,31 @@ import {computePendencies} from './computePendencies';
 
 export const onBillChange = functions.firestore.document('bills/{billId}').onWrite((event) => {
   const newBillValue: Bill = event.after.data() as Bill;
-  const users = Object.keys(newBillValue.permissions);
+  if (newBillValue) {
+    const users = Object.keys(newBillValue.permissions);
 
-  const firestore = admin.firestore();
+    const firestore = admin.firestore();
 
-  const requestedDataByUser = users.map((userId) => {
-    const userPromise = firestore.doc(`/users/${userId}`).get();
-    const pendenciesPromise = firestore.doc(`/pendencies/${userId}`).get();
+    const requestedDataByUser = users.map((userId) => {
+      const userPromise = firestore.doc(`/users/${userId}`).get();
+      const pendenciesPromise = firestore.doc(`/pendencies/${userId}`).get();
 
-    return Promise.all([userPromise, pendenciesPromise]);
-  });
+      return Promise.all([userPromise, pendenciesPromise]);
+    });
 
-  const changes = Promise.all(requestedDataByUser).then((results) => {
-    const [user, pendencies] = results[0];
-    return updateUserPendencies(
-      firestore,
-      user.data() as User,
-      pendencies.data() as UserPendencies,
-      newBillValue,
-    );
-  });
-
-  return changes;
+    const changes = Promise.all(requestedDataByUser).then((results) => {
+      const [user, pendencies] = results[0];
+      return updateUserPendencies(
+        firestore,
+        user.data() as User,
+        pendencies.data() as UserPendencies,
+        newBillValue,
+      );
+    });
+    return changes;
+  } else {
+    return true;
+  }
 });
 
 function updateUserPendencies(

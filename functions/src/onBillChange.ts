@@ -7,9 +7,9 @@ import {computePendencies} from './computePendencies';
 
 export const onBillChange = functions.firestore.document('bills/{billId}').onWrite((event) => {
   const newBillValue: Bill = event.after.data() as Bill;
-  if (newBillValue) {
-    const users = Object.keys(newBillValue.permissions);
+  const users = newBillValue && Object.keys(newBillValue.permissions);
 
+  if (users && users.length > 0) {
     const firestore = admin.firestore();
 
     const requestedDataByUser = users.map((userId) => {

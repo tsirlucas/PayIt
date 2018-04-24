@@ -31,15 +31,16 @@ async function updateUserPendencies(
 ) {
   const billsPromise = Object.keys(pendencies.data)
     .filter((key) => pendencies.data[key].type !== 'PAID')
-    .map((key) => {
-      return firestore.doc(`/bills/${pendencies.data[key].billId}`).get();
+    .map(async (key) => {
+      const billSnapshot = await firestore.doc(`/bills/${pendencies.data[key].billId}`).get();
+      return billSnapshot.data() as Bill;
     });
   const bills = await Promise.all(billsPromise);
 
-  const changes = bills.map(async (bill) => {
+  const changes = bills.filter((bill) => bill).map(async (bill) => {
     const {payday} = user;
     const data = pendencies.data || {};
-    const updatedPendencies = computePendencies(bill.data() as Bill, data, payday);
+    const updatedPendencies = computePendencies(bill, data, payday);
 
     return await firestore.doc(`/pendencies/${user.uid}`).set(
       {

@@ -34,8 +34,10 @@ export class BillsRestService {
     return this.collectionStore.set(bill.id, bill);
   };
 
-  public remove = (id: string) => {
-    return this.collectionStore.delete(id);
+  public remove = async (id: string) => {
+    const bill = await this.getBill(id);
+    const billWithoutPermissions = {...bill, permissions: {}};
+    return this.collectionStore.set(id, billWithoutPermissions);
   };
 
   public subscribe = (cb: Function, filter: [string, string, string]) =>

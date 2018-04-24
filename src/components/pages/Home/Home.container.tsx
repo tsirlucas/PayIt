@@ -86,6 +86,7 @@ const PendenciesList = (props: {data: ArrayData; openPendenciesModal: Function})
     contentContainerStyle={style.listContent}
     dataArray={props.data}
     horizontal={true}
+    pagingEnabled={true}
     renderRow={(item) => (
       <ListItem style={style.listItem} onPress={() => props.openPendenciesModal(item.title)}>
         <Text style={[style.bigFont, style[item.title], {textAlign: 'center'}]}>

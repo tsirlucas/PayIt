@@ -24,6 +24,8 @@ target 'PayIt' do
 
   pod 'RNI18n', :path => '../node_modules/react-native-i18n'
 
+  pod 'Picker', :path => '../node_modules/react-native-picker'
+
   target 'PayItTests' do
     inherit! :search_paths
     # Pods for testing

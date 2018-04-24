@@ -10,6 +10,7 @@ I18n.translations = {
   en: {...I18n.translations.en, confirmButton: 'Confirm'},
   'pt-BR': {...I18n.translations['pt-BR'], confirmButton: 'Confirmar'},
 };
+
 export const confirmButtonStyle = StyleSheet.create({
   confirmButton: {
     height: 60,

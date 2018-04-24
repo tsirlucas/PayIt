@@ -6,6 +6,8 @@ import {Body, Button, List, ListItem, Text, Thumbnail} from 'native-base';
 import {primaryColor} from 'style';
 import {getFormattedMoney} from 'utils';
 
+import {Loading} from 'components/common';
+
 import {I18n} from './i18n';
 import {
   MapDispatchToProps,
@@ -39,13 +41,13 @@ class PendenciesListComponent extends React.Component<Props> {
   };
 
   render() {
-    if (this.props.pendencies === null) return <Text>Loading...</Text>;
+    if (this.props.pendencies === null) return <Loading />;
 
     const pendenciesToList = this.props.pendencies[this.props.type];
 
     return (
       <List>
-        <ScrollView>
+        <ScrollView alwaysBounceVertical={false}>
           {pendenciesToList.map((pendency, index) => (
             <ListItem key={index}>
               <Thumbnail square size={80} source={imagesMap.default} />

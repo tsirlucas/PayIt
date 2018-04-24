@@ -3,6 +3,7 @@ import {Image, View} from 'react-native';
 import {connect} from 'react-redux';
 import {Container, List, ListItem, Text} from 'native-base';
 
+import {Loading} from 'components/common';
 import {Pendency} from 'models';
 
 import {Balloon} from './components';
@@ -16,7 +17,7 @@ import {style} from './Home.style';
 import {I18n} from './i18n';
 
 const images = {
-  wavingMan: require('../../../assets/img/home.png'),
+  wavingMan: require('assets/img/home.png'),
 };
 
 type ArrayData = {title: string; data: Pendency[]}[];
@@ -46,8 +47,8 @@ class HomeComponent extends React.Component<MapStateToProps & MapDispatchToProps
   render() {
     const {pendencies} = this.props;
 
-    if (pendencies === null) return <Text>Loading...</Text>;
-    
+    if (pendencies === null) return <Loading />;
+
     return (
       <Container style={style.container}>
         <View>

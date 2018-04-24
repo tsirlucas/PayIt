@@ -5,12 +5,15 @@ import {Body, Button, List, ListItem, Text, Thumbnail} from 'native-base';
 import {colors} from 'style';
 import {getFormattedMoney} from 'utils';
 
+import {Loading} from 'components/common';
+
 import {
   mapDispatchToProps,
   MapDispatchToProps,
   MapStateToProps,
   mapStateToProps,
 } from './Bills.selectors';
+import {EmptyBills} from './components/';
 import {I18n} from './i18n';
 
 const imagesMap = {
@@ -37,15 +40,15 @@ class BillsComponent extends React.Component<Props> {
   };
 
   render() {
-    if (this.props.bills === null) return <Text>Loading...</Text>;
+    if (this.props.bills === null) return <Loading />;
 
     const billsArray = Object.values(this.props.bills);
 
-    if (billsArray.length === 0) return <Text>Empty</Text>;
+    if (billsArray.length === 0) return <EmptyBills />;
 
     return (
       <List>
-        <ScrollView>
+        <ScrollView alwaysBounceVertical={false}>
           {billsArray.map((bill, index) => (
             <ListItem key={index} onPress={() => this.props.actions.editBill(bill.id)}>
               <Thumbnail square size={80} source={imagesMap.default} />

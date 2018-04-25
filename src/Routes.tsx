@@ -6,6 +6,7 @@ import {bindActionCreators, Dispatch} from 'redux';
 import {$Call} from 'utility-types';
 
 import {ActivityIndicator} from 'components/common/ActivityIndicator';
+import {Backdrop} from 'components/common/Backdrop';
 import {NavbarComponent, TabBarComponent} from 'components/common/Layout';
 import {PaydayForm} from 'components/forms/PaydayForm';
 import {Bills, BillsForm, Home, PendenciesList, Settings} from 'components/pages';
@@ -36,8 +37,6 @@ class Routes extends React.Component<RoutesProps> {
 
   render() {
     return [
-      <ActivityIndicator key="activity-indicator" />,
-
       <Router key="router" sceneStyle={{backgroundColor: '#F5EEEE'}}>
         <Scene key="root" hideNavBar component={undefined}>
           <Stack key="authentication" hideNavBar>
@@ -122,6 +121,8 @@ class Routes extends React.Component<RoutesProps> {
           </Stack>
         </Scene>
       </Router>,
+      <ActivityIndicator key="activity-indicator" />,
+      <Backdrop key="root-backdrop" />,
     ];
   }
 }

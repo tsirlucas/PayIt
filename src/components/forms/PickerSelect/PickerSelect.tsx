@@ -2,7 +2,10 @@ import * as React from 'react';
 import {AppState, BackHandler, View} from 'react-native';
 import I18n from 'react-native-i18n';
 import Picker from 'react-native-picker';
+import {connect} from 'react-redux';
 import {Icon, Input, Item, Label} from 'native-base';
+
+import {MapDispatchToProps, mapDispatchToProps} from './PickerSelect.selectors';
 
 type Value = string | number;
 type ItemT = {value: Value; label: string; key?: string};
@@ -15,7 +18,7 @@ type ComponentProps = {
 };
 type MappedValues = {[index: string]: Value};
 
-type Props<T extends ComponentProps> = T;
+type Props<T extends ComponentProps> = T & MapDispatchToProps;
 
 type State = {
   value: Value;
@@ -26,7 +29,7 @@ type State = {
 
 export const PickerSelectAnimationTimeout = 500;
 
-export class PickerSelect<T extends ComponentProps> extends React.Component<Props<T>, State> {
+class PickerSelectComponent<T extends ComponentProps> extends React.Component<Props<T>, State> {
   state: State = {} as State;
 
   componentDidMount() {
@@ -65,9 +68,13 @@ export class PickerSelect<T extends ComponentProps> extends React.Component<Prop
         this.closePicker();
         this.props.onValueChange(this.state.mappedValues[data[0]]);
       },
-      pickerCancelBtnText: null,
-      pickerTitleText: null,
-      pickerConfirmBtnText: I18n.t('confirmButton'),
+      pickerCancelBtnText: '',
+      pickerTitleText: '',
+      pickerConfirmBtnText: I18n.t('confirmButton') + '  ',
+      pickerToolBarBg: [54, 174, 129, 1],
+      pickerBg: [245, 238, 238, 1],
+      pickerConfirmBtnColor: [255, 255, 255, 1],
+      pickerFontColor: [54, 174, 129, 1],
     });
     this.openPicker();
   };
@@ -78,6 +85,7 @@ export class PickerSelect<T extends ComponentProps> extends React.Component<Prop
 
   openPicker = () => {
     Picker.show();
+    this.props.actions.showBackdrop({closeCB: this.closePicker});
     this.setState({...this.state, isPickerShow: true});
     BackHandler.addEventListener('hardwareBackPress', this.closePicker);
     AppState.addEventListener('change', this.closeIfBackground);
@@ -85,6 +93,7 @@ export class PickerSelect<T extends ComponentProps> extends React.Component<Prop
 
   closePicker = () => {
     Picker.hide();
+    this.props.actions.hideBackdrop();
     this.setState({...this.state, isPickerShow: false});
     BackHandler.removeEventListener('hardwareBackPress', this.closePicker);
     AppState.removeEventListener('change', this.closeIfBackground);
@@ -96,14 +105,7 @@ export class PickerSelect<T extends ComponentProps> extends React.Component<Prop
   }
 
   render() {
-    return [
-      this.state.isPickerShow && (
-        <View
-          key="closeView"
-          style={{position: 'absolute', top: 0, left: 0, bottom: 0, right: 0, zIndex: 20}}
-          onTouchStart={this.closePicker}
-        />
-      ),
+    return (
       <View key="pickerInput" onTouchStart={!this.props.disabled && this.onOpenPicker}>
         <Item floatingLabel disabled={this.props.disabled}>
           <Label>{this.props.placeholder}</Label>
@@ -122,7 +124,9 @@ export class PickerSelect<T extends ComponentProps> extends React.Component<Prop
             top: '30%',
           }}
         />
-      </View>,
-    ];
+      </View>
+    );
   }
 }
+
+export const PickerSelect = connect(null, mapDispatchToProps)(PickerSelectComponent);

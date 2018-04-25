@@ -5,11 +5,11 @@ import {Container} from 'native-base';
 
 const en = {
   title: 'You have no bills',
-  sub: 'To add, tap "CREATE" in the upper right corner of the screen',
+  sub: 'To add, tap "{{createAction}}" in the upper right corner of the screen',
 };
 const pt = {
   title: 'Você não possui contas',
-  sub: 'Para adicionar, toque em "CRIAR" no canto superior direito da tela',
+  sub: 'Para adicionar, toque em "{{createAction}}" no canto superior direito da tela',
 };
 
 I18n.fallbacks = true;
@@ -31,7 +31,9 @@ export const EmptyBills = () => (
     <View style={{alignItems: 'center', justifyContent: 'center'}}>
       <Text style={{fontSize: 20}}>{I18n.t('emptyBills.title')}</Text>
       <Image source={require('assets/img/empty-bills.png')} />
-      <Text style={{fontSize: 16, textAlign: 'center'}}>{I18n.t('emptyBills.sub')}</Text>
+      <Text style={{fontSize: 16, textAlign: 'center'}}>
+        {I18n.t('emptyBills.sub', {createAction: I18n.t('global.routes.actions.create')})}
+      </Text>
     </View>
   </Container>
 );

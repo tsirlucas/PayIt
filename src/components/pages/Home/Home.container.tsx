@@ -1,7 +1,7 @@
 import * as React from 'react';
-import {Image, View} from 'react-native';
+import {Image, TouchableWithoutFeedback, View} from 'react-native';
 import {connect} from 'react-redux';
-import {Container, List, ListItem, Text} from 'native-base';
+import {Card, Container, List, Text} from 'native-base';
 
 import {Loading} from 'components/common';
 import {Pendency} from 'models';
@@ -86,15 +86,16 @@ const PendenciesList = (props: {data: ArrayData; openPendenciesModal: Function})
     contentContainerStyle={style.listContent}
     dataArray={props.data}
     horizontal={true}
-    pagingEnabled={true}
     renderRow={(item) => (
-      <ListItem style={style.listItem} onPress={() => props.openPendenciesModal(item.title)}>
-        <Text style={[style.bigFont, style[item.title], {textAlign: 'center'}]}>
-          {item.data.length}
-          {'\n'}
-          {I18n.t(`home.label.${item.title}`, {count: item.data.length})}
-        </Text>
-      </ListItem>
+      <TouchableWithoutFeedback onPress={() => props.openPendenciesModal(item.title)}>
+        <Card style={style.listItem}>
+          <Text style={[style.bigFont, style[item.title], {textAlign: 'center'}]}>
+            {item.data.length}
+            {'\n'}
+            {I18n.t(`home.label.${item.title}`, {count: item.data.length})}
+          </Text>
+        </Card>
+      </TouchableWithoutFeedback>
     )}
   />
 );

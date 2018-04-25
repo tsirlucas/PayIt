@@ -1,3 +1,5 @@
+import {Platform} from 'react-native';
+
 export default {
   routes: {
     titles: {
@@ -11,7 +13,7 @@ export default {
       editBill: 'Edit Bill',
     },
     actions: {
-      create: 'CREATE',
+      create: Platform.select({android: 'CREATE', ios: 'Create'}),
     },
   },
   confirmDialog: {

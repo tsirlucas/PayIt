@@ -31,19 +31,21 @@ export const style: {[index: string]: Object} = StyleSheet.create({
     flexGrow: 0,
   },
   listContent: {
-    paddingRight: 15,
+    paddingLeft: 15,
     maxHeight: 200,
     alignItems: 'center',
     justifyContent: 'center',
   },
   listItem: {
     height: 100,
+    maxHeight: 100,
     width: 180,
     borderRadius: 5,
     padding: 20,
     backgroundColor: 'white',
     alignItems: 'center',
     justifyContent: 'center',
+    marginRight: 15,
   },
   noPendenciesView: {
     alignSelf: 'center',

@@ -18,7 +18,7 @@ const titles: RoutesTypes = {
 
 const icons: RoutesTypes = {
   home: 'home',
-  bills: 'calendar',
+  bills: 'paper',
   settings: 'settings',
 };
 

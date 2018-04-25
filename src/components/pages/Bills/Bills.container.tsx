@@ -1,5 +1,6 @@
 import * as React from 'react';
-import {Alert, ScrollView} from 'react-native';
+import {Alert, Platform, ScrollView} from 'react-native';
+import Icon from 'react-native-vector-icons/Ionicons';
 import {connect} from 'react-redux';
 import {Body, Button, List, ListItem, Text, Thumbnail} from 'native-base';
 import {colors} from 'style';
@@ -62,11 +63,18 @@ class BillsComponent extends React.Component<Props> {
               <Button
                 style={{alignSelf: 'center'}}
                 transparent
+                rounded
                 onPress={() => this.deleteBill(bill.id)}
               >
-                <Text style={{color: colors.danger, fontSize: 12}}>
-                  {I18n.t('bills.removeLabel')}
-                </Text>
+                <Icon
+                  name={Platform.select({
+                    ios: 'ios-remove-circle-outline',
+                    android: 'md-remove-circle',
+                  })}
+                  size={32}
+                  color={colors.danger}
+                  style={{color: colors.danger}}
+                />
               </Button>
               {/* <View
                 style={[style.priorityBar, {backgroundColor: priorityBarColors[bill.priority]}]}

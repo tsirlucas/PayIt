@@ -42,7 +42,7 @@
     "@types/react-native-google-signin": "0.12.1",
     "@types/react-native-i18n": "2.0.0",
     "@types/react-native-vector-icons": "4.6.0",
-    "@types/react-redux": "5.0.16",
+    "@types/react-redux": "5.0.17",
     "@types/react-test-renderer": "16.0.1",
     "appium": "1.8.0",
     "appium-doctor": "1.4.3",

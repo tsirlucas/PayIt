@@ -1,9 +1,10 @@
 import * as React from 'react';
-import {AppState, BackHandler, View} from 'react-native';
+import {AppState, BackHandler, Platform, View} from 'react-native';
 import I18n from 'react-native-i18n';
 import Picker from 'react-native-picker';
+import Icon from 'react-native-vector-icons/Ionicons';
 import {connect} from 'react-redux';
-import {Icon, Input, Item, Label} from 'native-base';
+import {Input, Item, Label} from 'native-base';
 
 import {MapDispatchToProps, mapDispatchToProps} from './PickerSelect.selectors';
 
@@ -61,10 +62,10 @@ class PickerSelectComponent<T extends ComponentProps> extends React.Component<Pr
   };
 
   onOpenPicker = () => {
-    Picker.init({
+    let settings = {
       pickerData: Object.keys(this.state.mappedValues),
       selectedValue: [this.find(this.props.items, this.props.value).label],
-      onPickerConfirm: (data) => {
+      onPickerConfirm: (data: string[]) => {
         this.closePicker();
         this.props.onValueChange(this.state.mappedValues[data[0]]);
       },
@@ -75,7 +76,8 @@ class PickerSelectComponent<T extends ComponentProps> extends React.Component<Pr
       pickerBg: [245, 238, 238, 1],
       pickerConfirmBtnColor: [255, 255, 255, 1],
       pickerFontColor: [54, 174, 129, 1],
-    });
+    };
+    Picker.init(settings);
     this.openPicker();
   };
 
@@ -115,13 +117,14 @@ class PickerSelectComponent<T extends ComponentProps> extends React.Component<Pr
           />
         </Item>
         <Icon
-          name="md-arrow-dropdown"
+          name={this.props.disabled ? 'md-lock' : 'md-arrow-dropdown'}
           color="gray"
+          size={this.props.disabled ? 16 : 24}
           style={{
             color: 'gray',
             position: 'absolute',
             right: 15,
-            top: '30%',
+            top: this.props.disabled ? '38%' : '35%',
           }}
         />
       </View>

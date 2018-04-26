@@ -1,5 +1,6 @@
 import {StyleSheet} from 'react-native';
 import {colors} from 'style/vars';
+import {isSmallDevice} from 'utils';
 
 export const style: {[index: string]: Object} = StyleSheet.create({
   container: {
@@ -9,7 +10,7 @@ export const style: {[index: string]: Object} = StyleSheet.create({
     alignItems: 'center',
   },
   bigFont: {
-    fontSize: 23,
+    fontSize: isSmallDevice() ? 16 : 23,
   },
   delayed: {
     color: colors.danger,
@@ -24,26 +25,26 @@ export const style: {[index: string]: Object} = StyleSheet.create({
     color: colors.success,
   },
   image: {
-    height: 200,
-    width: 200,
+    height: isSmallDevice() ? 150 : 200,
+    width: isSmallDevice() ? 150 : 200,
     alignSelf: 'center',
   },
   list: {
     alignSelf: 'center',
-    height: 200,
+    height: isSmallDevice() ? 150 : 200,
     flex: 0,
     flexGrow: 0,
   },
   listContent: {
     paddingLeft: 15,
-    maxHeight: 200,
+    maxHeight: isSmallDevice() ? 150 : 200,
     alignItems: 'center',
     justifyContent: 'center',
   },
   listItem: {
-    height: 100,
-    maxHeight: 100,
-    width: 180,
+    height: isSmallDevice() ? 80 : 100,
+    maxHeight: isSmallDevice() ? 80 : 100,
+    width: isSmallDevice() ? 140 : 180,
     borderRadius: 5,
     padding: 20,
     backgroundColor: 'white',

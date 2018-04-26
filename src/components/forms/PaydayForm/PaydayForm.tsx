@@ -2,6 +2,7 @@ import * as React from 'react';
 import {Platform} from 'react-native';
 import {connect} from 'react-redux';
 import {Container} from 'native-base';
+import {isSmallDevice} from 'utils';
 
 import {WheelPicker} from 'components/common';
 
@@ -38,11 +39,15 @@ class PaydayFormComponent extends React.Component<MapDispatchToProps & Navigator
         />
         <WheelPicker
           data={this.state.itemList}
-          style={{width: 150, height: 180, marginTop: Platform.select({ios: -180, android: -120})}}
+          style={{
+            width: 150,
+            height: isSmallDevice() ? 100 : 180,
+            marginTop: Platform.select({ios: -180, android: -120}),
+          }}
           selectedValue={this.state.selectedItem}
           itemStyle={{
             color: '#000000',
-            fontSize: 26,
+            fontSize: isSmallDevice() ? 20 : 26,
           }}
           onValueChange={this.onPickerSelect}
         />

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {StyleSheet, View, ViewStyle} from 'react-native';
 import {Text} from 'native-base';
+import {isSmallDevice} from 'utils';
 
 type Props = {
   header: string;
@@ -22,12 +23,12 @@ const style = StyleSheet.create({
     marginBottom: 25,
   },
   subHeader: {
-    fontSize: 20,
+    fontSize: isSmallDevice() ? 18 : 20,
     textAlign: 'center',
     marginBottom: 20,
   },
   secSubHeader: {
-    fontSize: 16,
+    fontSize: isSmallDevice() ? 14 : 16,
     textAlign: 'center',
     marginBottom: 20,
   },

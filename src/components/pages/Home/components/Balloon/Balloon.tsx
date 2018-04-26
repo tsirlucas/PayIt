@@ -1,5 +1,6 @@
 import React from 'react';
 import {Platform, StyleSheet, Text, View} from 'react-native';
+import {isSmallDevice} from 'utils';
 
 type Props = {
   text: string;
@@ -20,12 +21,13 @@ export class Balloon extends React.Component<Props> {
 
 const style = StyleSheet.create({
   text: {
-    fontSize: 30,
+    fontSize: isSmallDevice() ? 23 : 30,
     color: Platform.select({android: 'rgba(0, 0, 0, 0.7)', ios: 'rgba(0, 0, 0, 0.8)'}),
   },
   container: {
     width: '90%',
     margin: 10,
+    marginBottom: 0,
     alignSelf: 'center',
   },
 
@@ -39,7 +41,7 @@ const style = StyleSheet.create({
 
   delta: {
     alignSelf: 'flex-end',
-    marginRight: 100,
+    marginRight: '25%',
     width: 0,
     height: 0,
     backgroundColor: 'transparent',

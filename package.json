@@ -37,7 +37,7 @@
     "@types/react-native": "0.55.8",
     "@types/react-native-google-signin": "0.12.2",
     "@types/react-native-i18n": "2.0.0",
-    "@types/react-native-vector-icons": "4.6.0",
+    "@types/react-native-vector-icons": "4.6.1",
     "@types/react-redux": "5.0.18",
     "@types/react-test-renderer": "16.0.1",
     "babel-core": "6.26.0",

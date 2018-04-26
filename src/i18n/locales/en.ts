@@ -14,6 +14,7 @@ export default {
     },
     actions: {
       create: Platform.select({android: 'CREATE', ios: 'Create'}),
+      signout: Platform.select({android: 'LOGOUT', ios: 'Logout'}),
     },
   },
   confirmDialog: {

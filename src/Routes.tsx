@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {Platform} from 'react-native';
 import {Modal, Router, Scene, Stack} from 'react-native-router-flux';
 import {connect} from 'react-redux';
 import {Content} from 'native-base';
@@ -13,6 +14,7 @@ import {Bills, BillsForm, Home, PendenciesList, Settings} from 'components/pages
 import {RootState} from 'core';
 import {actions as billActions} from 'core/bills';
 import {actions as globalActions} from 'core/global';
+import {actions as userActions} from 'core/user';
 import {Login} from 'pages/Login';
 
 import {I18n} from './i18n';
@@ -23,7 +25,11 @@ const mapStateToProps = (state: RootState) => ({
 
 export const mapDispatchToProps = (dispatch: Dispatch<any>) => ({
   actions: bindActionCreators(
-    {initApplication: globalActions.initApplication, createBill: billActions.newBill},
+    {
+      initApplication: globalActions.initApplication,
+      createBill: billActions.newBill,
+      signOut: userActions.signOut,
+    },
     dispatch,
   ),
 });
@@ -75,6 +81,10 @@ class Routes extends React.Component<RoutesProps> {
                   title={I18n.t('global.routes.titles.home')}
                   component={Home}
                   navBar={NavbarComponent}
+                  rightAction={{
+                    icon: Platform.select({ios: 'ios-log-out', android: 'md-log-out'}),
+                    action: this.props.actions.signOut,
+                  }}
                 />
                 <Scene
                   key="bills"
@@ -83,7 +93,7 @@ class Routes extends React.Component<RoutesProps> {
                   component={Bills}
                   navBar={NavbarComponent}
                   rightAction={{
-                    text: 'create',
+                    icon: Platform.select({ios: 'ios-add', android: 'md-add'}),
                     action: this.props.actions.createBill,
                   }}
                 />

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {StatusBar, Text, View} from 'react-native';
 import {Actions, SceneProps} from 'react-native-router-flux';
+import Ionicon from 'react-native-vector-icons/Ionicons';
 import {Body, Button, Footer, FooterTab, Header, Icon, Left, Right, Title} from 'native-base';
 import {primaryColor} from 'style';
 
@@ -44,10 +45,13 @@ export const NavbarComponent = (props: SceneProps) => (
       </Body>
       {props.rightAction ? (
         <Right>
-          <Button transparent onPress={() => props.rightAction.action()}>
-            <Text style={{color: 'white'}}>
-              {I18n.t(`global.routes.actions.${props.rightAction.text}`)}
-            </Text>
+          <Button transparent rounded onPress={() => props.rightAction.action()}>
+            <Ionicon
+              name={props.rightAction.icon}
+              size={28}
+              color="white"
+              style={{color: 'white'}}
+            />
           </Button>
         </Right>
       ) : (

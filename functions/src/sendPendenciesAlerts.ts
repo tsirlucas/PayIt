@@ -39,45 +39,46 @@ export const sendPendenciesAlerts = functions.https.onRequest((req, res) => {
 async function sendUserAlert(firestore: FirebaseFirestore.Firestore, pendencies: UserPendencies) {
   const userSnapshot = await firestore.doc(`/users/${pendencies.id}`).get();
   const user = userSnapshot.data();
-
-  const catPendencies = Object.keys(pendencies.data || {}).reduce(
-    (curr, next) => {
-      const pendency = pendencies.data[next];
-      if (pendency.type === 'DELAYED') curr.delayed.push(pendency);
-      if (pendency.type === 'IDEAL') curr.ideal.push(pendency);
-      return curr;
-    },
-    {
-      delayed: [],
-      ideal: [],
-    },
-  );
-  let message = '';
-  const delayedLength = catPendencies.delayed.length;
-  const idealLength = catPendencies.ideal.length;
-  I18n.locale = user.i18n || 'en';
-
-  if (delayedLength) {
-    message = I18n.t('notification.delayedStart', {count: delayedLength});
-  }
-
-  if (!delayedLength && idealLength) {
-    message = I18n.t('notification.idealStart', {message, count: idealLength});
-  }
-
-  if (delayedLength && idealLength) {
-    message = I18n.t('notification.idealEnd', {message, count: idealLength});
-  }
-  if (message.length) {
-    message = I18n.t('notification.tapAction', {message});
-
-    await admin.messaging().sendToDevice(user.fcmToken, {
-      notification: {
-        sound: 'default',
-        priority: 'high',
-        title: I18n.t('notification.pendencies'),
-        body: message,
+  if (user.fcmToken) {
+    const catPendencies = Object.keys(pendencies.data || {}).reduce(
+      (curr, next) => {
+        const pendency = pendencies.data[next];
+        if (pendency.type === 'DELAYED') curr.delayed.push(pendency);
+        if (pendency.type === 'IDEAL') curr.ideal.push(pendency);
+        return curr;
       },
-    });
+      {
+        delayed: [],
+        ideal: [],
+      },
+    );
+    let message = '';
+    const delayedLength = catPendencies.delayed.length;
+    const idealLength = catPendencies.ideal.length;
+    I18n.locale = user.i18n || 'en';
+
+    if (delayedLength) {
+      message = I18n.t('notification.delayedStart', {count: delayedLength});
+    }
+
+    if (!delayedLength && idealLength) {
+      message = I18n.t('notification.idealStart', {message, count: idealLength});
+    }
+
+    if (delayedLength && idealLength) {
+      message = I18n.t('notification.idealEnd', {message, count: idealLength});
+    }
+    if (message.length) {
+      message = I18n.t('notification.tapAction', {message});
+
+      await admin.messaging().sendToDevice(user.fcmToken, {
+        notification: {
+          sound: 'default',
+          priority: 'high',
+          title: I18n.t('notification.pendencies'),
+          body: message,
+        },
+      });
+    }
   }
 }

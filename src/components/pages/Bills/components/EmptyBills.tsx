@@ -1,15 +1,18 @@
 import * as React from 'react';
-import {Image, Text, View} from 'react-native';
+import {Image, Platform, Text, View} from 'react-native';
 import I18n from 'react-native-i18n';
+import Ionicon from 'react-native-vector-icons/Ionicons';
 import {Container} from 'native-base';
 
 const en = {
   title: 'You have no bills',
-  sub: 'To add, tap "{{createAction}}" in the upper right corner of the screen',
+  subBeforeIcon: 'To add, tap the  ',
+  subAfterIcon: '  in the upper right corner of the screen',
 };
 const pt = {
   title: 'Você não possui contas',
-  sub: 'Para adicionar, toque em "{{createAction}}" no canto superior direito da tela',
+  subBeforeIcon: 'Para adicionar, toque no  ',
+  subAfterIcon: '  no canto superior direito da tela',
 };
 
 I18n.fallbacks = true;
@@ -32,7 +35,9 @@ export const EmptyBills = () => (
       <Text style={{fontSize: 20}}>{I18n.t('emptyBills.title')}</Text>
       <Image source={require('assets/img/empty-bills.png')} />
       <Text style={{fontSize: 16, textAlign: 'center'}}>
-        {I18n.t('emptyBills.sub', {createAction: I18n.t('global.routes.actions.create')})}
+        {I18n.t('emptyBills.subBeforeIcon')}
+        <Ionicon name={Platform.select({android: 'md-add', ios: 'ios-add'})} size={28} />
+        {I18n.t('emptyBills.subAfterIcon')}
       </Text>
     </View>
   </Container>

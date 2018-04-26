@@ -66,6 +66,19 @@ function* signInSaga() {
   }
 }
 
+function* signOutSaga() {
+  try {
+    yield put(globalActions.showActivityIndicator());
+    const userId = yield select((state: RootState) => state.user.data.uid);
+    yield UserRestService.getInstance().setRegistrationToken(userId, null);
+    yield FirebaseAuthService.getInstance().signOut();
+  } catch (e) {
+    throw e;
+  } finally {
+    yield put(globalActions.hideActivityIndicator());
+  }
+}
+
 function* pushNotificationSetupSaga(action: Action<string>) {
   try {
     let enabled = yield FirebaseAuthService.getInstance().hasPushPermission();
@@ -176,6 +189,7 @@ function* storeI18nSetupSaga() {
 
 function* userFlow() {
   yield takeLatest(actions.signIn, signInSaga);
+  yield takeLatest(actions.signOut, signOutSaga);
   yield takeLatest(actions.checkAuth, checkAuthSaga);
   yield takeLatest(actions.setPayday, setPaydaySaga);
   yield takeLatest(actions.changeUserName, changeUserNameSaga);

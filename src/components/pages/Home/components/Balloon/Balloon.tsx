@@ -9,7 +9,7 @@ export class Balloon extends React.Component<Props> {
   render() {
     return (
       <View style={style.container}>
-        <View style={style.content}>
+        <View style={style.content} ref="balloon">
           <Text style={style.text}>{this.props.text}</Text>
         </View>
         <View style={style.delta} />
@@ -24,15 +24,12 @@ const style = StyleSheet.create({
     color: Platform.select({android: 'rgba(0, 0, 0, 0.7)', ios: 'rgba(0, 0, 0, 0.8)'}),
   },
   container: {
-    height: 55,
     width: '90%',
     margin: 10,
     alignSelf: 'center',
-    position: 'relative',
   },
 
   content: {
-    position: 'absolute',
     alignSelf: 'center',
     paddingVertical: 10,
     paddingHorizontal: 15,
@@ -41,10 +38,8 @@ const style = StyleSheet.create({
   },
 
   delta: {
-    position: 'absolute',
-    right: 100,
-    bottom: -60,
-    marginBottom: 30,
+    alignSelf: 'flex-end',
+    marginRight: 100,
     width: 0,
     height: 0,
     backgroundColor: 'transparent',

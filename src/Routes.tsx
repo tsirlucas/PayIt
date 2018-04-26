@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Platform} from 'react-native';
+import {Platform, StatusBar} from 'react-native';
 import {Modal, Router, Scene, Stack} from 'react-native-router-flux';
 import {connect} from 'react-redux';
 import {Content} from 'native-base';
@@ -16,6 +16,7 @@ import {actions as billActions} from 'core/bills';
 import {actions as globalActions} from 'core/global';
 import {actions as userActions} from 'core/user';
 import {Login} from 'pages/Login';
+import {primaryColor} from 'src/style';
 
 import {I18n} from './i18n';
 
@@ -43,6 +44,7 @@ class Routes extends React.Component<RoutesProps> {
 
   render() {
     return [
+      <StatusBar backgroundColor={primaryColor} barStyle="light-content" />,
       <Router key="router" sceneStyle={{backgroundColor: '#F5EEEE'}}>
         <Scene key="root" hideNavBar component={undefined}>
           <Stack key="authentication" hideNavBar>

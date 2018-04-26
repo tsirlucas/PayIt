@@ -2,7 +2,12 @@ import {StyleSheet} from 'react-native';
 import {colors} from 'style/vars';
 
 export const style: {[index: string]: Object} = StyleSheet.create({
-  container: {flex: 1, flexDirection: 'column', justifyContent: 'space-around'},
+  container: {
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+  },
   bigFont: {
     fontSize: 23,
   },
@@ -19,7 +24,6 @@ export const style: {[index: string]: Object} = StyleSheet.create({
     color: colors.success,
   },
   image: {
-    marginTop: 30,
     height: 200,
     width: 200,
     alignSelf: 'center',

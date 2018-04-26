@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {Platform} from 'react-native';
 import {connect} from 'react-redux';
 import {Container} from 'native-base';
 
@@ -37,7 +38,7 @@ class PaydayFormComponent extends React.Component<MapDispatchToProps & Navigator
         />
         <WheelPicker
           data={this.state.itemList}
-          style={{width: 150, height: 180, marginTop: -180}}
+          style={{width: 150, height: 180, marginTop: Platform.select({ios: -180, android: -120})}}
           selectedValue={this.state.selectedItem}
           itemStyle={{
             color: '#000000',

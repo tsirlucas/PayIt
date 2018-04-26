@@ -51,10 +51,8 @@ class HomeComponent extends React.Component<MapStateToProps & MapDispatchToProps
 
     return (
       <Container style={style.container}>
-        <View>
-          <Balloon text={this.getGreetingText()} />
-          <Image style={style.image} source={images.wavingMan} />
-        </View>
+        <Balloon text={this.getGreetingText()} />
+        <Image style={style.image} source={images.wavingMan} />
         {this.hasPendencies() ? (
           <PendenciesList
             data={this.getDataArray()}

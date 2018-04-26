@@ -110,3 +110,4 @@ class SettingsComponent extends React.Component<Props> {
 }
 
 export const Settings = connect(mapStateToProps, mapDispatchToProps)(SettingsComponent);
+export const UnconnectedSettings = SettingsComponent;

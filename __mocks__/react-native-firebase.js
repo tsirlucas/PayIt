@@ -1,3 +1,5 @@
+'use strict';
+
 export class Database {
   ref = (path) => {
     if (!this[path]) {
@@ -88,5 +90,16 @@ export default class RNFirebase {
 
   static waitForPromises() {
     return Promise.all(RNFirebase.promises);
+  }
+
+  static auth() {
+    return {
+      onAuthStateChanged: (cb) => {
+        if (cb) {
+          cb(this.snap);
+        }
+        return () => null;
+      },
+    };
   }
 }

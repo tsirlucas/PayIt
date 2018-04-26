@@ -44,7 +44,7 @@ class Routes extends React.Component<RoutesProps> {
 
   render() {
     return [
-      <StatusBar backgroundColor={primaryColor} barStyle="light-content" />,
+      <StatusBar key="status-bar" backgroundColor={primaryColor} barStyle="light-content" />,
       <Router key="router" sceneStyle={{backgroundColor: '#F5EEEE'}}>
         <Scene key="root" hideNavBar component={undefined}>
           <Stack key="authentication" hideNavBar>

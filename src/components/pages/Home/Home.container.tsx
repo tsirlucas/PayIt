@@ -99,3 +99,4 @@ const PendenciesList = (props: {data: ArrayData; openPendenciesModal: Function})
 );
 
 export const Home = connect(mapStateToProps, mapDispatchToProps)(HomeComponent);
+export const UnconnectedHome = HomeComponent;

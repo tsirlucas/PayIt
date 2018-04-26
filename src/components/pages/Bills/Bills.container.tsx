@@ -87,3 +87,4 @@ class BillsComponent extends React.Component<Props> {
   }
 }
 export const Bills = connect(mapStateToProps, mapDispatchToProps)(BillsComponent);
+export const UnconnectedBills = BillsComponent;

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {AppState, BackHandler, Platform, View} from 'react-native';
+import {AppState, BackHandler, View} from 'react-native';
 import I18n from 'react-native-i18n';
 import Picker from 'react-native-picker';
 import Icon from 'react-native-vector-icons/Ionicons';

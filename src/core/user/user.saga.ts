@@ -1,6 +1,7 @@
 import {GoogleSignin} from 'react-native-google-signin';
 import {getLanguages} from 'react-native-i18n';
 import {Actions} from 'react-native-router-flux';
+import SplashScreen from 'react-native-splash-screen';
 import {Action} from 'redux-act';
 import {eventChannel} from 'redux-saga';
 import {call, fork, put, select, take, takeLatest} from 'redux-saga/effects';
@@ -132,11 +133,13 @@ function* checkAuthSaga() {
         yield call(Actions.reset, 'authentication');
       }
       yield put(globalActions.hideActivityIndicator());
+      yield call(SplashScreen.hide);
     }
   } catch (e) {
     throw e;
   } finally {
     yield put(globalActions.hideActivityIndicator());
+    yield call(SplashScreen.hide);
   }
 }
 

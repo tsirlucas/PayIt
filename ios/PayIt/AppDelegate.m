@@ -14,6 +14,7 @@
 #import <React/RCTRootView.h>
 #import "RNFirebaseMessaging.h"
 #import "RNFirebaseNotifications.h"
+#import "SplashScreen.h"
 
 @implementation AppDelegate
 
@@ -22,7 +23,6 @@
   NSURL *jsCodeLocation;
 
   jsCodeLocation = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index" fallbackResource:nil];
-
   [FIRApp configure];
   [RNFirebaseNotifications configure];
 
@@ -37,6 +37,7 @@
   rootViewController.view = rootView;
   self.window.rootViewController = rootViewController;
   [self.window makeKeyAndVisible];
+  [SplashScreen show];
   return YES;
 }
 

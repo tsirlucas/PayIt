@@ -99,6 +99,8 @@ PODS:
     - React/Core (= 0.55.3)
   - react-native-config (0.11.5):
     - React
+  - react-native-splash-screen (3.0.6):
+    - React
   - React/Core (0.55.3):
     - yoga (= 0.55.3.React)
   - React/DevSupport (0.55.3):
@@ -125,6 +127,7 @@ DEPENDENCIES:
   - GoogleSignIn
   - Picker (from `../node_modules/react-native-picker`)
   - react-native-config (from `../node_modules/react-native-config`)
+  - react-native-splash-screen (from `../node_modules/react-native-splash-screen`)
   - React/Core (from `../node_modules/react-native`)
   - React/DevSupport (from `../node_modules/react-native`)
   - React/RCTNetwork (from `../node_modules/react-native`)
@@ -138,6 +141,8 @@ EXTERNAL SOURCES:
     :path: ../node_modules/react-native
   react-native-config:
     :path: ../node_modules/react-native-config
+  react-native-splash-screen:
+    :path: ../node_modules/react-native-splash-screen
   RNI18n:
     :path: ../node_modules/react-native-i18n
   yoga:
@@ -166,9 +171,10 @@ SPEC CHECKSUMS:
   Protobuf: 8a9838fba8dae3389230e1b7f8c104aa32389c03
   React: aa2040dbb6f317b95314968021bd2888816e03d5
   react-native-config: 408003951fd9d8b1dfd7ebf535f67c315f44d823
+  react-native-splash-screen: 8e3f866dc79bfe533baeffd0a38c33f7a7eae7f8
   RNI18n: db9be06a40336f04d136f24dd5de3f5eb9f3207c
   yoga: a23273df0088bf7f2bb7e5d7b00044ea57a2a54a
 
-PODFILE CHECKSUM: 763cc0f7bb57141713d65b8b69a16b9e0efd6f7b
+PODFILE CHECKSUM: 8d6c37c2384d824ab3393e728008aa159e149af1
 
 COCOAPODS: 1.4.0

@@ -3,6 +3,7 @@ package com.payit;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import org.devio.rn.splashscreen.SplashScreenReactPackage;
 import com.beefe.picker.PickerViewPackage;
 import im.shimo.react.prompt.RNPromptPackage;
 import com.AlexanderZaytsev.RNI18n.RNI18nPackage;
@@ -34,9 +35,10 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
-            new PickerViewPackage(),
-            new RNPromptPackage(),
-            new RNI18nPackage(),
+          new SplashScreenReactPackage(),
+          new PickerViewPackage(),
+          new RNPromptPackage(),
+          new RNI18nPackage(),
           new WheelPickerPackage(),
           new ReactNativeConfigPackage(),
           new RNGoogleSigninPackage(),

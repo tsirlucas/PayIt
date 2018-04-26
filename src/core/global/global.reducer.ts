@@ -22,7 +22,7 @@ const backdropCB = createReducer({}, initialState.backdropCB)
   .on(actions.hideBackdrop, () => null as Function);
 
 export type GlobalState = typeof initialState;
-export const global = combineReducers<GlobalState>({
+export const globalReducer = combineReducers<GlobalState>({
   activityIndicator,
   backdrop,
   backdropCB,

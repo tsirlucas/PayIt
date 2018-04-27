@@ -22,8 +22,7 @@
   "collectCoverage": true,
   "collectCoverageFrom":  [
     "src/**/*.{ts,tsx}",
-    "!src/**/index.ts",
-    "!src/models/*.ts"
+    "!src/**/index.ts"
   ],
   "coverageDirectory": "coverage",
   "moduleNameMapper": {

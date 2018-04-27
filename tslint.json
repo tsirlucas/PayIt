@@ -112,11 +112,13 @@
     "quotemark": [
       true,
       "single",
-      "jsx-double"
+      "jsx-double",
+      "avoid-escape"
     ],
     "semicolon": [
       true,
-      "always"
+      "always",
+      "ignore-bound-class-methods"
     ],
     "variable-name": [
       true,

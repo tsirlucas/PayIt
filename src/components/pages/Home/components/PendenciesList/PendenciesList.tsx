@@ -45,7 +45,7 @@ class PendenciesListComponent extends React.Component<Props> {
               })}
               iconSize={32}
               iconColor={colors.success}
-              onPressIcon={this.deletePendency}
+              onPressIcon={this.props.actions.payPendency}
             >
               <Text>{pendency.description}</Text>
               <Text note>{`${I18n.t('pendenciesList.expirationDayLabel')}: ${I18n.strftime(

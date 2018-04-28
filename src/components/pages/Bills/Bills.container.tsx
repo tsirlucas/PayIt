@@ -41,7 +41,7 @@ class BillsComponent extends React.Component<Props> {
               })}
               iconSize={32}
               iconColor={colors.danger}
-              onPressIcon={this.deleteBill}
+              onPressIcon={this.props.actions.deleteBill}
             >
               <Text>{bill.description}</Text>
               <Text note>{`${I18n.t('bills.expirationDayLabel')}: ${bill.expirationDay}`}</Text>

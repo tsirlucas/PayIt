@@ -6,4 +6,5 @@ export interface User {
   photoURL: string;
   payday?: number;
   i18n?: string;
+  fcmToken?: string;
 }

@@ -1,55 +1,54 @@
+import {Firestore} from '@google-cloud/firestore';
 import * as admin from 'firebase-admin';
 import * as functions from 'firebase-functions';
 
 import {Bill, IndexedPendencies, User, UserPendencies} from 'models';
 
-import {computePendencies} from './computePendencies';
+import {computeBillPendency} from './core/pendency';
+import {setPendency} from './rest/pendency';
 
-export const onPaydayChange = functions.firestore.document('users/{userId}').onWrite((event) => {
-  const oldUserValue: User = event.before.data() as User;
-  const newUserValue: User = event.after.data() as User;
-
-  if (oldUserValue.payday && oldUserValue.payday !== newUserValue.payday) {
-    const firestore = admin.firestore();
-
-    const pendenciesPromise = firestore.doc(`/pendencies/${newUserValue.uid}`).get();
-
-    const changes = Promise.resolve(pendenciesPromise).then((result) => {
-      return updateUserPendencies(firestore, newUserValue, result.data() as UserPendencies);
-    });
-
-    return changes;
-  } else {
-    return true;
-  }
-});
-
-async function updateUserPendencies(
-  firestore: FirebaseFirestore.Firestore,
-  user: User,
-  pendencies: UserPendencies = {id: null as string, data: null as IndexedPendencies},
-) {
-  const billsPromise = Object.keys(pendencies.data)
+const getPendenciesBills = async (firestore: Firestore, pendencies: UserPendencies) => {
+  const billsPromises = Object.keys(pendencies.data)
     .filter((key) => pendencies.data[key].type !== 'PAID')
     .map(async (key) => {
       const billSnapshot = await firestore.doc(`/bills/${pendencies.data[key].billId}`).get();
       return billSnapshot.data() as Bill;
     });
-  const bills = await Promise.all(billsPromise);
+  const result = await Promise.all(billsPromises);
 
-  const changes = bills.filter((bill) => bill).map(async (bill) => {
+  return result.filter((bill) => bill);
+};
+
+const updateUserPendencies = async (
+  firestore: Firestore,
+  user: User,
+  pendencies: UserPendencies = {id: null as string, data: null as IndexedPendencies},
+) => {
+  const bills = await getPendenciesBills(firestore, pendencies);
+
+  const changes = bills.map((bill) => {
     const {payday} = user;
     const data = pendencies.data || {};
-    const updatedPendencies = computePendencies(bill, data, payday);
+    const updatedPendency = computeBillPendency(bill, data, payday);
 
-    return await firestore.doc(`/pendencies/${user.uid}`).set(
-      {
-        id: user.uid,
-        data: {...data, ...updatedPendencies},
-      },
-      {merge: true},
-    );
+    return setPendency(firestore, user, updatedPendency);
   });
 
   return Promise.all(changes);
-}
+};
+
+export const onPaydayChange = functions.firestore
+  .document('users/{userId}')
+  .onWrite(async (event) => {
+    const oldUserValue: User = event.before.data() as User;
+    const newUserValue: User = event.after.data() as User;
+
+    if (oldUserValue.payday && oldUserValue.payday !== newUserValue.payday) {
+      const firestore = admin.firestore();
+
+      const pendencies = await firestore.doc(`/pendencies/${newUserValue.uid}`).get();
+      return updateUserPendencies(firestore, newUserValue, pendencies.data() as UserPendencies);
+    } else {
+      return true;
+    }
+  });

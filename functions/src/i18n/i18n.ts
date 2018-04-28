@@ -1,7 +1,8 @@
-import I18nCreator from 'i18n-js';
-
 import en from './locales/en';
 import pt from './locales/pt-BR';
+
+// tslint:disable-next-line:no-require-imports
+const I18nCreator = require('i18n-js');
 
 I18nCreator.defaultLocale = 'en';
 I18nCreator.fallbacks = true;

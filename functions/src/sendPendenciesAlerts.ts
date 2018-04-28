@@ -2,83 +2,52 @@ import * as admin from 'firebase-admin';
 import * as functions from 'firebase-functions';
 import * as secureCompare from 'secure-compare';
 
-import {UserPendencies} from 'models';
+import {User, UserPendencies} from 'models';
 
-import {I18n} from './i18n';
+import {buildMessage, categorizePendencies} from './core/notification/notification';
+import {sendNotificationToDevice} from './rest/notification';
+import {requestAllPendencies} from './rest/pendency';
+import {requestAllUsers} from './rest/user';
 
-export const sendPendenciesAlerts = functions.https.onRequest((req, res) => {
-  const key = req.query.key;
+const cronKeyErrorMessage =
+  'Security key does not match. Make sure your "key" URL query parameter matches the ' +
+  'cron.key environment variable.';
+
+const sendUserAlert = async (user: User, pendencies: UserPendencies) => {
+  if (user.fcmToken) {
+    const catPendencies = categorizePendencies(pendencies);
+
+    const message = buildMessage(user, catPendencies);
+    const messaging = admin.messaging();
+    if (message) {
+      await sendNotificationToDevice(messaging, user, message);
+    }
+  }
+};
+
+export const sendPendenciesAlerts = functions.https.onRequest(async (req, res) => {
+  const queryKey = req.query.key;
 
   // Exit if the keys don't match.
-  if (!secureCompare(key, functions.config().cron.key)) {
-    res
-      .status(403)
-      .send(
-        'Security key does not match. Make sure your "key" URL query parameter matches the ' +
-          'cron.key environment variable.',
-      );
+  if (!secureCompare(queryKey, functions.config().cron.key)) {
+    res.status(403).send(cronKeyErrorMessage);
 
     return null;
   }
 
   const firestore = admin.firestore();
 
-  const documentsPromise = firestore.collection('/pendencies').get();
+  const pendencies = await requestAllPendencies(firestore);
+  const users = await requestAllUsers(firestore);
 
+  // has to happen after requests for some reason
   res.send('Pendencies alerts triggered');
 
-  return documentsPromise.then((documents) => {
-    const promises: Promise<void>[] = [];
-    documents.forEach((doc) => {
-      promises.push(sendUserAlert(firestore, doc.data() as UserPendencies));
-    });
-    return Promise.all(promises);
+  const promises = Object.keys(pendencies).map((key) => {
+    const userPendencies = pendencies[key];
+    const user = users[key];
+    return sendUserAlert(user, userPendencies);
   });
+
+  return Promise.all(promises);
 });
-
-async function sendUserAlert(firestore: FirebaseFirestore.Firestore, pendencies: UserPendencies) {
-  const userSnapshot = await firestore.doc(`/users/${pendencies.id}`).get();
-  const user = userSnapshot.data();
-  if (user.fcmToken) {
-    const catPendencies = Object.keys(pendencies.data || {}).reduce(
-      (curr, next) => {
-        const pendency = pendencies.data[next];
-        if (pendency.type === 'DELAYED') curr.delayed.push(pendency);
-        if (pendency.type === 'IDEAL') curr.ideal.push(pendency);
-        return curr;
-      },
-      {
-        delayed: [],
-        ideal: [],
-      },
-    );
-    let message = '';
-    const delayedLength = catPendencies.delayed.length;
-    const idealLength = catPendencies.ideal.length;
-    I18n.locale = user.i18n || 'en';
-
-    if (delayedLength) {
-      message = I18n.t('notification.delayedStart', {count: delayedLength});
-    }
-
-    if (!delayedLength && idealLength) {
-      message = I18n.t('notification.idealStart', {message, count: idealLength});
-    }
-
-    if (delayedLength && idealLength) {
-      message = I18n.t('notification.idealEnd', {message, count: idealLength});
-    }
-    if (message.length) {
-      message = I18n.t('notification.tapAction', {message});
-
-      await admin.messaging().sendToDevice(user.fcmToken, {
-        notification: {
-          sound: 'default',
-          priority: 'high',
-          title: I18n.t('notification.pendencies'),
-          body: message,
-        },
-      });
-    }
-  }
-}

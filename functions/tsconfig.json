@@ -18,6 +18,10 @@
     "paths": {
       "models": ["../src/models/index.ts"],
       "models/*": ["../src/models/*"],
+      "core": ["src/core/index.ts"],
+      "core/*": ["src/core/*"],
+      "utils": ["src/utils/index.ts"],
+      "utils/*": ["src/utils/*"],
     },
     "typeRoots": [
       "./custom_typings",

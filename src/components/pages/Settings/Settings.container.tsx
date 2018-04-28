@@ -1,11 +1,7 @@
 import * as React from 'react';
-import {Platform, View} from 'react-native';
 import prompt from 'react-native-prompt-android';
 import {Actions} from 'react-native-router-flux';
-import Ionicons from 'react-native-vector-icons/Ionicons';
 import {connect} from 'react-redux';
-import {Body, Container, Content, Icon, Left, List, ListItem, Right, Text} from 'native-base';
-
 import {I18n} from './i18n';
 import {
   mapDispatchToProps,
@@ -13,11 +9,11 @@ import {
   mapStateToProps,
   MapStateToProps,
 } from './Settings.selectors';
-import {style} from './Settings.style';
+import {SettingsView} from './Settings.view';
 
-type Props = MapStateToProps & MapDispatchToProps;
+export type SettingsProps = MapStateToProps & MapDispatchToProps;
 
-class SettingsComponent extends React.Component<Props> {
+class SettingsComponent extends React.Component<SettingsProps> {
   changeName = () => {
     prompt(
       I18n.t('settings.personal.name.formTitle'),
@@ -41,71 +37,7 @@ class SettingsComponent extends React.Component<Props> {
   };
 
   render() {
-    return (
-      <Container>
-        <Content>
-          <Text style={style.listSeparator}>{I18n.t('settings.personal.label')}</Text>
-
-          <List style={style.list}>
-            <ListItem icon onPress={this.changeName}>
-              <Left>
-                <View style={{width: 25.7, alignItems: 'center'}}>
-                  <Ionicons
-                    name={Platform.select({ios: 'ios-person-outline', android: 'md-person'})}
-                    size={Platform.select({ios: 30, android: 24})}
-                  />
-                </View>
-              </Left>
-              <Body>
-                <Text>{I18n.t('settings.personal.name.label')}</Text>
-              </Body>
-              <Right>
-                <Text>{this.props.user.displayName}</Text>
-                <Icon name="arrow-forward" />
-              </Right>
-            </ListItem>
-            <ListItem icon>
-              <Left>
-                <View style={{width: 25.7, alignItems: 'center'}}>
-                  <Ionicons
-                    name={Platform.select({ios: 'ios-mail-outline', android: 'md-mail'})}
-                    size={Platform.select({ios: 30, android: 24})}
-                  />
-                </View>
-              </Left>
-              <Body>
-                <Text>{I18n.t('settings.personal.email.label')}</Text>
-              </Body>
-              <Right>
-                <Text>{this.props.user.email}</Text>
-                {/* <Icon name="arrow-forward" /> */}
-              </Right>
-            </ListItem>
-          </List>
-
-          <Text style={style.listSeparator}>{I18n.t('settings.financial.label')}</Text>
-          <List style={style.list}>
-            <ListItem icon onPress={this.changePayday}>
-              <Left>
-                <View style={{width: 25.7, alignItems: 'center'}}>
-                  <Ionicons
-                    name={Platform.select({ios: 'ios-calendar-outline', android: 'md-calendar'})}
-                    size={Platform.select({ios: 30, android: 28})}
-                  />
-                </View>
-              </Left>
-              <Body>
-                <Text>{I18n.t('settings.financial.payday')}</Text>
-              </Body>
-              <Right>
-                <Text>{this.props.user.payday}</Text>
-                <Icon name="arrow-forward" />
-              </Right>
-            </ListItem>
-          </List>
-        </Content>
-      </Container>
-    );
+    return <SettingsView {...this.props} changeName={this.changeName} changePayday={this.changePayday}/>;
   }
 }
 

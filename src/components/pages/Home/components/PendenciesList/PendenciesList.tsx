@@ -1,13 +1,13 @@
 import * as React from 'react';
 import {Alert, Platform, ScrollView} from 'react-native';
 import {Actions} from 'react-native-router-flux';
-import Icon from 'react-native-vector-icons/Ionicons';
 import {connect} from 'react-redux';
-import {Body, Button, List, ListItem, Text, Thumbnail} from 'native-base';
+import {List, Text} from 'native-base';
 import {colors} from 'style';
 import {getFormattedMoney} from 'utils';
 
 import {Loading} from 'components/common';
+import {BillsItem} from 'components/common/BillsList';
 
 import {I18n} from './i18n';
 import {
@@ -16,10 +16,6 @@ import {
   MapStateToProps,
   mapStateToProps,
 } from './PendenciesList.selectors';
-
-const imagesMap = {
-  default: require('assets/img/default-bill-image.png'),
-};
 
 type NavigatorProps = {type: 'delayed' | 'ideal' | 'next'};
 type Props = MapStateToProps & MapDispatchToProps & NavigatorProps;
@@ -50,35 +46,26 @@ class PendenciesListComponent extends React.Component<Props> {
       <List>
         <ScrollView alwaysBounceVertical={false}>
           {pendenciesToList.map((pendency, index) => (
-            <ListItem key={index}>
-              <Thumbnail square size={80} source={imagesMap.default} />
-              <Body>
-                <Text>{pendency.description}</Text>
-                <Text note>{`${I18n.t('pendenciesList.expirationDayLabel')}: ${I18n.strftime(
-                  new Date(pendency.expirationDay),
-                  '%d/%m/%Y',
-                )}`}</Text>
-                <Text note>{`${I18n.t('pendenciesList.valueLabel')}: ${getFormattedMoney(
-                  pendency.value,
-                )}`}</Text>
-              </Body>
-              <Button
-                style={{alignSelf: 'center'}}
-                transparent
-                rounded
-                onPress={() => this.deletePendency(pendency.id)}
-              >
-                <Icon
-                  name={Platform.select({
-                    ios: 'ios-checkmark-circle-outline',
-                    android: 'md-checkmark-circle',
-                  })}
-                  size={32}
-                  color={colors.success}
-                  style={{color: colors.success}}
-                />
-              </Button>
-            </ListItem>
+            <BillsItem
+              item={pendency}
+              key={index}
+              icon={Platform.select({
+                ios: 'ios-checkmark-circle-outline',
+                android: 'md-checkmark-circle',
+              })}
+              iconSize={32}
+              iconColor={colors.success}
+              onPressIcon={this.deletePendency}
+            >
+              <Text>{pendency.description}</Text>
+              <Text note>{`${I18n.t('pendenciesList.expirationDayLabel')}: ${I18n.strftime(
+                new Date(pendency.expirationDay),
+                '%d/%m/%Y',
+              )}`}</Text>
+              <Text note>{`${I18n.t('pendenciesList.valueLabel')}: ${getFormattedMoney(
+                pendency.value,
+              )}`}</Text>
+            </BillsItem>
           ))}
         </ScrollView>
       </List>

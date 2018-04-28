@@ -7,7 +7,7 @@ plugins:
 exclude_paths:
   - "android/*"
   - "ios/*"
-  - "*/i18n/*"
+  - "**/i18n/"
 checks:
   method-lines:
     enabled: true

@@ -1,1 +1,1 @@
-export * from './BillsForm';
+export * from './BillsForm.container';

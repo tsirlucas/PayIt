@@ -20,9 +20,9 @@ export const categorizePendencies = (pendencies: UserPendencies) => {
 export const buildMessage = (user: User, catPendencies: CategorizedPendencies) => {
   const delayedLength = catPendencies.delayed.length;
   const idealLength = catPendencies.ideal.length;
-  I18n.locale = user.i18n || 'en';
-
   let message;
+
+  I18n.locale = user.i18n || 'en';
 
   if (delayedLength) {
     message = I18n.t('notification.delayedStart', {count: delayedLength});

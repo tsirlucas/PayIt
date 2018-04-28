@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Alert, Platform, ScrollView} from 'react-native';
+import {Platform, ScrollView} from 'react-native';
 import {connect} from 'react-redux';
 import {List, Text} from 'native-base';
 import {colors} from 'style';
@@ -20,16 +20,6 @@ import {I18n} from './i18n';
 type Props = MapStateToProps & MapDispatchToProps;
 
 class BillsComponent extends React.Component<Props> {
-  deleteBill = (billId: string) => {
-    Alert.alert(I18n.t('global.confirmDialog.title'), I18n.t('global.confirmDialog.msg'), [
-      {text: I18n.t('global.confirmDialog.cancel'), style: 'cancel'},
-      {
-        text: I18n.t('global.confirmDialog.confirm'),
-        onPress: () => this.props.actions.deleteBill(billId),
-      },
-    ]);
-  };
-
   render() {
     if (this.props.bills === null) return <Loading />;
 

@@ -84,20 +84,13 @@ function* pushNotificationSetupSaga(action: Action<string>) {
     let enabled = yield FirebaseAuthService.getInstance().hasPushPermission();
 
     if (!enabled) {
-      try {
-        yield FirebaseAuthService.getInstance().requestPushPermission();
-        enabled = yield FirebaseAuthService.getInstance().hasPushPermission();
-      } catch (error) {
-        // User has rejected permissions
-      }
+      enabled = yield FirebaseAuthService.getInstance().requestPushPermission();
     }
 
     if (enabled) {
       const fcmToken = yield FirebaseAuthService.getInstance().getRegistrationToken();
 
-      if (fcmToken) {
-        yield UserRestService.getInstance().setRegistrationToken(action.payload, fcmToken);
-      }
+      yield UserRestService.getInstance().setRegistrationToken(action.payload, fcmToken);
     }
   } catch (e) {
     throw e;

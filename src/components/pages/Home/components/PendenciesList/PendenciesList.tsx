@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Alert, Platform, ScrollView} from 'react-native';
+import {Platform, ScrollView} from 'react-native';
 import {Actions} from 'react-native-router-flux';
 import {connect} from 'react-redux';
 import {List, Text} from 'native-base';
@@ -26,16 +26,6 @@ class PendenciesListComponent extends React.Component<Props> {
 
     if (pendenciesToList.length === 0) Actions.pop();
   }
-
-  deletePendency = (pendencyId: string) => {
-    Alert.alert(I18n.t('global.confirmDialog.title'), I18n.t('global.confirmDialog.msg'), [
-      {text: I18n.t('global.confirmDialog.cancel'), style: 'cancel'},
-      {
-        text: I18n.t('global.confirmDialog.confirm'),
-        onPress: () => this.props.actions.payPendency(pendencyId),
-      },
-    ]);
-  };
 
   render() {
     if (this.props.pendencies === null) return <Loading />;

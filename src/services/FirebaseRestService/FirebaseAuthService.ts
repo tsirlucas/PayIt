@@ -34,8 +34,13 @@ export class FirebaseAuthService {
     return this.firebaseService.messaging().hasPermission();
   }
 
-  requestPushPermission() {
-    return this.firebaseService.messaging().requestPermission();
+  async requestPushPermission() {
+    try {
+      const result = await this.firebaseService.messaging().requestPermission();
+      return result;
+    } catch (e) {
+      return false;
+    }
   }
 
   getRegistrationToken() {

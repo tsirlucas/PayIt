@@ -31,6 +31,6 @@ export class UserRestService {
   };
 
   public setRegistrationToken = (userId: string, token: string) => {
-    return this.collectionStore.set(userId, {fcmToken: token});
+    return this.collectionStore.set(userId, {fcmToken: token || null});
   };
 }

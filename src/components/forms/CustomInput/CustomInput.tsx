@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {Text, View} from 'react-native';
 import {Input, Item, Label} from 'native-base';
+import {$PropertyType} from 'utility-types';
 
 import {style} from './CustomInput.style';
 
@@ -19,19 +20,29 @@ type Props = {
 
 type KeyboardType = 'numeric' | 'email-address' | 'phone-pad' | 'number-pad';
 
+const onChangeTextCB = (
+  text: string,
+  onChangeText: $PropertyType<Props, 'onChangeText'>,
+  mask: $PropertyType<Props, 'mask'>,
+  unMask: $PropertyType<Props, 'unMask'>,
+) => onChangeText(unMask ? unMask(mask(text)) : text);
+
 export const CustomInput = (props: Props) => {
+  const labelStyle = props.valid ? null : style.labelError;
+  const value = props.mask && props.value ? props.mask(props.value) : props.value;
+
   return (
     <View>
       <Item floatingLabel error={!props.valid}>
-        <Label style={props.valid ? null : style.labelError}>{props.label}</Label>
+        <Label style={labelStyle}>{props.label}</Label>
         <Input
           enablesReturnKeyAutomatically
           returnKeyType={'done'}
           keyboardType={props.keyboardType as KeyboardType}
           onChangeText={(text) =>
-            props.onChangeText(props.unMask ? props.unMask(props.mask(text)) : text)
+            onChangeTextCB(text, props.onChangeText, props.mask, props.unMask)
           }
-          value={`${props.mask && props.value ? props.mask(props.value) : props.value || ''}`}
+          value={`${value || ''}`}
           onFocus={props.onFocus}
           maxLength={props.maxLength}
         />

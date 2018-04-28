@@ -5,3 +5,9 @@ plugins:
 exclude_paths:
   - "android/*"
   - "ios/*"
+   - "*/i18n/*"
+checks:
+  method-lines:
+    enabled: true
+    config:
+      threshold: 30

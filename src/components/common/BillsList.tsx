@@ -1,8 +1,11 @@
 import * as React from 'react';
+import {Alert} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {Body, Button, ListItem, Thumbnail} from 'native-base';
+import {$PropertyType} from 'utility-types';
 
 import {Bill, Pendency} from 'models';
+import {I18n} from 'src/i18n';
 
 type BillsItemProps = {
   item: Bill | Pendency;
@@ -13,9 +16,18 @@ type BillsItemProps = {
   iconColor: string;
   onPressIcon: (id: string) => void;
 };
-
 const imagesMap = {
   default: require('assets/img/default-bill-image.png'),
+};
+
+const iconAction = (id: string, action: $PropertyType<BillsItemProps, 'onPressIcon'>) => {
+  Alert.alert(I18n.t('global.confirmDialog.title'), I18n.t('global.confirmDialog.msg'), [
+    {text: I18n.t('global.confirmDialog.cancel'), style: 'cancel'},
+    {
+      text: I18n.t('global.confirmDialog.confirm'),
+      onPress: () => action(id),
+    },
+  ]);
 };
 
 export const BillsItem = (props: BillsItemProps) => (
@@ -26,7 +38,7 @@ export const BillsItem = (props: BillsItemProps) => (
       style={{alignSelf: 'center'}}
       transparent
       rounded
-      onPress={() => props.onPressIcon(props.item.id)}
+      onPress={() => iconAction(props.item.id, props.onPressIcon)}
     >
       <Icon
         name={props.icon}

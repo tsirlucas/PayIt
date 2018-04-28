@@ -2,10 +2,12 @@ plugins:
   tslint:
     enabled: true
     config: tslint.json
+  nodesecurity:
+    enabled: true
 exclude_paths:
   - "android/*"
   - "ios/*"
-   - "*/i18n/*"
+  - "*/i18n/*"
 checks:
   method-lines:
     enabled: true

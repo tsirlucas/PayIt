@@ -43,6 +43,14 @@ describe('onBillChange', () => {
     type: 'NEXT',
   };
 
+  const updatedPendency = {
+    id: pendencyKey,
+    description: 'Random New',
+    expirationDay: '2018-02-25',
+    value: 480.85,
+    type: 'NEXT',
+  };
+
   const mockedResult = {
     user: {uid: 'UID', payday: 10},
     pendencies: {
@@ -61,7 +69,7 @@ describe('onBillChange', () => {
 
   jest.mock('firebase-admin', () => ({firestore: () => null as Firestore}));
 
-  const mockedComputeBill = jest.fn();
+  const mockedComputeBill = jest.fn().mockReturnValue(updatedPendency);
   const mockedSetPendency = jest.fn();
 
   jest.mock('./core/pendency', () => ({
@@ -80,6 +88,6 @@ describe('onBillChange', () => {
 
     await wrapped(change);
     expect(mockedComputeBill).toBeCalledWith(snap.data(), {[pendencyKey]: mockedPendency}, 10);
-    expect(mockedSetPendency).toBeCalled();
+    expect(mockedSetPendency).toBeCalledWith(null, {uid: 'UID', payday: 10} ,updatedPendency});
   });
 });

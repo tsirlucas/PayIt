@@ -83,7 +83,7 @@ describe('onBillChange', () => {
   const {onBillChange} = require('./onBillChange');
   const wrapped = testHelper.wrap(onBillChange);
 
-  it('should call compute bill right and set pendency', async () => {
+  it('should call computeBillPendencies and setPendency with right parameters', async () => {
     const change = testHelper.makeChange(beforeSnap, snap);
 
     await wrapped(change);

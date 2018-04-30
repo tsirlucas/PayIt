@@ -1,6 +1,6 @@
 import {Firestore} from '@google-cloud/firestore';
 
-import {User} from 'models';
+import {User, UserPendencies} from 'models';
 
 export const requestAllUsers = async (firestore: Firestore) => {
   const usersDocuments = await firestore.collection(`/users`).get();
@@ -13,4 +13,11 @@ export const requestAllUsers = async (firestore: Firestore) => {
   });
 
   return users;
+};
+
+export const getUserPendencies = async (firestore: Firestore, userId: string) => {
+  const user = await firestore.doc(`/users/${userId}`).get();
+  const pendencies = await firestore.doc(`/pendencies/${userId}`).get();
+
+  return {user: user.data() as User, pendencies: pendencies.data() as UserPendencies};
 };

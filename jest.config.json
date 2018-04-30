@@ -3,7 +3,8 @@
   "moduleFileExtensions": [
     "ts",
     "tsx",
-    "js"
+    "js",
+    "json"
   ],
   "globals": { "ts-jest": { "tsConfigFile": "./functions/tsconfig.json" } },
   "transform": {

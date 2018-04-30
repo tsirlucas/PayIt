@@ -67,8 +67,6 @@ describe('onBillChange', () => {
     getUserPendencies: mockFunction,
   }));
 
-  jest.mock('firebase-admin', () => ({firestore: () => null as Firestore}));
-
   const mockedComputeBill = jest.fn().mockReturnValue(updatedPendency);
   const mockedSetPendency = jest.fn();
 
@@ -80,6 +78,8 @@ describe('onBillChange', () => {
     setPendency: mockedSetPendency,
   }));
 
+  jest.doMock('firebase-admin', () => ({firestore: () => null as Firestore}));
+  
   const {onBillChange} = require('./onBillChange');
   const wrapped = testHelper.wrap(onBillChange);
 

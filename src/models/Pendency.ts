@@ -5,7 +5,7 @@ export interface Pendency {
   description: string;
   type: string;
   value: number;
-  warning: boolean;
+  warning?: boolean;
 }
 
 export interface CategorizedPendencies {

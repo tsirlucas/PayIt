@@ -11,6 +11,7 @@
     ],
     "skipLibCheck": true,
     "jsx": "react",
+    "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "noImplicitAny": true,
     "preserveConstEnums": true,

@@ -5,24 +5,31 @@
     "tsx",
     "js"
   ],
+  "globals": { "ts-jest": { "tsConfigFile": "./functions/tsconfig.json" } },
   "transform": {
-    "^.+\\.(js)$": "<rootDir>/node_modules/babel-jest",
-    "^.+\\.(ts|tsx)$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    "^.+\\.tsx?$": "<rootDir>/node_modules/ts-jest/preprocessor.js",
+    "^.+\\.js$": "<rootDir>/node_modules/babel-jest"
   },
   "transformIgnorePatterns": [
     "node_modules/(?!react-native)/"
   ],
-  "testRegex": "(/src/.*\\.(test|spec))\\.(ts|tsx|js)$",
+  "testRegex": "(/(src|functions)/.*\\.(test|spec))\\.(ts|tsx|js)$",
   "testPathIgnorePatterns": [
     "\\.snap$",
     "<rootDir>/node_modules/",
-    "<rootDir>/lib/"
+    "<rootDir>/lib/",
+    "<rootDir>/functions/node_modules/",
+    "<rootDir>/functions/lib/"
   ],
   "cacheDirectory": ".jest/cache",
   "collectCoverage": true,
   "collectCoverageFrom":  [
     "src/**/*.{ts,tsx}",
-    "!src/**/index.ts"
+    "!src/**/index.ts",
+    "functions/**/*.{ts,tsx}",
+    "!functions/**/index.ts",
+    "!**/custom_typings/**/*.ts",
+    "!**/i18n/**/*.ts"
   ],
   "coverageDirectory": "coverage",
   "moduleNameMapper": {
@@ -33,7 +40,7 @@
     "^core/(.*)$": "<rootDir>/src/core/$1",
     "^models/(.*)$": "<rootDir>/src/models/$1"
   },
-  "moduleDirectories": ["node_modules", "src"],
+  "moduleDirectories": ["node_modules", "src", "functions/node_modules"],
   "setupFiles": [
     "./jest.hooks.tsx"
   ]

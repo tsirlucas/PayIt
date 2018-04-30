@@ -5,24 +5,36 @@ import {Pendency} from 'models';
 import {MomentData} from './model';
 
 export const isDelayed = (today: Moment, expirationDay: Moment) => {
-  return today.diff(expirationDay) > 0;
+  return today.isAfter(expirationDay, 'day');
 };
 
 export const hasWarning = (payday: Moment, expirationDay: Moment) => {
-  return payday.diff(expirationDay) > 0;
+  return payday.isAfter(expirationDay, 'day');
 };
 
-export const isIdeal = (today: Moment, generationDay: Moment, expirationDay: Moment) => {
-  const isGenerated = today.diff(generationDay) >= 0;
+export const isIdeal = (
+  today: Moment,
+  payday: Moment,
+  generationDay: Moment,
+  expirationDay: Moment,
+) => {
+  const isGenerated = today.isSameOrAfter(generationDay, 'day');
   const isNotDelayed = !isDelayed(today, expirationDay);
-  return isNotDelayed && isGenerated;
+  const shouldCheckPayday = !hasWarning(payday, expirationDay);
+  const isAfterPayday = shouldCheckPayday ? today.isSameOrAfter(payday, 'day') : true;
+  return isNotDelayed && isGenerated && isAfterPayday;
 };
 
-export const getType = ({todayMoment, generationMoment, expirationMoment}: MomentData) => {
+export const getType = ({
+  todayMoment,
+  generationMoment,
+  expirationMoment,
+  paydayMoment,
+}: MomentData) => {
   switch (true) {
     case isDelayed(todayMoment, expirationMoment):
       return 'DELAYED';
-    case isIdeal(todayMoment, generationMoment, expirationMoment):
+    case isIdeal(todayMoment, paydayMoment, generationMoment, expirationMoment):
       return 'IDEAL';
     default:
       return 'NEXT';

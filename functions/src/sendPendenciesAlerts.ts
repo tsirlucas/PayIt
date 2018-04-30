@@ -1,6 +1,6 @@
 import * as admin from 'firebase-admin';
 import * as functions from 'firebase-functions';
-import * as secureCompare from 'secure-compare';
+import secureCompare from 'secure-compare';
 
 import {User, UserPendencies} from 'models';
 

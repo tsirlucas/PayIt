@@ -1,4 +1,4 @@
-import * as moment from 'moment';
+import moment from 'moment';
 
 import {Bill, IndexedPendencies, Pendency} from 'models';
 
@@ -13,6 +13,7 @@ export const buildNewPendency = (bill: Bill, id: string, expiration: string, war
   return {
     id,
     description: bill.description,
+    value: bill.value,
     billId: bill.id,
     expirationDay: expiration,
     warning: warning,
@@ -29,22 +30,24 @@ export const buildPendency = (
   const pendencyKey = `${bill.id}-${expirationStringWODay}`;
 
   const newPendencyData = buildNewPendency(bill, pendencyKey, expirationString);
-  const currPendency = pendencies[pendencyKey] || ({} as Pendency);
+  const currPendency = pendencies[pendencyKey] || newPendencyData;
 
-  return {...currPendency, ...newPendencyData};
+  return currPendency;
 };
 
 export const updatePendency = (pendency: Pendency, bill: Bill, momentData: MomentData) => {
   const type = checkPaid(pendency) || getType(momentData);
 
-  let value = pendency.value;
+  let parsedPendency = pendency;
 
-  if (!value || (type === 'NEXT' || type === 'NONE')) value = bill.value;
+  if (type === 'NEXT' || type === 'NONE') {
+    parsedPendency = buildPendency(bill, {}, momentData.expirationMoment) as Pendency;
+  }
 
   return {
-    ...pendency,
+    ...parsedPendency,
+    description: bill.description,
     type,
-    value,
     warning: hasWarning(momentData.paydayMoment, momentData.expirationMoment),
   };
 };
@@ -67,7 +70,7 @@ export const buildMomentData = (bill: Bill, payday: number): MomentData => {
 
 export const computeBillPendency = (bill: Bill, pendencies: IndexedPendencies, payday: number) => {
   const momentData = buildMomentData(bill, payday);
-  const pendency = buildPendency(bill, pendencies, momentData.expirationMoment);
+  const pendency = buildPendency(bill, pendencies, momentData.expirationMoment) as Pendency;
 
   const updatedPendency = updatePendency(pendency, bill, momentData);
 

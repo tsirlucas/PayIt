@@ -20,7 +20,7 @@ export const categorizePendencies = (pendencies: UserPendencies) => {
 export const buildMessage = (user: User, catPendencies: CategorizedPendencies) => {
   const delayedLength = catPendencies.delayed.length;
   const idealLength = catPendencies.ideal.length;
-  let message;
+  let message = null;
 
   I18n.locale = user.i18n || 'en';
 
@@ -29,14 +29,14 @@ export const buildMessage = (user: User, catPendencies: CategorizedPendencies) =
   }
 
   if (!delayedLength && idealLength) {
-    message = I18n.t('notification.idealStart', {message, count: idealLength});
+    message = I18n.t('notification.idealStart', {count: idealLength});
   }
 
   if (delayedLength && idealLength) {
     message = I18n.t('notification.idealEnd', {message, count: idealLength});
   }
 
-  if (message.length) {
+  if (message) {
     message = I18n.t('notification.tapAction', {message});
   }
 

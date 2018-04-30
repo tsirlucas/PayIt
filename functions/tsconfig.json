@@ -2,6 +2,7 @@
   "compilerOptions": {
     "lib": ["es6"],
     "module": "commonjs",
+    "esModuleInterop": true,
     "outDir": "lib",
     "moduleResolution": "node",
     "skipLibCheck": true,
@@ -35,5 +36,8 @@
   "compileOnSave": true,
   "include": [
     "./src"
+  ],
+  "types": [
+    "jest"
   ]
 }

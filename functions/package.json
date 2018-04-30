@@ -2,7 +2,9 @@
   "name": "functions",
   "scripts": {
     "lint": "tslint --project tsconfig.json",
-    "build": "tsc",
+    "clean": "rimraf lib",
+    "tsc": "tsc",
+    "build": "yarn clean && yarn tsc",
     "serve": "npm run build && firebase serve --only functions",
     "shell": "npm run build && firebase functions:shell",
     "start": "npm run shell",
@@ -19,8 +21,9 @@
     "secure-compare": "3.0.1"
   },
   "devDependencies": {
+    "@types/jest": "^22.2.3",
     "tslint": "5.8.0",
-    "typescript": "2.5.3"
+    "typescript": "2.8.1"
   },
   "private": true
 }

@@ -93,6 +93,6 @@ describe('onBillChange', () => {
 
     await wrapped(change);
     expect(mockedComputeBill).toBeCalledWith(snap.data(), {[pendencyKey]: mockedPendency}, 10);
-    expect(mockedSetPendency).toBeCalledWith(null, {uid: 'UID', payday: 10} ,updatedPendency});
+    expect(mockedSetPendency).toBeCalledWith(null, {uid: 'UID', payday: 10} ,updatedPendency);
   });
 });

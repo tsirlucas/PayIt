@@ -4,7 +4,7 @@ import secureCompare from 'secure-compare';
 
 import {User, UserPendencies} from 'models';
 
-import {buildMessage, categorizePendencies} from './core/notification/notification';
+import {buildMessage, categorizePendencies} from './core/notification';
 import {sendNotificationToDevice} from './rest/notification';
 import {requestAllPendencies} from './rest/pendency';
 import {requestAllUsers} from './rest/user';
@@ -27,12 +27,10 @@ const sendUserAlert = async (user: User, pendencies: UserPendencies) => {
 
 export const sendPendenciesAlerts = functions.https.onRequest(async (req, res) => {
   const queryKey = req.query.key;
-
   // Exit if the keys don't match.
   if (!secureCompare(queryKey, functions.config().cron.key)) {
     res.status(403).send(cronKeyErrorMessage);
-
-    return null;
+    return new Promise((resolve) => resolve(null));
   }
 
   const firestore = admin.firestore();
@@ -40,14 +38,16 @@ export const sendPendenciesAlerts = functions.https.onRequest(async (req, res) =
   const pendencies = await requestAllPendencies(firestore);
   const users = await requestAllUsers(firestore);
 
-  // has to happen after requests for some reason
-  res.send('Pendencies alerts triggered');
-
   const promises = Object.keys(pendencies).map((key) => {
     const userPendencies = pendencies[key];
     const user = users[key];
     return sendUserAlert(user, userPendencies);
   });
 
-  return Promise.all(promises);
+  // has to happen after requests for some reason
+  return Promise.all(promises)
+    .then(() => {
+      return res.send('Pendencies alerts sent');
+    })
+    .catch((err) => res.status(500).send(err));
 });

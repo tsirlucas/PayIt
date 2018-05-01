@@ -14,3 +14,8 @@ export const requestAllBills = async (firestore: Firestore) => {
 
   return bills;
 };
+
+export const requestBill = async (firestore: Firestore, billId: string) => {
+  const billSnapshot = await firestore.doc(`/bills/${billId}`).get();
+  return billSnapshot.data() as Bill;
+};

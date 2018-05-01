@@ -2,6 +2,11 @@ import {Firestore} from '@google-cloud/firestore';
 
 import {IndexedPendencies, Pendency, User, UserPendencies} from 'models';
 
+export const requestUserPendencies = async (firestore: Firestore, userId: string) => {
+  const pendency = await firestore.doc(`/pendencies/${userId}`).get();
+  return pendency.data() as UserPendencies;
+};
+
 export const requestAllPendencies = async (firestore: Firestore) => {
   const pendenciesDocuments = await firestore.collection('/pendencies').get();
 

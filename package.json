@@ -10,7 +10,7 @@
     "rnunlink": "react-native unlink",
     "lint": "tslint src/**/*.ts",
     "test": "jest --config ./jest.config.json --forceExit",
-    "tsc": "tsc",
+    "tsc": "yarn lint && tsc",
     "clean": "rimraf lib",
     "build": "yarn clean && yarn tsc"
   },

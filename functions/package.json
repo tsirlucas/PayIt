@@ -3,7 +3,7 @@
   "scripts": {
     "lint": "tslint --project tsconfig.json",
     "clean": "rimraf lib",
-    "tsc": "tsc",
+    "tsc": "yarn lint && tsc",
     "build": "yarn clean && yarn tsc",
     "serve": "npm run build && firebase serve --only functions",
     "shell": "npm run build && firebase functions:shell",

@@ -1,4 +1,4 @@
-import {CategorizedPendencies, Pendency, User} from 'models';
+import {CategorizedPendencies, Pendency} from 'models';
 
 import {I18n} from '../../i18n';
 import {buildMessage, categorizePendencies} from './notification';
@@ -72,7 +72,7 @@ describe('buildMessage', () => {
       ],
     };
 
-    buildMessage({uid: 'uid', i18n: 'pt-BR'} as User, mockedPendencies as CategorizedPendencies);
+    buildMessage(mockedPendencies as CategorizedPendencies);
 
     expect(mockFunction).toBeCalledWith('notification.delayedStart', {count: 1});
     expect(mockFunction).toBeCalledWith('notification.idealEnd', {message: 'message', count: 1});
@@ -101,7 +101,7 @@ describe('buildMessage', () => {
       ],
     };
 
-    buildMessage({uid: 'uid', i18n: 'pt-BR'} as User, mockedPendencies as CategorizedPendencies);
+    buildMessage(mockedPendencies as CategorizedPendencies);
 
     expect(mockFunction).not.toBeCalledWith('notification.delayedStart');
     expect(mockFunction).toBeCalledWith('notification.idealStart', {count: 1});
@@ -130,7 +130,7 @@ describe('buildMessage', () => {
       ],
     };
 
-    buildMessage({i18n: 'pt-BR'} as User, mockedPendencies as CategorizedPendencies);
+    buildMessage(mockedPendencies as CategorizedPendencies);
 
     expect(mockFunction).toBeCalledWith('notification.delayedStart', {count: 1});
     expect(mockFunction).not.toBeCalledWith('notification.idealStart');
@@ -148,10 +148,7 @@ describe('buildMessage', () => {
       delayed: [] as Pendency[],
     };
 
-    const message = buildMessage(
-      {i18n: 'pt-BR'} as User,
-      mockedPendencies as CategorizedPendencies,
-    );
+    const message = buildMessage(mockedPendencies as CategorizedPendencies);
 
     expect(mockFunction).not.toBeCalledWith('notification.delayedStart');
     expect(mockFunction).not.toBeCalledWith('notification.idealStart');

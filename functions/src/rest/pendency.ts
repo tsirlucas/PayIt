@@ -37,7 +37,6 @@ export const setPendency = async (firestore: Firestore, user: User, pendency: Pe
   }
 
   const {data} = snapshot.data() as UserPendencies;
-
   return firestore.doc(`/pendencies/${user.uid}`).set(
     {
       data: {...data, [pendency.id]: pendency},

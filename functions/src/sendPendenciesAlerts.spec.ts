@@ -10,6 +10,7 @@ describe('sendPendenciesAlerts', () => {
   const dateString = '2018-02';
   const pendencyKey = `pendency-${dateString}`;
   const pendencyKey2 = `pendency2-${dateString}`;
+  const pendencyKey3 = `pendency3-${dateString}`;
 
   const mockedPendency = {
     id: pendencyKey,
@@ -21,6 +22,14 @@ describe('sendPendenciesAlerts', () => {
 
   const mockedPendency2 = {
     id: pendencyKey2,
+    description: 'Random Outdated',
+    expirationDay: '2018-02-20',
+    value: 450.85,
+    type: 'NEXT',
+  };
+
+  const mockedPendency3 = {
+    id: pendencyKey3,
     description: 'Random Outdated',
     expirationDay: '2018-02-20',
     value: 450.85,
@@ -41,6 +50,13 @@ describe('sendPendenciesAlerts', () => {
     },
   };
 
+  const mockedUserPendency3 = {
+    id: 'UID3',
+    data: {
+      [pendencyKey2]: mockedPendency3,
+    },
+  };
+
   const mockedUser = {
     uid: 'UID',
     fcmToken: 'fmcToken',
@@ -48,14 +64,25 @@ describe('sendPendenciesAlerts', () => {
 
   const mockedUser2 = {
     uid: 'UID2',
+    fcmToken: 'fmcToken2',
+    i18n: 'pt-BR',
+  };
+
+  const mockedUser3 = {
+    uid: 'UID3',
   };
 
   const mockedPendencies = {
     [mockedUserPendency.id]: mockedUserPendency,
     [mockedUserPendency2.id]: mockedUserPendency2,
+    [mockedUserPendency3.id]: mockedUserPendency3,
   };
 
-  const mockedUsers = {[mockedUser.uid]: mockedUser, [mockedUser2.uid]: mockedUser2};
+  const mockedUsers = {
+    [mockedUser.uid]: mockedUser,
+    [mockedUser2.uid]: mockedUser2,
+    [mockedUser3.uid]: mockedUser3,
+  };
 
   // Mock functions and requests
 
@@ -96,19 +123,27 @@ describe('sendPendenciesAlerts', () => {
   const {sendPendenciesAlerts} = require('./sendPendenciesAlerts');
 
   it(
-    'should call functions with right parameters only for users that have fcmToken',
+    'should call functions with right parameters and i18n only for users that have fcmToken',
     (done) => {
       const res = {
         send: () => {
           try {
-            expect(mockedCategorizePendencies.mock.calls.length).toBe(1);
+            expect(mockedCategorizePendencies.mock.calls.length).toBe(2);
             expect(mockedCategorizePendencies.mock.calls[0]).toEqual([mockedUserPendency]);
-            expect(mockedBuildMessage).toBeCalledWith(mockedUser, mockedCategorizePendencies());
-            expect(mockedSendNotificationToDevice).toBeCalledWith(
+            expect(mockedCategorizePendencies.mock.calls[1]).toEqual([mockedUserPendency2]);
+            expect(mockedBuildMessage).toBeCalledWith(mockedCategorizePendencies());
+            expect(mockedSendNotificationToDevice.mock.calls[0]).toEqual([
               null,
               mockedUser,
+              'Pendencies',
               mockedBuildMessage(),
-            );
+            ]);
+            expect(mockedSendNotificationToDevice.mock.calls[1]).toEqual([
+              null,
+              mockedUser2,
+              'Pendências',
+              mockedBuildMessage(),
+            ]);
             done();
           } catch (e) {
             done(e);

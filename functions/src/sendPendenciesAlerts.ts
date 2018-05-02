@@ -5,6 +5,7 @@ import secureCompare from 'secure-compare';
 import {User, UserPendencies} from 'models';
 
 import {buildMessage, categorizePendencies} from './core/notification';
+import {I18n} from './i18n';
 import {sendNotificationToDevice} from './rest/notification';
 import {requestAllPendencies} from './rest/pendency';
 import {requestAllUsers} from './rest/user';
@@ -17,10 +18,11 @@ const sendUserAlert = async (user: User, pendencies: UserPendencies) => {
   if (user.fcmToken) {
     const catPendencies = categorizePendencies(pendencies);
 
-    const message = buildMessage(user, catPendencies);
+    I18n.locale = user.i18n || 'en';
+    const message = buildMessage(catPendencies);
     const messaging = admin.messaging();
     if (message) {
-      await sendNotificationToDevice(messaging, user, message);
+      await sendNotificationToDevice(messaging, user, I18n.t('notification.pendencies'), message);
     }
   }
 };

@@ -138,7 +138,6 @@ describe('updateAllPendencies', () => {
       const res = {
         send: () => {
           try {
-            mockedSetPendencies;
             expect(mockedComputeBillPendency.mock.calls.length).toBe(2);
             expect(mockedComputeBillPendency.mock.calls[0]).toEqual([
               mockedBill,

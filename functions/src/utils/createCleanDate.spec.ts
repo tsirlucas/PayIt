@@ -1,4 +1,4 @@
-import {mockDate, mockDateString} from '../../__mocks__';
+import {mockDate} from '../../__mocks__';
 import {createCleanDate} from './createCleanDate';
 
 describe('createCleanDate util', () => {

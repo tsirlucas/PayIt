@@ -1,4 +1,4 @@
-import {Bill, Pendency, User, UserPendencies} from 'models';
+import {Bill, Pendency, User} from 'models';
 
 export const mockedUser = {
   uid: 'UID',

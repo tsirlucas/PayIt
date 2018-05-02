@@ -1,6 +1,6 @@
 import {CollectionReference, Firestore} from '@google-cloud/firestore';
 
-import {IndexedPendencies, Pendency, User} from 'models';
+import {IndexedPendencies} from 'models';
 
 import {mockedPendency, mockedPendency2, mockedUser} from '../../__mocks__';
 import {requestAllPendencies, requestUserPendencies, setPendencies, setPendency} from './pendency';
@@ -80,7 +80,7 @@ describe('pendency rest', () => {
       doc: mockedDoc,
     });
 
-    await setPendencies(mockedFirestore, mockedUser as User, mockedPendencies as IndexedPendencies);
+    await setPendencies(mockedFirestore, mockedUser, mockedPendencies as IndexedPendencies);
 
     expect(mockedDoc).toBeCalledWith(`/pendencies/${mockedUser.uid}`);
     expect(mockedSet).toBeCalledWith({id: mockedUser.uid, data: mockedPendencies});
@@ -100,7 +100,7 @@ describe('pendency rest', () => {
       doc: mockedDoc,
     });
 
-    await setPendency(mockedFirestore, mockedUser as User, mockedPendency as Pendency);
+    await setPendency(mockedFirestore, mockedUser, mockedPendency);
 
     expect(mockedDoc).toBeCalledWith(`/pendencies/${mockedUser.uid}`);
     expect(mockedGet).toBeCalled();
@@ -125,7 +125,7 @@ describe('pendency rest', () => {
       doc: mockedDoc,
     });
 
-    await setPendency(mockedFirestore, mockedUser as User, mockedPendency as Pendency);
+    await setPendency(mockedFirestore, mockedUser, mockedPendency);
 
     expect(mockedDoc).toBeCalledWith(`/pendencies/${mockedUser.uid}`);
     expect(mockedGet).toBeCalled();

@@ -51,12 +51,14 @@ export const updateAllPendencies = functions.https.onRequest(async (req, res) =>
   const bills = await requestAllBills(firestore);
   const pendencies = await requestAllPendencies(firestore);
 
-  // has to happen after requests for some reason
-  res.send('Pendencies updates triggered');
-
   const promises = Object.keys(pendencies).map((key) => {
     const userPendencies = pendencies[key];
     return updatePendencies(firestore, userPendencies, users[userPendencies.id], bills);
   });
-  return Promise.all(promises);
+
+  return Promise.all(promises)
+    .then(() => {
+      return res.send('Pendencies updates triggered');
+    })
+    .catch((err) => res.status(500).send(err));
 });

@@ -93,10 +93,7 @@ describe('sendPendenciesAlerts', () => {
     messaging: () => null as Object,
   }));
 
-  jest.doMock('secure-compare', () => (value: string, value2: string) => value === value2);
-
   const {sendPendenciesAlerts} = require('./sendPendenciesAlerts');
-  // const wrapped = testHelper.wrap(sendPendenciesAlerts);
 
   it(
     'should call functions with right parameters only for users that have fcmToken',

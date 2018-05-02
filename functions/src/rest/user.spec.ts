@@ -1,5 +1,6 @@
 import {CollectionReference, Firestore} from '@google-cloud/firestore';
 
+import {mockedPendency, mockedPendency2, mockedUser, mockedUser2} from '../../__mocks__';
 import {getUserPendencies, requestAllUsers} from './user';
 
 describe('user rest', () => {
@@ -12,9 +13,6 @@ describe('user rest', () => {
     batch: () => null,
     collection: (_collectionPath: string) => collectionSkeleton,
   } as Firestore;
-
-  const mockedUser = {uid: 'id1'};
-  const mockedUser2 = {uid: 'id2'};
 
   it('should requestAllUsers correctly', async () => {
     const mockedUserSnapData = jest.fn().mockReturnValue(mockedUser);
@@ -37,12 +35,10 @@ describe('user rest', () => {
     expect(mockedGet).toBeCalled();
     expect(mockedUserSnapData).toBeCalled();
     expect(mockedUserSnapData2).toBeCalled();
-    expect(users).toEqual({id1: mockedUser, id2: mockedUser2});
+    expect(users).toEqual({[mockedUser.uid]: mockedUser, [mockedUser2.uid]: mockedUser2});
   });
 
   it('should requestUserPendencies correctly', async () => {
-    const mockedPendency = {id: 'id1', description: 'bill 1'};
-    const mockedPendency2 = {id: 'id2', description: 'bill 2'};
     const mockedIndexedPendencies = {
       [mockedPendency.id]: mockedPendency,
       [mockedPendency2.id]: mockedPendency2,
@@ -50,7 +46,7 @@ describe('user rest', () => {
     const mockedUserSnapData = jest.fn().mockReturnValue(mockedUser);
     const userPendenciesSnapData = jest
       .fn()
-      .mockReturnValue({id: 'id1', data: mockedIndexedPendencies});
+      .mockReturnValue({id: mockedUser.uid, data: mockedIndexedPendencies});
 
     const userSnapshot = {data: mockedUserSnapData};
     const userPendenciesSnapshot = {data: userPendenciesSnapData};
@@ -67,10 +63,10 @@ describe('user rest', () => {
       doc: mockedDoc,
     });
 
-    const userAndPendencies = await getUserPendencies(mockedFirestore, 'id1');
+    const userAndPendencies = await getUserPendencies(mockedFirestore, mockedUser.uid);
 
-    expect(mockedDoc.mock.calls[0]).toEqual(['/users/id1']);
-    expect(mockedDoc.mock.calls[1]).toEqual(['/pendencies/id1']);
+    expect(mockedDoc.mock.calls[0]).toEqual([`/users/${mockedUser.uid}`]);
+    expect(mockedDoc.mock.calls[1]).toEqual([`/pendencies/${mockedUser.uid}`]);
     expect(mockedGetUser).toBeCalled();
     expect(mockedGetUserPendencies).toBeCalled();
     expect(mockedUserSnapData).toBeCalled();

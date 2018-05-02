@@ -1,41 +1,21 @@
 import {CategorizedPendencies, Pendency} from 'models';
 
+import {mockedPendency, mockedPendency2, mockedPendency3, mockedUser} from '../../../__mocks__';
 import {I18n} from '../../i18n';
 import {buildMessage, categorizePendencies} from './notification';
 
 describe('categorizePendencies', () => {
   it('should return categorized pendencies', () => {
-    const mockedPendencies = {
-      id: 'ID',
+    const mockedUserPendencies = {
+      id: mockedUser.uid,
       data: {
-        ['ID1']: {
-          id: 'ID1',
-          billId: 'billId',
-          description: 'Random',
-          expirationDay: 'random',
-          value: 450.85,
-          type: 'IDEAL',
-        },
-        ['ID2']: {
-          id: 'ID2',
-          billId: 'billId',
-          description: 'Random',
-          expirationDay: 'random',
-          value: 450.85,
-          type: 'DELAYED',
-        },
-        ['ID3']: {
-          id: 'ID3',
-          billId: 'billId',
-          description: 'Random',
-          expirationDay: 'random',
-          value: 450.85,
-          type: 'NEXT',
-        },
+        [mockedPendency.id]: {...mockedPendency, type: 'NEXT'},
+        [mockedPendency2.id]: {...mockedPendency2, type: 'IDEAL'},
+        [mockedPendency3.id]: {...mockedPendency3, type: 'DELAYED'},
       },
     };
 
-    const result = categorizePendencies(mockedPendencies);
+    const result = categorizePendencies(mockedUserPendencies);
 
     expect(Object.keys(result).length).toEqual(2);
     expect(result.ideal.length).toEqual(1);
@@ -52,24 +32,8 @@ describe('buildMessage', () => {
     I18n.t = mockFunction;
 
     const mockedPendencies = {
-      delayed: [
-        {
-          id: 'ID1',
-          description: 'Random',
-          expirationDay: 'random',
-          value: 450.85,
-          type: 'DELAYED',
-        },
-      ],
-      ideal: [
-        {
-          id: 'ID2',
-          description: 'Random',
-          expirationDay: 'random',
-          value: 450.85,
-          type: 'IDEAL',
-        },
-      ],
+      delayed: [{...mockedPendency, type: 'DELAYED'}],
+      ideal: [{...mockedPendency2, type: 'IDEAL'}],
     };
 
     buildMessage(mockedPendencies as CategorizedPendencies);
@@ -92,10 +56,7 @@ describe('buildMessage', () => {
       delayed: [] as Pendency[],
       ideal: [
         {
-          id: 'ID2',
-          description: 'Random',
-          expirationDay: 'random',
-          value: 450.85,
+          ...mockedPendency2,
           type: 'IDEAL',
         },
       ],
@@ -121,10 +82,7 @@ describe('buildMessage', () => {
       ideal: [] as Pendency[],
       delayed: [
         {
-          id: 'ID2',
-          description: 'Random',
-          expirationDay: 'random',
-          value: 450.85,
+          ...mockedPendency2,
           type: 'DELAYED',
         },
       ],

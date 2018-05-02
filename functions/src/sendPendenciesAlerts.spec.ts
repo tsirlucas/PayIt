@@ -1,75 +1,51 @@
 import {Firestore} from '@google-cloud/firestore';
 import test from 'firebase-functions-test';
 
+import {
+  mockedPendency,
+  mockedPendency2,
+  mockedPendency3,
+  mockedUser,
+  mockedUser2,
+  pendencyKey,
+  pendencyKey2,
+  pendencyKey3,
+} from '../__mocks__';
+
 describe('sendPendenciesAlerts', () => {
   const testHelper = test();
   testHelper.mockConfig({cron: {key: 'cronKey'}});
 
   // // Mock needed data
 
-  const dateString = '2018-02';
-  const pendencyKey = `pendency-${dateString}`;
-  const pendencyKey2 = `pendency2-${dateString}`;
-  const pendencyKey3 = `pendency3-${dateString}`;
-
-  const mockedPendency = {
-    id: pendencyKey,
-    description: 'Random Outdated',
-    expirationDay: '2018-02-20',
-    value: 450.85,
-    type: 'NEXT',
+  const mockedUserWithI18n = {
+    ...mockedUser2,
+    i18n: 'pt-BR',
   };
 
-  const mockedPendency2 = {
-    id: pendencyKey2,
-    description: 'Random Outdated',
-    expirationDay: '2018-02-20',
-    value: 450.85,
-    type: 'NEXT',
-  };
-
-  const mockedPendency3 = {
-    id: pendencyKey3,
-    description: 'Random Outdated',
-    expirationDay: '2018-02-20',
-    value: 450.85,
-    type: 'NEXT',
+  const mockedUser3 = {
+    uid: 'UID3',
   };
 
   const mockedUserPendency = {
-    id: 'UID',
+    id: mockedUser.uid,
     data: {
       [pendencyKey]: mockedPendency,
     },
   };
 
   const mockedUserPendency2 = {
-    id: 'UID2',
+    id: mockedUserWithI18n.uid,
     data: {
       [pendencyKey2]: mockedPendency2,
     },
   };
 
   const mockedUserPendency3 = {
-    id: 'UID3',
+    id: mockedUser3.uid,
     data: {
-      [pendencyKey2]: mockedPendency3,
+      [pendencyKey3]: mockedPendency3,
     },
-  };
-
-  const mockedUser = {
-    uid: 'UID',
-    fcmToken: 'fmcToken',
-  };
-
-  const mockedUser2 = {
-    uid: 'UID2',
-    fcmToken: 'fmcToken2',
-    i18n: 'pt-BR',
-  };
-
-  const mockedUser3 = {
-    uid: 'UID3',
   };
 
   const mockedPendencies = {
@@ -80,7 +56,7 @@ describe('sendPendenciesAlerts', () => {
 
   const mockedUsers = {
     [mockedUser.uid]: mockedUser,
-    [mockedUser2.uid]: mockedUser2,
+    [mockedUserWithI18n.uid]: mockedUserWithI18n,
     [mockedUser3.uid]: mockedUser3,
   };
 
@@ -140,7 +116,7 @@ describe('sendPendenciesAlerts', () => {
             ]);
             expect(mockedSendNotificationToDevice.mock.calls[1]).toEqual([
               null,
-              mockedUser2,
+              mockedUserWithI18n,
               'Pendências',
               mockedBuildMessage(),
             ]);

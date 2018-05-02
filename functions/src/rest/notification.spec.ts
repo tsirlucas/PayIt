@@ -1,7 +1,6 @@
 import {messaging} from 'firebase-admin';
 
-import {User} from 'models';
-
+import {mockedUser} from '../../__mocks__';
 import {sendNotificationToDevice} from './notification';
 
 describe('notification rest', () => {
@@ -19,9 +18,7 @@ describe('notification rest', () => {
       sendToDevice: mockedSendToDevice,
     } as messaging.Messaging;
 
-    const user = {uid: 'id1', fcmToken: 'fcmToken1'};
-
-    await sendNotificationToDevice(messagingApi, user as User, 'Pendencies', 'message');
+    await sendNotificationToDevice(messagingApi, mockedUser, 'Pendencies', 'message');
 
     const notification = {
       sound: 'default',
@@ -29,6 +26,6 @@ describe('notification rest', () => {
       title: 'Pendencies',
       body: 'message',
     };
-    expect(mockedSendToDevice.mock.calls[0]).toEqual([user.fcmToken, {notification}]);
+    expect(mockedSendToDevice.mock.calls[0]).toEqual([mockedUser.fcmToken, {notification}]);
   });
 });

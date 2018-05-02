@@ -1,79 +1,40 @@
 import {Firestore} from '@google-cloud/firestore';
 import test from 'firebase-functions-test';
 
+import {
+  mockedBill,
+  mockedBill2,
+  mockedPendency,
+  mockedPendency2,
+  mockedUser,
+  mockedUser2,
+  pendencyKey,
+  pendencyKey2,
+} from '../__mocks__';
+
 describe('updateAllPendencies', () => {
   const testHelper = test();
   testHelper.mockConfig({cron: {key: 'cronKey'}});
 
   // // Mock needed data
 
-  const mockedBill = {
-    id: 'ID',
-    description: 'Random New',
-    generationDay: 15,
-    expirationDay: 25,
-    frequency: 'MONTHLY',
-    permissions: {['UID']: 'AUTHOR'},
-    type: 'BILL',
-    value: 480.85,
-  };
-
-  const mockedBill2 = {
-    id: 'ID2',
-    description: 'Random New',
-    generationDay: 15,
-    expirationDay: 25,
-    frequency: 'MONTHLY',
-    permissions: {['UID']: 'AUTHOR'},
-    type: 'BILL',
-    value: 480.85,
-  };
-
-  const dateString = '2018-02';
-  const pendencyKey = `${mockedBill.id}-${dateString}`;
-  const pendencyKey2 = `${mockedBill2.id}-${dateString}`;
-
-  const mockedPendency = {
-    id: pendencyKey,
-    billId: mockedBill.id,
-    description: 'Random Outdated',
-    expirationDay: '2018-02-20',
-    value: 450.85,
-    type: 'NEXT',
-  };
-
-  const mockedPendency2 = {
-    id: pendencyKey2,
-    billId: mockedBill2.id,
-    description: 'Random Outdated',
-    expirationDay: '2018-02-20',
-    value: 450.85,
-    type: 'NEXT',
+  const mockedUserWOToken = {
+    ...mockedUser2,
+    fcmToken: null as string,
   };
 
   const mockedUserPendency = {
-    id: 'UID',
+    id: mockedUser.uid,
     data: {
       [pendencyKey]: mockedPendency,
     },
   };
 
   const mockedUserPendency2 = {
-    id: 'UID2',
+    id: mockedUserWOToken.uid,
     data: {
       [pendencyKey2]: mockedPendency2,
     },
-  };
-
-  const mockedUser = {
-    uid: 'UID',
-    fcmToken: 'fmcToken',
-    payday: 5,
-  };
-
-  const mockedUser2 = {
-    uid: 'UID2',
-    payday: 10,
   };
 
   const mockedBills = {
@@ -86,7 +47,7 @@ describe('updateAllPendencies', () => {
     [mockedUserPendency2.id]: mockedUserPendency2,
   };
 
-  const mockedUsers = {[mockedUser.uid]: mockedUser, [mockedUser2.uid]: mockedUser2};
+  const mockedUsers = {[mockedUser.uid]: mockedUser, [mockedUserWOToken.uid]: mockedUserWOToken};
 
   // Mock functions and requests
 
@@ -152,7 +113,7 @@ describe('updateAllPendencies', () => {
             expect(mockedSetPendencies.mock.calls[0]).toEqual([null, mockedUser, {ID: {id: 'ID'}}]);
             expect(mockedSetPendencies.mock.calls[1]).toEqual([
               null,
-              mockedUser2,
+              mockedUserWOToken,
               {ID2: {id: 'ID2'}},
             ]);
             done();

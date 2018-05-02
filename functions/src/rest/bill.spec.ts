@@ -1,5 +1,6 @@
 import {CollectionReference, Firestore} from '@google-cloud/firestore';
 
+import {mockedBill, mockedBill2} from '../../__mocks__';
 import {requestAllBills, requestBill} from './bill';
 
 describe('bill rest', () => {
@@ -12,9 +13,6 @@ describe('bill rest', () => {
     batch: () => null,
     collection: (_collectionPath: string) => collectionSkeleton,
   } as Firestore;
-
-  const mockedBill = {id: 'id1', description: 'bill 1'};
-  const mockedBill2 = {id: 'id2', description: 'bill 2'};
 
   it('should requestAllBills correctly', async () => {
     const mockedBillSnapData = jest.fn().mockReturnValue(mockedBill);
@@ -37,7 +35,7 @@ describe('bill rest', () => {
     expect(mockedGet).toBeCalled();
     expect(mockedBillSnapData).toBeCalled();
     expect(mockedBillSnapData2).toBeCalled();
-    expect(bills).toEqual({id1: mockedBill, id2: mockedBill2});
+    expect(bills).toEqual({[mockedBill.id]: mockedBill, [mockedBill2.id]: mockedBill2});
   });
 
   it('should requestBill correctly', async () => {

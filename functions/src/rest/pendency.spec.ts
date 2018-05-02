@@ -2,6 +2,7 @@ import {CollectionReference, Firestore} from '@google-cloud/firestore';
 
 import {IndexedPendencies, Pendency, User} from 'models';
 
+import {mockedPendency, mockedPendency2, mockedUser} from '../../__mocks__';
 import {requestAllPendencies, requestUserPendencies, setPendencies, setPendency} from './pendency';
 
 describe('pendency rest', () => {
@@ -15,8 +16,10 @@ describe('pendency rest', () => {
     collection: (_collectionPath: string) => collectionSkeleton,
   } as Firestore;
 
-  const mockedPendency = {id: 'id1', description: 'bill 1'};
-  const mockedPendency2 = {id: 'id2', description: 'bill 2'};
+  const mockedPendencies = {
+    [mockedPendency.id]: mockedPendency,
+    [mockedPendency2.id]: mockedPendency2,
+  } as {[index: string]: Object};
 
   it('should requestAllPendencies correctly', async () => {
     const mockedPendencySnapData = jest.fn().mockReturnValue(mockedPendency);
@@ -39,7 +42,10 @@ describe('pendency rest', () => {
     expect(mockedGet).toBeCalled();
     expect(mockedPendencySnapData).toBeCalled();
     expect(mockedPendencySnapData2).toBeCalled();
-    expect(pendencies).toEqual({id1: mockedPendency, id2: mockedPendency2});
+    expect(pendencies).toEqual({
+      [mockedPendency.id]: mockedPendency,
+      [mockedPendency2.id]: mockedPendency2,
+    });
   });
 
   it('should requestUserPendencies correctly', async () => {
@@ -56,21 +62,15 @@ describe('pendency rest', () => {
       doc: mockedDoc,
     });
 
-    const pendency = await requestUserPendencies(mockedFirestore, 'id1');
+    const pendency = await requestUserPendencies(mockedFirestore, mockedUser.uid);
 
-    expect(mockedDoc).toBeCalledWith('/pendencies/id1');
+    expect(mockedDoc).toBeCalledWith(`/pendencies/${mockedUser.uid}`);
     expect(mockedGet).toBeCalled();
     expect(mockedPendencySnapData).toBeCalled();
     expect(pendency).toEqual(mockedPendency);
   });
 
   it('should setPendencies correctly', async () => {
-    const mockedUser = {uid: 'id1'};
-    const mockedPendencies = {
-      ['id1']: mockedPendency,
-      ['id2']: mockedPendency2,
-    } as {[index: string]: Object};
-
     const mockedSet = jest.fn();
     const mockedDoc = jest
       .fn<CollectionReference>()
@@ -82,17 +82,11 @@ describe('pendency rest', () => {
 
     await setPendencies(mockedFirestore, mockedUser as User, mockedPendencies as IndexedPendencies);
 
-    expect(mockedDoc).toBeCalledWith('/pendencies/id1');
+    expect(mockedDoc).toBeCalledWith(`/pendencies/${mockedUser.uid}`);
     expect(mockedSet).toBeCalledWith({id: mockedUser.uid, data: mockedPendencies});
   });
 
   it("should setPendency correctly when pendency doesn't exist", async () => {
-    const mockedUser = {uid: 'id1'};
-    const mockedPendencies = {
-      ['id1']: mockedPendency,
-      ['id2']: mockedPendency2,
-    } as {[index: string]: Object};
-
     const mockedUserPendencies = {id: mockedUser.uid, data: mockedPendencies};
 
     const mockedData = jest.fn().mockReturnValue(mockedUserPendencies);
@@ -108,7 +102,7 @@ describe('pendency rest', () => {
 
     await setPendency(mockedFirestore, mockedUser as User, mockedPendency as Pendency);
 
-    expect(mockedDoc).toBeCalledWith('/pendencies/id1');
+    expect(mockedDoc).toBeCalledWith(`/pendencies/${mockedUser.uid}`);
     expect(mockedGet).toBeCalled();
     expect(mockedData.mock.calls.length).toBe(0);
     expect(mockedSet).toBeCalledWith({
@@ -118,12 +112,6 @@ describe('pendency rest', () => {
   });
 
   it('should setPendency correctly when exists', async () => {
-    const mockedUser = {uid: 'id1'};
-    const mockedPendencies = {
-      ['id1']: mockedPendency,
-      ['id2']: mockedPendency2,
-    } as {[index: string]: Object};
-
     const mockedUserPendencies = {id: mockedUser.uid, data: mockedPendencies};
 
     const mockedData = jest.fn().mockReturnValue(mockedUserPendencies);
@@ -139,7 +127,7 @@ describe('pendency rest', () => {
 
     await setPendency(mockedFirestore, mockedUser as User, mockedPendency as Pendency);
 
-    expect(mockedDoc).toBeCalledWith('/pendencies/id1');
+    expect(mockedDoc).toBeCalledWith(`/pendencies/${mockedUser.uid}`);
     expect(mockedGet).toBeCalled();
     expect(mockedData).toBeCalled();
     expect(mockedSet).toBeCalledWith({data: mockedPendencies}, {merge: true});

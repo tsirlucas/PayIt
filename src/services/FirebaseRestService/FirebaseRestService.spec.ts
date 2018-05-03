@@ -33,7 +33,6 @@ describe('FirebaseRestService', () => {
   });
 
   it('should get an entity with firestore', async () => {
-    const service = new FirebaseRestService('random');
     const result = await service.get('id');
     expect(mockedDoc).toBeCalledWith('id');
     expect(result).toEqual({id: 'id', result: 'result'});

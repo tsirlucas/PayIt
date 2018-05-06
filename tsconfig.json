@@ -38,7 +38,7 @@
       "utils/*": ["src/utils/*"],
       "style": ["src/style/index.ts"],
       "style/*": ["src/style/*"],
-      "tests": ["tests/index.ts"],
+      "tests": ["tests"],
       "tests/*": ["tests/*"]
     }
   },

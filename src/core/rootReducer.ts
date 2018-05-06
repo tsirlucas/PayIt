@@ -1,20 +1,22 @@
-import {combineReducers} from 'redux';
+import {combineReducers, Reducer} from 'redux';
+import {DeepReadonly} from 'utility-types';
 
-import {bills, BillsState} from 'core/bills';
-import {globalReducer, GlobalState} from 'core/global';
-import {pendencies, PendenciesState} from 'core/pendencies';
-import {user, UserState} from 'core/user';
+import {bills} from 'core/bills';
+import {globalReducer} from 'core/global';
+import {pendencies} from 'core/pendencies';
+import {user} from 'core/user';
 
-export type RootState = {
-  global: GlobalState;
-  user: UserState;
-  bills: BillsState;
-  pendencies: PendenciesState;
-};
-
-export const rootReducer = combineReducers<RootState>({
+const rootReducerObj = {
   global: globalReducer,
   user,
   bills,
   pendencies,
-});
+};
+
+type RootType = typeof rootReducerObj;
+type UnboxReducer<T> = T extends Reducer<infer U> ? U : T;
+
+// State should be readonly
+export type RootState = DeepReadonly<{[P in keyof RootType]: UnboxReducer<RootType[P]>}>;
+
+export const rootReducer = combineReducers<RootState>(rootReducerObj);

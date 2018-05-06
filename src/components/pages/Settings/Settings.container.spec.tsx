@@ -1,5 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
+import {DeepReadonly} from 'utility-types';
+
 import {actions} from 'core/user';
 import {User} from 'models';
 
@@ -10,10 +12,12 @@ function wrap() {
     actions: {
       changeUserName: actions.changeUserName,
     },
-    user: {uid: 'random', payday: 10, displayName: 'Username'} as User,
+    user: {uid: 'random', payday: 10, displayName: 'Username'} as DeepReadonly<User>,
   };
 
-  const enzymeWrapper = renderer.create(<UnconnectedSettings {...props} />);
+  type propsType = typeof props;
+
+  const enzymeWrapper = renderer.create(<UnconnectedSettings {...props as propsType} />);
 
   return {
     props,

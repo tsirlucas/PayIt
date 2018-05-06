@@ -1,13 +1,18 @@
-import {bindActionCreators, Dispatch} from 'redux';
-import {$Call} from 'utility-types';
+import {Action, bindActionCreators, Dispatch} from 'redux';
 
 import {actions as globalActions} from 'core/global';
+import {RootState} from 'src/core';
 
-export const mapDispatchToProps = (dispatch: Dispatch<any>) => ({
+export const mapStateToProps = (state: RootState) => ({
+  backdrop: state.global.backdrop,
+});
+
+export const mapDispatchToProps = (dispatch: Dispatch<Action>) => ({
   actions: bindActionCreators(
     {showBackdrop: globalActions.showBackdrop, hideBackdrop: globalActions.hideBackdrop},
     dispatch,
   ),
 });
 
-export type MapDispatchToProps = $Call<typeof mapDispatchToProps>;
+export type MapStateToProps = ReturnType<typeof mapStateToProps>;
+export type MapDispatchToProps = ReturnType<typeof mapDispatchToProps>;

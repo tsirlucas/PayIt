@@ -6,7 +6,6 @@ import {actions} from './global.actions';
 export const initialState = {
   activityIndicator: false,
   backdrop: false,
-  backdropCB: null as Function,
 };
 
 const activityIndicator = createReducer({}, initialState.activityIndicator)
@@ -17,13 +16,8 @@ const backdrop = createReducer({}, initialState.backdrop)
   .on(actions.showBackdrop, () => true)
   .on(actions.hideBackdrop, () => false);
 
-const backdropCB = createReducer({}, initialState.backdropCB)
-  .on(actions.showBackdrop, (_state, payload) => payload.closeCB)
-  .on(actions.hideBackdrop, () => null as Function);
-
 export type GlobalState = typeof initialState;
 export const globalReducer = combineReducers<GlobalState>({
   activityIndicator,
   backdrop,
-  backdropCB,
 });

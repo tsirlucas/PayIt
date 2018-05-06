@@ -6,7 +6,12 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import {connect} from 'react-redux';
 import {Input, Item, Label} from 'native-base';
 
-import {MapDispatchToProps, mapDispatchToProps} from './PickerSelect.selectors';
+import {
+  MapDispatchToProps,
+  mapDispatchToProps,
+  mapStateToProps,
+  MapStateToProps,
+} from './PickerSelect.selectors';
 
 type Value = string | number;
 type ItemT = {value: Value; label: string; key?: string};
@@ -19,7 +24,7 @@ type ComponentProps = {
 };
 type MappedValues = {[index: string]: Value};
 
-type Props<T extends ComponentProps> = T & MapDispatchToProps;
+type Props<T extends ComponentProps> = T & MapStateToProps & MapDispatchToProps;
 
 type State = {
   value: Value;
@@ -51,6 +56,14 @@ class PickerSelectComponent<T extends ComponentProps> extends React.Component<Pr
       this.props.onValueChange(this.props.items[0].value);
     } else {
       this.setState({value});
+    }
+
+    this.checkIfPickerShouldClose(this.props.backdrop, nextProps.backdrop);
+  }
+
+  checkIfPickerShouldClose(currBackdrop: boolean, nextBackdrop: boolean) {
+    if (currBackdrop !== nextBackdrop && !nextBackdrop) {
+      this.closePicker();
     }
   }
 
@@ -87,7 +100,7 @@ class PickerSelectComponent<T extends ComponentProps> extends React.Component<Pr
 
   openPicker = () => {
     Picker.show();
-    this.props.actions.showBackdrop({closeCB: this.closePicker});
+    this.props.actions.showBackdrop();
     this.setState({...this.state, isPickerShow: true});
     BackHandler.addEventListener('hardwareBackPress', this.closePicker);
     AppState.addEventListener('change', this.closeIfBackground);
@@ -132,4 +145,4 @@ class PickerSelectComponent<T extends ComponentProps> extends React.Component<Pr
   }
 }
 
-export const PickerSelect = connect(null, mapDispatchToProps)(PickerSelectComponent);
+export const PickerSelect = connect(mapStateToProps, mapDispatchToProps)(PickerSelectComponent);

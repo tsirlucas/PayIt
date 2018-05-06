@@ -30,5 +30,6 @@
   "importSorter.importStringConfiguration.spacingPerImportExpression.afterStartingBracket": 0,
   "importSorter.importStringConfiguration.spacingPerImportExpression.beforeEndingBracket": 0,
   "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": false,
-  "importSorter.sortConfiguration.joinImportPaths": false,
+"importSorter.sortConfiguration.joinImportPaths": false,
+"typescript.tsdk": "./node_modules/typescript/lib",
 }

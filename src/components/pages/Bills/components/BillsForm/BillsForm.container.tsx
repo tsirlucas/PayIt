@@ -104,4 +104,5 @@ class BillsFormComponent extends React.Component<BillsFormProps, State> {
     );
   }
 }
+export const UnconnectedBillsForm = BillsFormComponent;
 export const BillsForm = connect(mapStateToProps, mapDispatchToProps)(BillsFormComponent);

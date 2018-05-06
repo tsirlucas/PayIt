@@ -1,5 +1,4 @@
 import {bindActionCreators, Dispatch} from 'redux';
-import {$Call} from 'utility-types';
 
 import {actions} from 'core/bills';
 import {RootState} from 'core/rootReducer';
@@ -13,5 +12,5 @@ export const mapDispatchToProps = (dispatch: Dispatch<any>) => ({
   actions: bindActionCreators({saveBill: actions.saveBill}, dispatch),
 });
 
-export type MapDispatchToProps = $Call<typeof mapDispatchToProps>;
-export type MapStateToProps = $Call<typeof mapStateToProps>;
+export type MapDispatchToProps = ReturnType<typeof mapDispatchToProps>;
+export type MapStateToProps = ReturnType<typeof mapStateToProps>;

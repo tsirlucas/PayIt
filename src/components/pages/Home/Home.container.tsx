@@ -4,7 +4,6 @@ import {connect} from 'react-redux';
 import {Card, Container, List, Text} from 'native-base';
 
 import {Loading} from 'components/common';
-import {Pendency} from 'models';
 
 import {Balloon} from './components';
 import {
@@ -20,7 +19,7 @@ const images = {
   wavingMan: require('assets/img/home.png'),
 };
 
-type ArrayData = {title: string; data: Pendency[]}[];
+type ArrayData = {title: string; data: MapStateToProps['pendencies']['ideal']};
 
 class HomeComponent extends React.Component<MapStateToProps & MapDispatchToProps> {
   getDataArray = () => {
@@ -78,7 +77,7 @@ const NoPendencies = () => (
   </View>
 );
 
-const PendenciesList = (props: {data: ArrayData; openPendenciesModal: Function}) => (
+const PendenciesList = (props: {data: ArrayData[]; openPendenciesModal: Function}) => (
   <List
     style={style.list}
     contentContainerStyle={style.listContent}

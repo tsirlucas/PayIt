@@ -1,5 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
+import {DeepReadonly} from 'utility-types';
+
 import {actions as pendenciesActions} from 'core/pendencies';
 import {CategorizedPendencies, Pendency} from 'models';
 
@@ -10,15 +12,17 @@ function wrap(pendencies: CategorizedPendencies) {
     actions: {
       openPendenciesModal: pendenciesActions.openPendenciesModal,
     },
-    pendencies: pendencies,
+    pendencies: pendencies as DeepReadonly<CategorizedPendencies>,
     userName: 'Username',
   };
 
-  const enzymeWrapper = renderer.create(<UnconnectedHome {...props} />);
+  type propsType = typeof props;
+
+  const wrapper = renderer.create(<UnconnectedHome {...props as propsType} />);
 
   return {
     props,
-    component: enzymeWrapper,
+    component: wrapper,
   };
 }
 

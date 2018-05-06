@@ -1,6 +1,6 @@
 import {CategorizedPendencies, Pendency} from 'models';
+import {mockedPendency, mockedPendency2, mockedPendency3, mockedUser} from 'tests';
 
-import {mockedPendency, mockedPendency2, mockedPendency3, mockedUser} from '../../../__mocks__';
 import {I18n} from '../../i18n';
 import {buildMessage, categorizePendencies} from './notification';
 

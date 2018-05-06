@@ -11,15 +11,16 @@ function wrap() {
     },
   };
 
-  const enzymeWrapper = renderer.create(<UnconnectedLogin {...props} />);
+  const wrapper = renderer.create(<UnconnectedLogin {...props} />);
 
   return {
     props,
-    component: enzymeWrapper,
+    component: wrapper,
   };
 }
-
-it('should render Login page without crashing', () => {
-  const rendered = wrap().component.toJSON();
-  expect(rendered).toBeTruthy();
+describe('Login container', () => {
+  it('should render Login page without crashing', () => {
+    const rendered = wrap().component.toJSON();
+    expect(rendered).toBeTruthy();
+  });
 });

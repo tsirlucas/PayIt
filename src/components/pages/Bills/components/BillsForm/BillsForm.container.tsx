@@ -15,8 +15,7 @@ import {
 } from './BillsForm.selectors';
 import {I18n} from './i18n';
 
-type NavigatorProps = {billId?: string};
-export type BillsFormProps = MapStateToProps & MapDispatchToProps & NavigatorProps;
+export type BillsFormProps = MapStateToProps & MapDispatchToProps;
 
 type State = {bill: Bill; valid: {[index: string]: boolean}};
 

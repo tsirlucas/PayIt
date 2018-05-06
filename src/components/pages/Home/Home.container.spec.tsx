@@ -25,35 +25,36 @@ function wrap(pendencies: CategorizedPendencies) {
     component: wrapper,
   };
 }
+describe('Home container', () => {
+  it('should render Home page with no pendencies without crashing', () => {
+    const rendered = wrap({
+      delayed: [] as Pendency[],
+      ideal: [] as Pendency[],
+      next: [] as Pendency[],
+    }).component.toJSON();
+    expect(rendered).toBeTruthy();
+  });
 
-it('should render Home page with no pendencies without crashing', () => {
-  const rendered = wrap({
-    delayed: [] as Pendency[],
-    ideal: [] as Pendency[],
-    next: [] as Pendency[],
-  }).component.toJSON();
-  expect(rendered).toBeTruthy();
-});
+  it('should render Home page loading pendencies without crashing', () => {
+    const rendered = wrap(null as CategorizedPendencies).component.toJSON();
+    expect(rendered).toBeTruthy();
+  });
 
-it('should render Home page loading pendencies without crashing', () => {
-  const rendered = wrap(null as CategorizedPendencies).component.toJSON();
-  expect(rendered).toBeTruthy();
-});
-
-it('should render Home page with pendencies without crashing', () => {
-  const pendency = {
-    id: 'randomid',
-    billId: 'billid',
-    expirationDay: 'random',
-    description: 'random',
-    type: 'random',
-    value: 200.57,
-    warning: true,
-  };
-  const rendered = wrap({
-    delayed: [pendency] as Pendency[],
-    ideal: [pendency] as Pendency[],
-    next: [pendency] as Pendency[],
-  }).component.toJSON();
-  expect(rendered).toBeTruthy();
+  it('should render Home page with pendencies without crashing', () => {
+    const pendency = {
+      id: 'randomid',
+      billId: 'billid',
+      expirationDay: 'random',
+      description: 'random',
+      type: 'random',
+      value: 200.57,
+      warning: true,
+    };
+    const rendered = wrap({
+      delayed: [pendency] as Pendency[],
+      ideal: [pendency] as Pendency[],
+      next: [pendency] as Pendency[],
+    }).component.toJSON();
+    expect(rendered).toBeTruthy();
+  });
 });

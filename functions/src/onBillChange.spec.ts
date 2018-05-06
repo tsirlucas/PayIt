@@ -8,7 +8,7 @@ import {
   mockedUpdatedPendency,
   mockedUpdatedUser,
   pendencyKey,
-} from '../__mocks__';
+} from 'tests';
 
 describe('onBillChange', () => {
   const testHelper = test();

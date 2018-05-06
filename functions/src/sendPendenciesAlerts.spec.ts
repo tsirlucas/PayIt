@@ -10,7 +10,7 @@ import {
   pendencyKey,
   pendencyKey2,
   pendencyKey3,
-} from '../__mocks__';
+} from 'tests';
 
 describe('sendPendenciesAlerts', () => {
   const testHelper = test();

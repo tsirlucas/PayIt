@@ -10,7 +10,7 @@ import {
   mockedUser2,
   pendencyKey,
   pendencyKey2,
-} from '../__mocks__';
+} from 'tests';
 
 describe('updateAllPendencies', () => {
   const testHelper = test();

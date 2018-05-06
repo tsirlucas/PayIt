@@ -1,8 +1,8 @@
 import {CollectionReference, Firestore} from '@google-cloud/firestore';
 
 import {IndexedPendencies} from 'models';
+import {mockedPendency, mockedPendency2, mockedUser} from 'tests';
 
-import {mockedPendency, mockedPendency2, mockedUser} from '../../__mocks__';
 import {requestAllPendencies, requestUserPendencies, setPendencies, setPendency} from './pendency';
 
 describe('pendency rest', () => {

@@ -17,15 +17,16 @@ function wrap() {
 
   type propsType = typeof props;
 
-  const enzymeWrapper = renderer.create(<UnconnectedSettings {...props as propsType} />);
+  const wrapper = renderer.create(<UnconnectedSettings {...props as propsType} />);
 
   return {
     props,
-    component: enzymeWrapper,
+    component: wrapper,
   };
 }
-
-it('should render Settings page without crashing', () => {
-  const rendered = wrap().component.toJSON();
-  expect(rendered).toBeTruthy();
+describe('BillsForm container', () => {
+  it('should render Settings page without crashing', () => {
+    const rendered = wrap().component.toJSON();
+    expect(rendered).toBeTruthy();
+  });
 });

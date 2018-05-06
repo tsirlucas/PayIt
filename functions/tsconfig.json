@@ -19,6 +19,8 @@
     "paths": {
       "models": ["../src/models/index.ts"],
       "models/*": ["../src/models/*"],
+      "tests": ["../tests/index.ts"],
+      "tests/*": ["../tests/*"],
       "core": ["src/core/index.ts"],
       "core/*": ["src/core/*"],
       "utils": ["src/utils/index.ts"],

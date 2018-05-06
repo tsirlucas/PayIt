@@ -1,6 +1,7 @@
 import {CollectionReference, Firestore} from '@google-cloud/firestore';
 
-import {mockedBill, mockedBill2} from '../../__mocks__';
+import {mockedBill, mockedBill2} from 'tests';
+
 import {requestAllBills, requestBill} from './bill';
 
 describe('bill rest', () => {

@@ -12,7 +12,7 @@ import {
   mockedUser,
   pendencyKey,
   pendencyKey2,
-} from '../__mocks__';
+} from 'tests';
 
 describe('onPaydayChange', () => {
   const testHelper = test();

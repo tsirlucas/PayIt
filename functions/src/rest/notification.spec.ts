@@ -1,6 +1,7 @@
 import {messaging} from 'firebase-admin';
 
-import {mockedUser} from '../../__mocks__';
+import {mockedUser} from 'tests';
+
 import {sendNotificationToDevice} from './notification';
 
 describe('notification rest', () => {

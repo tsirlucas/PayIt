@@ -1,11 +1,11 @@
 import {IndexedPendencies} from 'models';
-
 import {
   mockDate,
   mockDateStringWOHours,
   mockedPendency as pendencySkeleton,
   mockedUpdatedBill as updatedBillSkeleton,
-} from '../../../__mocks__';
+} from 'tests';
+
 import {computeBillPendency} from './pendency';
 
 describe('computeBillPendency', () => {

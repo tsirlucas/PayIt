@@ -1,6 +1,7 @@
 import {CollectionReference, Firestore} from '@google-cloud/firestore';
 
-import {mockedPendency, mockedPendency2, mockedUser, mockedUser2} from '../../__mocks__';
+import {mockedPendency, mockedPendency2, mockedUser, mockedUser2} from 'tests';
+
 import {getUserPendencies, requestAllUsers} from './user';
 
 describe('user rest', () => {

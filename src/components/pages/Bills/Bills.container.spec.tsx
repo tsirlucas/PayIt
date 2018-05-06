@@ -30,15 +30,16 @@ function wrap() {
     bills,
   };
 
-  const enzymeWrapper = renderer.create(<UnconnectedBills {...props} />);
+  const wrapper = renderer.create(<UnconnectedBills {...props} />);
 
   return {
     props,
-    component: enzymeWrapper,
+    component: wrapper,
   };
 }
-
-it('should render Bills page without crashing', () => {
-  const rendered = wrap().component.toJSON();
-  expect(rendered).toBeTruthy();
+describe('Bills container', () => {
+  it('should render Bills page without crashing', () => {
+    const rendered = wrap().component.toJSON();
+    expect(rendered).toBeTruthy();
+  });
 });

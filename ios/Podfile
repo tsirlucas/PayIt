@@ -15,6 +15,7 @@ target 'PayIt' do
   pod "yoga", :path => "../node_modules/react-native/ReactCommon/yoga"
   pod 'React', :path => '../node_modules/react-native', :subspecs => [
 	'Core',
+	'CxxBridge',
 	'DevSupport',
 	'RCTNetwork',
     # Add any other subspecs you want to use in your project
@@ -51,4 +52,8 @@ post_install do |installer|
 		target.build_phases.move(phase,0)
 	  end
 	end
+	
+	if target.name == "React"
+		target.remove_from_project
+	  end
   end

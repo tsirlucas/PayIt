@@ -1,10 +1,12 @@
 PODS:
+  - boost-for-react-native (1.63.0)
   - BoringSSL (10.0.2):
     - BoringSSL/Implementation (= 10.0.2)
     - BoringSSL/Interface (= 10.0.2)
   - BoringSSL/Implementation (10.0.2):
     - BoringSSL/Interface (= 10.0.2)
   - BoringSSL/Interface (10.0.2)
+  - DoubleConversion (1.1.5)
   - Firebase/Auth (4.13.0):
     - Firebase/Core
     - FirebaseAuth (= 4.6.1)
@@ -42,6 +44,11 @@ PODS:
     - FirebaseInstanceID (~> 2.0)
     - GoogleToolboxForMac/Logger (~> 2.1)
     - Protobuf (~> 3.5)
+  - Folly (2016.09.26.00):
+    - boost-for-react-native
+    - DoubleConversion
+    - glog
+  - glog (0.3.4)
   - GoogleSignIn (4.1.2):
     - GoogleToolboxForMac/NSDictionary+URLArguments (~> 2.1)
     - GoogleToolboxForMac/NSString+URLArguments (~> 2.1)
@@ -103,10 +110,24 @@ PODS:
     - React
   - React/Core (0.55.3):
     - yoga (= 0.55.3.React)
+  - React/CxxBridge (0.55.3):
+    - Folly (= 2016.09.26.00)
+    - React/Core
+    - React/cxxreact
+  - React/cxxreact (0.55.3):
+    - boost-for-react-native (= 1.63.0)
+    - Folly (= 2016.09.26.00)
+    - React/jschelpers
+    - React/jsinspector
   - React/DevSupport (0.55.3):
     - React/Core
     - React/RCTWebSocket
   - React/fishhook (0.55.3)
+  - React/jschelpers (0.55.3):
+    - Folly (= 2016.09.26.00)
+    - React/PrivateDatabase
+  - React/jsinspector (0.55.3)
+  - React/PrivateDatabase (0.55.3)
   - React/RCTBlob (0.55.3):
     - React/Core
   - React/RCTNetwork (0.55.3):
@@ -116,6 +137,8 @@ PODS:
     - React/fishhook
     - React/RCTBlob
   - RNI18n (2.0.12):
+    - React
+  - RNVectorIcons (4.6.0):
     - React
   - yoga (0.55.3.React)
 
@@ -129,9 +152,11 @@ DEPENDENCIES:
   - react-native-config (from `../node_modules/react-native-config`)
   - react-native-splash-screen (from `../node_modules/react-native-splash-screen`)
   - React/Core (from `../node_modules/react-native`)
+  - React/CxxBridge (from `../node_modules/react-native`)
   - React/DevSupport (from `../node_modules/react-native`)
   - React/RCTNetwork (from `../node_modules/react-native`)
   - RNI18n (from `../node_modules/react-native-i18n`)
+  - RNVectorIcons (from `../node_modules/react-native-vector-icons`)
   - yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 EXTERNAL SOURCES:
@@ -145,11 +170,15 @@ EXTERNAL SOURCES:
     :path: ../node_modules/react-native-splash-screen
   RNI18n:
     :path: ../node_modules/react-native-i18n
+  RNVectorIcons:
+    :path: ../node_modules/react-native-vector-icons
   yoga:
     :path: ../node_modules/react-native/ReactCommon/yoga
 
 SPEC CHECKSUMS:
+  boost-for-react-native: 39c7adb57c4e60d6c5479dd8623128eb5b3f0f2c
   BoringSSL: 60dd24df4af296bf41d78e5841dbb95d75f88c0d
+  DoubleConversion: e22e0762848812a87afd67ffda3998d9ef29170c
   Firebase: 5ec5e863d269d82d66b4bf56856726f8fb8f0fb3
   FirebaseAnalytics: 7ef69e76a5142f643aeb47c780e1cdce4e23632e
   FirebaseAuth: bf22cacf22c60ab454bf2636f556d8892b10b53f
@@ -157,6 +186,8 @@ SPEC CHECKSUMS:
   FirebaseFirestore: e92a096ce80c7b4b905d4e9d41dbd944adc9d2a5
   FirebaseInstanceID: 8d20d890d65c917f9f7d9950b6e10a760ad34321
   FirebaseMessaging: 75cdb862e86c30e0913a2ff307e48d49357c5b73
+  Folly: 211775e49d8da0ca658aebc8eab89d642935755c
+  glog: 1de0bb937dccdc981596d3b5825ebfb765017ded
   GoogleSignIn: d9ef55b10f0aa401a5de2747f59b725e4b9732ac
   GoogleToolboxForMac: 91c824d21e85b31c2aae9bb011c5027c9b4e738f
   gRPC: 70703dc9ba31c72341fc7f37745cc1c379edee96
@@ -173,8 +204,9 @@ SPEC CHECKSUMS:
   react-native-config: 408003951fd9d8b1dfd7ebf535f67c315f44d823
   react-native-splash-screen: 8e3f866dc79bfe533baeffd0a38c33f7a7eae7f8
   RNI18n: db9be06a40336f04d136f24dd5de3f5eb9f3207c
+  RNVectorIcons: c0dbfbf6068fefa240c37b0f71bd03b45dddac44
   yoga: a23273df0088bf7f2bb7e5d7b00044ea57a2a54a
 
-PODFILE CHECKSUM: 8d6c37c2384d824ab3393e728008aa159e149af1
+PODFILE CHECKSUM: a8adca05977aa915d0b84e0bafa3e615792c2732
 
 COCOAPODS: 1.4.0

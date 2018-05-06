@@ -120,9 +120,9 @@ android {
     signingConfigs {
         release {
             storeFile file(MYAPP_STORE_FILE)
-            storePassword System.getenv("PAYIT_ANDROID_KEYSTORE")
+            storePassword PAYIT_ANDROID_KEYSTORE
             keyAlias MYAPP_KEY_ALIAS
-            keyPassword System.getenv("PAYIT_ANDROID_KEYSTORE")
+            keyPassword PAYIT_ANDROID_KEYSTORE
         }
     }
     splits {

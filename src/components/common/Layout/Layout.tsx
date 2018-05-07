@@ -63,7 +63,7 @@ export const NavbarComponent = (props: SceneProps) => (
 
 export const TabBarComponent = (props: SceneProps) => (
   <View accessibilityLabel="tab bar">
-    <Footer>
+    <Footer style={{backgroundColor: primaryColor}}>
       <FooterTab style={{backgroundColor: primaryColor}}>
         {props.navigationState.routes.map((item: {key: string}, index: number) => {
           const active = props.navigationState.index === index;

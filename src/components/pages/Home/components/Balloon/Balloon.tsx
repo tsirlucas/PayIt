@@ -40,6 +40,7 @@ const style = StyleSheet.create({
   },
 
   delta: {
+    marginTop: -1,
     alignSelf: 'flex-end',
     marginRight: '25%',
     width: 0,

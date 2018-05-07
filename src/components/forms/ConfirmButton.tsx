@@ -4,6 +4,7 @@ import {GestureResponderEvent, StyleSheet} from 'react-native';
 import I18n from 'react-native-i18n';
 import {Button} from 'native-base';
 import {primaryColor} from 'style';
+import {isIphoneX} from 'utils';
 
 I18n.fallbacks = true;
 I18n.translations = {
@@ -13,11 +14,12 @@ I18n.translations = {
 
 export const confirmButtonStyle = StyleSheet.create({
   confirmButton: {
-    height: 60,
+    height: isIphoneX ? 80 : 60,
     position: 'absolute',
     bottom: 0,
     left: 0,
     right: 0,
+    paddingBottom: isIphoneX ? 20 : 0,
     backgroundColor: primaryColor,
   },
   confirmButtonText: {

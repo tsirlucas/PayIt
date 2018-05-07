@@ -52,13 +52,16 @@ function* signInSaga() {
       webClientId: environment.settings.googleAuth.webClientId,
     });
 
-    const googleAuth = yield GoogleSignin.signIn();
+    try {
+      const googleAuth = yield GoogleSignin.signIn();
+      const idToken = googleAuth.idToken;
+      const accessToken = googleAuth.accessToken;
 
-    const idToken = googleAuth.idToken;
-    const accessToken = googleAuth.accessToken;
-
-    const firebaseAuth = yield FirebaseAuthService.getInstance().signIn(idToken, accessToken);
-    yield storeUser(firebaseAuth._user);
+      const firebaseAuth = yield FirebaseAuthService.getInstance().signIn(idToken, accessToken);
+      yield storeUser(firebaseAuth._user);
+    } catch (e) {
+      // User canceled
+    }
   } catch (e) {
     throw e;
   } finally {

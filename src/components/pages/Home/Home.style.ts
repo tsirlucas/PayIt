@@ -1,6 +1,6 @@
 import {StyleSheet} from 'react-native';
 import {colors} from 'style/vars';
-import {isSmallDevice} from 'utils';
+import {isIpad, isSmallDevice} from 'utils';
 
 export const style: {[index: string]: Object} = StyleSheet.create({
   container: {
@@ -10,7 +10,7 @@ export const style: {[index: string]: Object} = StyleSheet.create({
     alignItems: 'center',
   },
   bigFont: {
-    fontSize: isSmallDevice() ? 16 : 23,
+    fontSize: !isSmallDevice() ? 21 : isIpad() ? 12 : 16,
   },
   delayed: {
     color: colors.danger,

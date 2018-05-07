@@ -94,12 +94,12 @@ def enableSeparateBuildPerCPUArchitecture = true
 def enableProguardInReleaseBuilds = true
 
 def getAppVersionCode = { ->
-  def code = project.hasProperty('versionCode') ? versionCode.toInteger() : -1
+  def code = project.hasProperty('versionCode') ? versionCode.toInteger() : 50
   return code
 }
 
 def getAppVersionName = { ->
-  def name = project.hasProperty('versionName') ? versionName : "1.0.0"
+  def name = project.hasProperty('versionName') ? versionName : "0.5.0"
   return name
 }
 

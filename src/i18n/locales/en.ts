@@ -8,7 +8,7 @@ export default {
       settings: 'Settings',
       delayed: 'Delayed Bills',
       ideal: 'Ideal Bills',
-      next: 'Next Bills',
+      next: 'Future Bills',
       newBill: 'New Bill',
       editBill: 'Edit Bill',
     },

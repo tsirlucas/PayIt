@@ -12,7 +12,8 @@
     "test": "jest --config ./jest.config.json --forceExit",
     "tsc": "yarn lint && tsc",
     "clean": "rimraf lib",
-    "build": "yarn clean && yarn tsc"
+    "build": "yarn clean && yarn tsc",
+    "setversion": "bash ./ios/scripts/setVersion.sh"
   },
   "devDependencies": {
     "@types/es6-promise": "3.3.0",

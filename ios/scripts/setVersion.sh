@@ -15,5 +15,5 @@ BUILD_NUMBER=$(($BUILD_NUMBER + 1))
 /usr/libexec/PlistBuddy -c "Set :CFBundleVersion $BUILD_NUMBER" "${INFOPLIST_DIR}"
 
 git add "${INFOPLIST_DIR}"
-git commit -m "chore(ios): bump version"
+git commit -m "chore(ios): bump version [skip ci]"
 git push

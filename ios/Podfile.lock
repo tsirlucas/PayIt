@@ -92,6 +92,16 @@ PODS:
   - GTMSessionFetcher/Core (1.1.15)
   - GTMSessionFetcher/Full (1.1.15):
     - GTMSessionFetcher/Core (= 1.1.15)
+  - KSCrash/Core (1.15.18):
+    - KSCrash/Reporting/Filters/Basic
+  - KSCrash/Recording (1.15.18):
+    - KSCrash/Recording/Tools (= 1.15.18)
+  - KSCrash/Recording/Tools (1.15.18)
+  - KSCrash/Reporting/Filters/Base (1.15.18):
+    - KSCrash/Recording
+  - KSCrash/Reporting/Filters/Basic (1.15.18):
+    - KSCrash/Recording
+    - KSCrash/Reporting/Filters/Base
   - leveldb-library (1.20)
   - nanopb (0.3.8):
     - nanopb/decode (= 0.3.8)
@@ -140,6 +150,15 @@ PODS:
     - React
   - RNVectorIcons (4.6.0):
     - React
+  - Sentry (3.12.4):
+    - Sentry/Core (= 3.12.4)
+    - Sentry/KSCrash (= 3.12.4)
+  - Sentry/Core (3.12.4)
+  - Sentry/KSCrash (3.12.4):
+    - KSCrash/Core (~> 1.15.12)
+  - SentryReactNative (0.36.0):
+    - Sentry (~> 3.12.4)
+    - Sentry/KSCrash (~> 3.12.4)
   - yoga (0.55.3.React)
 
 DEPENDENCIES:
@@ -157,6 +176,7 @@ DEPENDENCIES:
   - React/RCTNetwork (from `../node_modules/react-native`)
   - RNI18n (from `../node_modules/react-native-i18n`)
   - RNVectorIcons (from `../node_modules/react-native-vector-icons`)
+  - SentryReactNative (from `../node_modules/react-native-sentry`)
   - yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 EXTERNAL SOURCES:
@@ -172,6 +192,8 @@ EXTERNAL SOURCES:
     :path: ../node_modules/react-native-i18n
   RNVectorIcons:
     :path: ../node_modules/react-native-vector-icons
+  SentryReactNative:
+    :path: ../node_modules/react-native-sentry
   yoga:
     :path: ../node_modules/react-native/ReactCommon/yoga
 
@@ -196,6 +218,7 @@ SPEC CHECKSUMS:
   gRPC-RxLibrary: 26d53d1b1f306befd4ad4e15bd6de27839a82481
   GTMOAuth2: c77fe325e4acd453837e72d91e3b5f13116857b2
   GTMSessionFetcher: 5fa5b80fd20e439ef5f545fb2cb3ca6c6714caa2
+  KSCrash: 5394936f41e5c1ef7b79cf79b30d53299b0c160e
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   Picker: f11a9887a32fb5112a31851bbf523362af0f7bbc
@@ -205,8 +228,10 @@ SPEC CHECKSUMS:
   react-native-splash-screen: 8e3f866dc79bfe533baeffd0a38c33f7a7eae7f8
   RNI18n: db9be06a40336f04d136f24dd5de3f5eb9f3207c
   RNVectorIcons: c0dbfbf6068fefa240c37b0f71bd03b45dddac44
+  Sentry: 7d3ea7176e5184e9c35c12a5825905345807e8c1
+  SentryReactNative: de2a4cfbfea1c2dadc402fa41d925bfcd77ccaf9
   yoga: a23273df0088bf7f2bb7e5d7b00044ea57a2a54a
 
-PODFILE CHECKSUM: 95e66236f406712d95e84a20480895895d9c82c5
+PODFILE CHECKSUM: 772db10918961ccf103bb979036888024eff6f35
 
 COCOAPODS: 1.4.0

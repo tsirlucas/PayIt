@@ -4899,9 +4899,9 @@ react-native-easy-grid@0.1.17:
   dependencies:
     lodash "^4.11.1"
 
-react-native-firebase@4.0.7:
-  version "4.0.7"
-  resolved "https://registry.yarnpkg.com/react-native-firebase/-/react-native-firebase-4.0.7.tgz#83fa95a61454f3ddffbed9d228675b54b39be262"
+react-native-firebase@4.1.0:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/react-native-firebase/-/react-native-firebase-4.1.0.tgz#ad18bd4f90020e79de9bca3bf5b179b3a49d6103"
   dependencies:
     opencollective "^1.0.3"
     postinstall-build "^5.0.1"
@@ -4928,9 +4928,9 @@ react-native-keyboard-aware-scroll-view@0.5.0:
     prop-types "^15.6.0"
     react-native-iphone-x-helper "^1.0.1"
 
-react-native-picker@4.3.5:
-  version "4.3.5"
-  resolved "https://registry.yarnpkg.com/react-native-picker/-/react-native-picker-4.3.5.tgz#bf791dde6908028a11aacb3fdc7c6b2bdb2cd3f3"
+react-native-picker@4.3.6:
+  version "4.3.6"
+  resolved "https://registry.yarnpkg.com/react-native-picker/-/react-native-picker-4.3.6.tgz#9754f26440f498e86ed889bb4d7f334a61af99b5"
 
 react-native-prompt-android@0.3.3:
   version "0.3.3"

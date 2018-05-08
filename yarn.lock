@@ -4948,7 +4948,7 @@ react-native-router-flux@4.0.0-beta.27:
     prop-types "^15.6.0"
     react-navigation "1.0.0-beta.22"
 
-react-native-sentry@^0.36.0:
+react-native-sentry@0.36.0:
   version "0.36.0"
   resolved "https://registry.yarnpkg.com/react-native-sentry/-/react-native-sentry-0.36.0.tgz#1c66d72af56aa801daaa5569c09fc7d04bea6544"
   dependencies:

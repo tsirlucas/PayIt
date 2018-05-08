@@ -6,5 +6,8 @@
         "functions/package.json"
       ]
     }
-  }
+  },
+  "ignore": [
+    "react-native-picker"
+  ]
 }

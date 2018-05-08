@@ -3,10 +3,10 @@ package com.payit;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.beefe.picker.PickerViewPackage;
 import io.sentry.RNSentryPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
 import org.devio.rn.splashscreen.SplashScreenReactPackage;
-import com.beefe.picker.PickerViewPackage;
 import im.shimo.react.prompt.RNPromptPackage;
 import com.AlexanderZaytsev.RNI18n.RNI18nPackage;
 import com.wheelpicker.WheelPickerPackage;
@@ -37,6 +37,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new PickerViewPackage(),
             new RNSentryPackage(MainApplication.this),
             new VectorIconsPackage(),
           new SplashScreenReactPackage(),

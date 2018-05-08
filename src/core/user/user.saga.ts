@@ -54,7 +54,6 @@ function* signInSaga() {
   try {
     yield put(globalActions.showActivityIndicator());
     yield GoogleSignin.hasPlayServices({autoResolve: true});
-
     yield GoogleSignin.configure({
       iosClientId: environment.settings.googleAuth.iosClientId,
       webClientId: environment.settings.googleAuth.webClientId,
@@ -68,7 +67,10 @@ function* signInSaga() {
       const firebaseAuth = yield FirebaseAuthService.getInstance().signIn(idToken, accessToken);
       yield storeUser(firebaseAuth._user);
     } catch (e) {
-      if (e.name !== 'GoogleSigninError' || (e.name === 'GoogleSigninError' && e.code !== 12501)) {
+      if (
+        (e.name !== 'GoogleSigninError' && e.code !== -5) ||
+        (e.name === 'GoogleSigninError' && e.code !== 12501)
+      ) {
         SentryService.getInstance().captureException(e);
         throw e;
       }

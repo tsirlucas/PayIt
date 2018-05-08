@@ -7,6 +7,7 @@ import {eventChannel} from 'redux-saga';
 import {call, fork, put, select, take, takeLatest} from 'redux-saga/effects';
 
 import {FirebaseAuthService, UserRestService} from 'services';
+import {SentryService} from 'services';
 import {RootState} from 'src/core';
 import {environment} from 'src/environment';
 import {User} from 'src/models';
@@ -17,6 +18,13 @@ import {actions} from './user.actions';
 function* storeUser(user: User) {
   try {
     const firebaseUser = yield UserRestService.getInstance().getUser(user.uid);
+
+    SentryService.getInstance().setUserContext({
+      email: user.email,
+      id: user.uid,
+      username: user.displayName,
+    });
+
     if (firebaseUser.payday) {
       yield call(Actions.reset, 'application');
 
@@ -60,7 +68,10 @@ function* signInSaga() {
       const firebaseAuth = yield FirebaseAuthService.getInstance().signIn(idToken, accessToken);
       yield storeUser(firebaseAuth._user);
     } catch (e) {
-      // User canceled
+      SentryService.getInstance().captureException(e);
+      if (e.name !== 'GoogleSigninError') {
+        throw e;
+      }
     }
   } catch (e) {
     throw e;

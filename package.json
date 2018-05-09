@@ -1,6 +1,6 @@
 {
   "name": "payit",
-  "version": "0.6.3",
+  "version": "0.6.4",
   "private": true,
   "scripts": {
     "start": "react-native start --config ../../../../rn-cli.config.js",

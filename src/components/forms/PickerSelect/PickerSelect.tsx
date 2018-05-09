@@ -33,11 +33,17 @@ type State = {
   isPickerShow: boolean;
 };
 
-export const PickerSelectAnimationTimeout = 500;
+// Workaround see https://github.com/GeekyAnts/NativeBase/issues/627#issuecomment-376647879
 
-// workaround see https://github.com/GeekyAnts/NativeBase/issues/627#issuecomment-376647879
-// tslint:disable-next-line
-Input.displayName = 'Styled(Input)';
+type InputType = typeof Input;
+interface InputWorkaroundType extends InputType {
+  displayName?: string;
+}
+
+(Input as InputWorkaroundType).displayName = 'Styled(Input)';
+// End of workaround
+
+export const PickerSelectAnimationTimeout = 500;
 
 class PickerSelectComponent<T extends ComponentProps> extends React.Component<Props<T>, State> {
   state: State = {} as State;

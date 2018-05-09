@@ -4899,9 +4899,9 @@ react-native-easy-grid@0.1.17:
   dependencies:
     lodash "^4.11.1"
 
-react-native-firebase@4.1.0:
-  version "4.1.0"
-  resolved "https://registry.yarnpkg.com/react-native-firebase/-/react-native-firebase-4.1.0.tgz#ad18bd4f90020e79de9bca3bf5b179b3a49d6103"
+react-native-firebase@4.0.7:
+  version "4.0.7"
+  resolved "https://registry.yarnpkg.com/react-native-firebase/-/react-native-firebase-4.0.7.tgz#83fa95a61454f3ddffbed9d228675b54b39be262"
   dependencies:
     opencollective "^1.0.3"
     postinstall-build "^5.0.1"
@@ -4997,9 +4997,9 @@ react-native-wheel-picker-android@1.1.1:
   dependencies:
     moment "2.22.0"
 
-react-native@0.55.3:
-  version "0.55.3"
-  resolved "https://registry.yarnpkg.com/react-native/-/react-native-0.55.3.tgz#6ff1691bd0645d0480fba16377edb9dce5bd28c4"
+react-native@0.55.4:
+  version "0.55.4"
+  resolved "https://registry.yarnpkg.com/react-native/-/react-native-0.55.4.tgz#eecffada3750a928e2ddd07cf11d857ae9751c30"
   dependencies:
     absolute-path "^0.0.0"
     art "^0.10.0"

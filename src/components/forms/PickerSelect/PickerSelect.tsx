@@ -35,6 +35,10 @@ type State = {
 
 export const PickerSelectAnimationTimeout = 500;
 
+// workaround see https://github.com/GeekyAnts/NativeBase/issues/627#issuecomment-376647879
+// tslint:disable-next-line
+Input.displayName = 'Styled(Input)';
+
 class PickerSelectComponent<T extends ComponentProps> extends React.Component<Props<T>, State> {
   state: State = {} as State;
 

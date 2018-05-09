@@ -20,6 +20,10 @@ type Props = {
 
 type KeyboardType = 'numeric' | 'email-address' | 'phone-pad' | 'number-pad';
 
+// workaround see https://github.com/GeekyAnts/NativeBase/issues/627#issuecomment-376647879
+// tslint:disable-next-line
+Input.displayName = 'Styled(Input)';
+
 const onChangeTextCB = (
   text: string,
   onChangeText: $PropertyType<Props, 'onChangeText'>,

@@ -37,9 +37,8 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
-            new PickerViewPackage(),
-            new RNSentryPackage(MainApplication.this),
-            new VectorIconsPackage(),
+          new RNSentryPackage(MainApplication.this),
+          new VectorIconsPackage(),
           new SplashScreenReactPackage(),
           new PickerViewPackage(),
           new RNPromptPackage(),

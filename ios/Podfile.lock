@@ -112,37 +112,37 @@ PODS:
     - Picker/Core (= 4.3.5)
   - Picker/Core (4.3.5)
   - Protobuf (3.5.0)
-  - React (0.55.3):
-    - React/Core (= 0.55.3)
+  - React (0.55.4):
+    - React/Core (= 0.55.4)
   - react-native-config (0.11.5):
     - React
   - react-native-splash-screen (3.0.6):
     - React
-  - React/Core (0.55.3):
-    - yoga (= 0.55.3.React)
-  - React/CxxBridge (0.55.3):
+  - React/Core (0.55.4):
+    - yoga (= 0.55.4.React)
+  - React/CxxBridge (0.55.4):
     - Folly (= 2016.09.26.00)
     - React/Core
     - React/cxxreact
-  - React/cxxreact (0.55.3):
+  - React/cxxreact (0.55.4):
     - boost-for-react-native (= 1.63.0)
     - Folly (= 2016.09.26.00)
     - React/jschelpers
     - React/jsinspector
-  - React/DevSupport (0.55.3):
+  - React/DevSupport (0.55.4):
     - React/Core
     - React/RCTWebSocket
-  - React/fishhook (0.55.3)
-  - React/jschelpers (0.55.3):
+  - React/fishhook (0.55.4)
+  - React/jschelpers (0.55.4):
     - Folly (= 2016.09.26.00)
     - React/PrivateDatabase
-  - React/jsinspector (0.55.3)
-  - React/PrivateDatabase (0.55.3)
-  - React/RCTBlob (0.55.3):
+  - React/jsinspector (0.55.4)
+  - React/PrivateDatabase (0.55.4)
+  - React/RCTBlob (0.55.4):
     - React/Core
-  - React/RCTNetwork (0.55.3):
+  - React/RCTNetwork (0.55.4):
     - React/Core
-  - React/RCTWebSocket (0.55.3):
+  - React/RCTWebSocket (0.55.4):
     - React/Core
     - React/fishhook
     - React/RCTBlob
@@ -159,7 +159,7 @@ PODS:
   - SentryReactNative (0.36.0):
     - Sentry (~> 3.12.4)
     - Sentry/KSCrash (~> 3.12.4)
-  - yoga (0.55.3.React)
+  - yoga (0.55.4.React)
 
 DEPENDENCIES:
   - Firebase/Auth
@@ -232,6 +232,6 @@ SPEC CHECKSUMS:
   SentryReactNative: de2a4cfbfea1c2dadc402fa41d925bfcd77ccaf9
   yoga: a23273df0088bf7f2bb7e5d7b00044ea57a2a54a
 
-PODFILE CHECKSUM: 772515ac448665df40d7bd76020a4316d4e64827
+PODFILE CHECKSUM: d1e4ff0b3a16a8c82313ddfd04804bf709abe451
 
 COCOAPODS: 1.4.0

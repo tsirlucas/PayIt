@@ -71,7 +71,7 @@
       "@semantic-release/changelog",
       {
         "path": "@semantic-release/exec",
-        "cmd": "./ios/scripts/setVersion.sh ${nextRelease.version}"
+        "cmd": "bash ./ios/scripts/setVersion.sh ${nextRelease.version}"
       },
       {
         "path": "@semantic-release/git",

@@ -1,3 +1,11 @@
+<a name="1.0.1"></a>
+## [1.0.1](https://github.com/tsirlucas/PayIt/compare/v1.0.0...v1.0.1) (2018-05-17)
+
+
+### Bug Fixes
+
+* **signIn:** report user steps to sentry ([3ba03b6](https://github.com/tsirlucas/PayIt/commit/3ba03b6))
+
 <a name="1.0.0"></a>
 # 1.0.0 (2018-05-17)
 

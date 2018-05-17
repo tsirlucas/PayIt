@@ -51,6 +51,7 @@ function* storeUser(user: User) {
 }
 
 function* signInSaga() {
+  SentryService.getInstance().captureException(new Error('in signInSaga'));
   try {
     yield put(globalActions.showActivityIndicator());
     yield GoogleSignin.hasPlayServices({autoResolve: true});
@@ -67,13 +68,12 @@ function* signInSaga() {
       const firebaseAuth = yield FirebaseAuthService.getInstance().signIn(idToken, accessToken);
       yield storeUser(firebaseAuth._user);
     } catch (e) {
-      SentryService.getInstance().captureException(e);
       if (e.code !== -5 || (e.name === 'GoogleSigninError' && e.code !== 12501)) {
+        SentryService.getInstance().captureException(e);
         throw e;
       }
     }
   } catch (e) {
-    SentryService.getInstance().captureException(e);
     throw e;
   } finally {
     yield put(globalActions.hideActivityIndicator());

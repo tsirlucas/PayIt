@@ -13,9 +13,12 @@
     "tsc": "yarn lint && tsc",
     "clean": "rimraf lib",
     "build": "yarn clean && yarn tsc",
-    "setversion": "bash ./ios/scripts/setVersion.sh"
+    "release": "semantic-release"
   },
   "devDependencies": {
+    "@semantic-release/changelog": "2.0.2",
+    "@semantic-release/exec": "2.2.4",
+    "@semantic-release/git": "5.0.0",
     "@types/es6-promise": "3.3.0",
     "@types/jest": "22.2.3",
     "@types/node": "10.1.0",
@@ -36,6 +39,7 @@
     "react-native-typescript-transformer": "1.2.5",
     "react-test-renderer": "16.3.2",
     "rimraf": "2.6.2",
+    "semantic-release": "15.4.1",
     "ts-jest": "22.4.6",
     "tslint": "5.10.0",
     "typescript": "2.8.3",
@@ -61,5 +65,24 @@
     "redux-saga": "0.16.0",
     "utility-types": "2.0.0",
     "vanilla-masker": "1.2.0"
+  },
+  "release": {
+    "prepare": [
+      "@semantic-release/changelog",
+      {
+        "path": "@semantic-release/exec",
+        "cmd": "./ios/scripts/setVersion.sh ${nextRelease.version}"
+      },
+      {
+        "path": "@semantic-release/git",
+        "assets": [
+          "*"
+        ],
+        "message": "chore(release): ${nextRelease.version} - ${new Date().toLocaleDateString('en-US', {year: 'numeric', month: 'short', day: 'numeric', hour: 'numeric', minute: 'numeric' })} [skip ci]\n\n${nextRelease.notes}"
+      }
+    ],
+    "publish": [
+      "@semantic-release/github"
+    ]
   }
 }

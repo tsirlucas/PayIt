@@ -1,6 +1,6 @@
 {
   "name": "payit",
-  "version": "0.6.5",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "start": "react-native start --config ../../../../rn-cli.config.js",
@@ -71,7 +71,7 @@
       "@semantic-release/changelog",
       {
         "path": "@semantic-release/exec",
-        "cmd": "bash ./ios/scripts/setVersion.sh ${nextRelease.version}"
+        "cmd": "bash ./scripts/setVersion.sh ${nextRelease.version}"
       },
       {
         "path": "@semantic-release/git",

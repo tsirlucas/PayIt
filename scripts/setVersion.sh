@@ -6,6 +6,8 @@ INFOPLIST_DIR="${PROJECT_DIR}/${INFOPLIST_FILE}"
 
 PACKAGE_VERSION=$1
 
+yarn version --new-version ${PACKAGE_VERSION#*v} --no-git-tag-version
+
 BUILD_NUMBER=$(/usr/libexec/PlistBuddy -c "Print CFBundleVersion" "${INFOPLIST_DIR}")
 BUILD_NUMBER=$(($BUILD_NUMBER + 1))
 

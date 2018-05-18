@@ -1,3 +1,12 @@
+<a name="1.0.4"></a>
+## [1.0.4](https://github.com/tsirlucas/PayIt/compare/v1.0.3...v1.0.4) (2018-05-18)
+
+
+### Bug Fixes
+
+* **settings:** add ellipsis to fields ([871d4d5](https://github.com/tsirlucas/PayIt/commit/871d4d5)), closes [#121](https://github.com/tsirlucas/PayIt/issues/121)
+* **signIn:** fix env var in ios by downgrade react-native-config ([a756956](https://github.com/tsirlucas/PayIt/commit/a756956))
+
 <a name="1.0.3"></a>
 ## [1.0.3](https://github.com/tsirlucas/PayIt/compare/v1.0.2...v1.0.3) (2018-05-18)
 

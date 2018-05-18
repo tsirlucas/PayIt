@@ -3,6 +3,7 @@ package com.payit;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.lugg.ReactNativeConfig.ReactNativeConfigPackage;
 import com.beefe.picker.PickerViewPackage;
 import io.sentry.RNSentryPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
@@ -10,7 +11,6 @@ import org.devio.rn.splashscreen.SplashScreenReactPackage;
 import im.shimo.react.prompt.RNPromptPackage;
 import com.AlexanderZaytsev.RNI18n.RNI18nPackage;
 import com.wheelpicker.WheelPickerPackage;
-import com.lugg.ReactNativeConfig.ReactNativeConfigPackage;
 import co.apptailor.googlesignin.RNGoogleSigninPackage;
 import io.invertase.firebase.RNFirebasePackage;
 import io.invertase.firebase.messaging.RNFirebaseMessagingPackage;

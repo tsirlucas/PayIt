@@ -147,6 +147,7 @@ android {
 }
 
 dependencies {
+    compile project(':react-native-config')
     compile project(':react-native-picker')
     compile project(':react-native-sentry')
     compile project(':react-native-vector-icons')
@@ -154,7 +155,6 @@ dependencies {
     compile project(':react-native-prompt-android')
     compile project(':react-native-i18n')
     compile project(':react-native-wheel-picker-android')
-    compile project(':react-native-config')
     compile fileTree(dir: "libs", include: ["*.jar"])
 
     // Google dependencies

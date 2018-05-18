@@ -26,7 +26,7 @@ class LoginComponent extends React.Component<LoginProps> {
         <View style={style.content}>
           <Balloon text={I18n.t('login.greeting')} />
           <Image style={style.avatar} source={images.wavingMan} />
-          <Button iconLeft danger onPressIn={this.props.actions.signIn} style={style.buttons}>
+            <Button iconLeft danger onPressIn={this.props.actions.signIn} style={style.buttons}>
             <NBIcon name="logo-google" />
             <Text>{I18n.t('login.googleLogin')}</Text>
           </Button>

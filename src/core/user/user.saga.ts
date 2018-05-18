@@ -51,6 +51,7 @@ function* storeUser(user: User) {
 }
 
 function* signInSaga() {
+  SentryService.getInstance().captureException(new Error('in signInSaga'));
   try {
     yield put(globalActions.showActivityIndicator());
     yield GoogleSignin.hasPlayServices({autoResolve: true});

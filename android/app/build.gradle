@@ -102,7 +102,7 @@ android {
         applicationId "com.payit"
         minSdkVersion 16
         targetSdkVersion 26
-        versionCode versionMajor * 10000 + versionMinor * 100 + versionPatch + 1
+        versionCode versionMajor * 10000 + versionMinor * 100 + versionPatch
         versionName "${versionMajor}.${versionMinor}.${versionPatch}"
         ndk {
             abiFilters "armeabi-v7a", "x86"

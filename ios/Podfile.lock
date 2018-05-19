@@ -114,7 +114,7 @@ PODS:
   - Protobuf (3.5.0)
   - React (0.55.4):
     - React/Core (= 0.55.4)
-  - react-native-config (0.11.5):
+  - react-native-config (0.8.1):
     - React
   - react-native-splash-screen (3.0.6):
     - React
@@ -156,7 +156,8 @@ PODS:
   - Sentry/Core (3.12.4)
   - Sentry/KSCrash (3.12.4):
     - KSCrash/Core (~> 1.15.12)
-  - SentryReactNative (0.36.0):
+  - SentryReactNative (0.37.0):
+    - React
     - Sentry (~> 3.12.4)
     - Sentry/KSCrash (~> 3.12.4)
   - yoga (0.55.4.React)
@@ -229,7 +230,7 @@ SPEC CHECKSUMS:
   RNI18n: db9be06a40336f04d136f24dd5de3f5eb9f3207c
   RNVectorIcons: c0dbfbf6068fefa240c37b0f71bd03b45dddac44
   Sentry: 7d3ea7176e5184e9c35c12a5825905345807e8c1
-  SentryReactNative: de2a4cfbfea1c2dadc402fa41d925bfcd77ccaf9
+  SentryReactNative: 787a08161d641dde91dd36d4c8e76f9b0ba4fc84
   yoga: a23273df0088bf7f2bb7e5d7b00044ea57a2a54a
 
 PODFILE CHECKSUM: d1e4ff0b3a16a8c82313ddfd04804bf709abe451

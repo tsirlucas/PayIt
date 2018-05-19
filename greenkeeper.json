@@ -8,6 +8,7 @@
     }
   },
   "ignore": [
-    "react-native-picker"
+    "react-native-picker",
+    "react-native-config"
   ]
 }

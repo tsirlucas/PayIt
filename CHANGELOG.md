@@ -1,3 +1,39 @@
+<a name="1.0.6"></a>
+## [1.0.6](https://github.com/tsirlucas/PayIt/compare/v1.0.5...v1.0.6) (2018-05-18)
+
+
+### Bug Fixes
+
+* **android:** Fix android target ([7e50c1e](https://github.com/tsirlucas/PayIt/commit/7e50c1e))
+
+<a name="1.0.5"></a>
+## [1.0.5](https://github.com/tsirlucas/PayIt/compare/v1.0.4...v1.0.5) (2018-05-18)
+
+
+### Bug Fixes
+
+* **sentry:** remove missing test log ([11780be](https://github.com/tsirlucas/PayIt/commit/11780be))
+
+<a name="1.0.4"></a>
+## [1.0.4](https://github.com/tsirlucas/PayIt/compare/v1.0.3...v1.0.4) (2018-05-18)
+
+
+### Bug Fixes
+
+* **settings:** add ellipsis to fields ([871d4d5](https://github.com/tsirlucas/PayIt/commit/871d4d5)), closes [#121](https://github.com/tsirlucas/PayIt/issues/121)
+* **signIn:** fix env var in ios by downgrade react-native-config ([a756956](https://github.com/tsirlucas/PayIt/commit/a756956))
+
+<a name="1.0.3"></a>
+## [1.0.3](https://github.com/tsirlucas/PayIt/compare/v1.0.2...v1.0.3) (2018-05-18)
+
+
+### Bug Fixes
+
+* **money:** show full value instead of strip insignificant zeros ([e5ee2b8](https://github.com/tsirlucas/PayIt/commit/e5ee2b8))
+* **release:** fix release commit files ([1d4d46c](https://github.com/tsirlucas/PayIt/commit/1d4d46c))
+* **signIn:** remove sentry logs ([380c2af](https://github.com/tsirlucas/PayIt/commit/380c2af))
+* **signIn:** report user steps to sentry ([d0231b1](https://github.com/tsirlucas/PayIt/commit/d0231b1))
+
 <a name="1.0.2"></a>
 ## [1.0.2](https://github.com/tsirlucas/PayIt/compare/v1.0.1...v1.0.2) (2018-05-17)
 

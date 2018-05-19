@@ -68,8 +68,8 @@ const ListItemComp = (props: ListItemProps) => (
     <Body>
       <Text>{props.label}</Text>
     </Body>
-    <Right>
-      <Text>{props.text}</Text>
+    <Right style={{maxWidth: 200}}>
+      <Text numberOfLines={1}>{props.text}</Text>
       {props.onPress && <Icon name="arrow-forward" />}
     </Right>
   </ListItem>

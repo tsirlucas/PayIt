@@ -1,6 +1,6 @@
 {
   "name": "payit",
-  "version": "1.0.2",
+  "version": "1.0.6",
   "private": true,
   "scripts": {
     "start": "react-native start --config ../../../../rn-cli.config.js",
@@ -35,7 +35,6 @@
     "concurrently": "3.5.1",
     "jest": "22.4.2",
     "jest-react-native": "18.0.0",
-    "react-native-config": "0.11.5",
     "react-native-typescript-transformer": "1.2.5",
     "react-test-renderer": "16.3.2",
     "rimraf": "2.6.2",
@@ -49,6 +48,7 @@
     "native-base": "2.4.4",
     "react": "16.3.2",
     "react-native": "0.55.4",
+    "react-native-config": "0.8.1",
     "react-native-firebase": "4.0.7",
     "react-native-google-signin": "https://github.com/invertase/react-native-google-signin.git#v0.12.1",
     "react-native-i18n": "2.0.12",
@@ -80,7 +80,7 @@
           "CHANGELOG.md",
           "ios/PayIt/Info.plist"
         ],
-        "message": "chore(release): ${nextRelease.version}\n\n${nextRelease.notes}"
+        "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
       }
     ],
     "publish": [

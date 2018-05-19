@@ -95,13 +95,12 @@ def enableSeparateBuildPerCPUArchitecture = true
 def enableProguardInReleaseBuilds = true
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.1"
+    compileSdkVersion 27
 
     defaultConfig {
         applicationId "com.payit"
         minSdkVersion 16
-        targetSdkVersion 26
+        targetSdkVersion 27
         versionCode versionMajor * 10000 + versionMinor * 100 + versionPatch
         versionName "${versionMajor}.${versionMinor}.${versionPatch}"
         ndk {

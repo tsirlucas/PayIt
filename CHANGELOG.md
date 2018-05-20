@@ -1,3 +1,22 @@
+<a name="1.0.7"></a>
+## [1.0.7](https://github.com/tsirlucas/PayIt/compare/v1.0.6...v1.0.7) (2018-05-20)
+
+
+### Bug Fixes
+
+* **android:** support for sdk version 27 ([d2c9950](https://github.com/tsirlucas/PayIt/commit/d2c9950))
+* **android:** support for sdk version 27 ([69ef5aa](https://github.com/tsirlucas/PayIt/commit/69ef5aa))
+* **app:** update displayname to !PayIt ([a2abcd8](https://github.com/tsirlucas/PayIt/commit/a2abcd8))
+* **app:** update displayname to !PayIt ([5cc979f](https://github.com/tsirlucas/PayIt/commit/5cc979f))
+* **ios:** update pods ([71f37b7](https://github.com/tsirlucas/PayIt/commit/71f37b7))
+* **ios:** update pods ([a649aa1](https://github.com/tsirlucas/PayIt/commit/a649aa1))
+* **package:** update native-base to version 2.4.5 ([bb70a00](https://github.com/tsirlucas/PayIt/commit/bb70a00))
+* **package:** update native-base to version 2.4.5 ([8bcfe8d](https://github.com/tsirlucas/PayIt/commit/8bcfe8d))
+* **package:** update react-native-firebase to version 4.2.0 ([14309b2](https://github.com/tsirlucas/PayIt/commit/14309b2)), closes [#130](https://github.com/tsirlucas/PayIt/issues/130)
+* **package:** update react-native-firebase to version 4.2.0 ([5591eee](https://github.com/tsirlucas/PayIt/commit/5591eee)), closes [#130](https://github.com/tsirlucas/PayIt/issues/130)
+* **signIn:** change .env lib to fix ios issue ([d15ad5e](https://github.com/tsirlucas/PayIt/commit/d15ad5e))
+* **signIn:** change .env lib to fix ios issue ([f296016](https://github.com/tsirlucas/PayIt/commit/f296016))
+
 <a name="1.0.6"></a>
 ## [1.0.6](https://github.com/tsirlucas/PayIt/compare/v1.0.5...v1.0.6) (2018-05-18)
 

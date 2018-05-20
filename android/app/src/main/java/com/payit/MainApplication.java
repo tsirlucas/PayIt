@@ -43,7 +43,6 @@ public class MainApplication extends Application implements ReactApplication {
           new RNPromptPackage(),
           new RNI18nPackage(),
           new WheelPickerPackage(),
-          new ReactNativeConfigPackage(),
           new RNGoogleSigninPackage(),
           new RNFirebasePackage(),
           new RNFirebaseAuthPackage(),

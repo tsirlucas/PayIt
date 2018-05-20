@@ -3,7 +3,6 @@ package com.payit;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
-import com.lugg.ReactNativeConfig.ReactNativeConfigPackage;
 import com.beefe.picker.PickerViewPackage;
 import io.sentry.RNSentryPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
@@ -44,7 +43,6 @@ public class MainApplication extends Application implements ReactApplication {
           new RNPromptPackage(),
           new RNI18nPackage(),
           new WheelPickerPackage(),
-          new ReactNativeConfigPackage(),
           new RNGoogleSigninPackage(),
           new RNFirebasePackage(),
           new RNFirebaseAuthPackage(),

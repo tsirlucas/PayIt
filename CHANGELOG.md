@@ -1,3 +1,12 @@
+<a name="1.0.8"></a>
+## [1.0.8](https://github.com/tsirlucas/PayIt/compare/v1.0.7...v1.0.8) (2018-05-21)
+
+
+### Bug Fixes
+
+* **android:** fix glitch on header ([97ddc58](https://github.com/tsirlucas/PayIt/commit/97ddc58))
+* **android:** update google services deps ([bccbefb](https://github.com/tsirlucas/PayIt/commit/bccbefb))
+
 <a name="1.0.7"></a>
 ## [1.0.7](https://github.com/tsirlucas/PayIt/compare/v1.0.6...v1.0.7) (2018-05-20)
 

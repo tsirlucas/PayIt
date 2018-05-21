@@ -102,9 +102,7 @@ android {
         targetSdkVersion 27
         versionCode versionMajor * 10000 + versionMinor * 100 + versionPatch
         versionName "${versionMajor}.${versionMinor}.${versionPatch}"
-        ndk {
-            abiFilters "armeabi-v7a", "x86"
-        }
+        multiDexEnabled true
     }
     signingConfigs {
         release {
@@ -145,6 +143,7 @@ android {
 }
 
 dependencies {
+    compile 'com.android.support:multidex:1.0.1'
     compile project(':react-native-picker')
     compile project(':react-native-sentry')
     compile project(':react-native-vector-icons')
@@ -158,8 +157,8 @@ dependencies {
     compile(project(':react-native-google-signin')){
         exclude group: "com.google.android.gms"
     }
-    compile "com.google.android.gms:play-services-base:12.0.1"
-    compile 'com.google.android.gms:play-services-auth:12.0.1'
+    compile "com.google.android.gms:play-services-base:15.0.0"
+    compile 'com.google.android.gms:play-services-auth:15.0.1'
 
      // Firebase dependencies
     compile(project(':react-native-firebase')) {
@@ -167,10 +166,10 @@ dependencies {
         exclude group: "com.google.android.gms"
         exclude group: "com.google.firebase"
     }
-    compile "com.google.firebase:firebase-core:12.0.1"
-    compile "com.google.firebase:firebase-auth:12.0.1"
-    compile "com.google.firebase:firebase-firestore:12.0.1"
-    compile "com.google.firebase:firebase-messaging:12.0.1"
+    compile "com.google.firebase:firebase-core:15.0.2"
+    compile "com.google.firebase:firebase-auth:15.1.0"
+    compile "com.google.firebase:firebase-firestore:16.0.0"
+    compile "com.google.firebase:firebase-messaging:15.0.2"
 
     compile "com.android.support:appcompat-v7:23.0.1"
     compile "com.facebook.react:react-native:+"  // From node_modules

@@ -37,11 +37,9 @@ export const NavbarComponent = (props: SceneProps) => (
       </Left>
 
       <Body>
-        <View accessibilityLabel={`${props.title} title`}>
-          <Title style={{color: 'white'}}>
-            {props.title || I18n.t(`global.routes.titles.${props[props.dynamicTitle]}`)}
-          </Title>
-        </View>
+        <Title style={{color: 'white'}}>
+          {props.title || I18n.t(`global.routes.titles.${props[props.dynamicTitle]}`)}
+        </Title>
       </Body>
       {props.rightAction ? (
         <Right>

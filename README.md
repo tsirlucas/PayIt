@@ -3,7 +3,7 @@
 
 A React Native/Redux application that uses Firebase Firestore to realtime and cloud functions to remind the user to pay his bills
 
-<a href='https://play.google.com/store/apps/details?id=com.payit&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img width='250' alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png'/></a>
+<a width='240' href='https://play.google.com/store/apps/details?id=com.payit&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img align='center' width='240' alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png'/></a><a width='240' href="https://itunes.apple.com/us/app/payit/id1381245943?mt=8"><img align='center' width='210' alt='Download on the Apple Store' src='https://linkmaker.itunes.apple.com/assets/shared/badges/en-us/appstore-lrg.svg'/></a>
 
 ### Contributing
 Please read our [contributing guide](https://github.com/tsirlucas/PayIt/blob/development/CONTRIBUTING.md) 

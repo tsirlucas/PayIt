@@ -1,3 +1,13 @@
+<a name="1.0.9"></a>
+## [1.0.9](https://github.com/tsirlucas/PayIt/compare/v1.0.8...v1.0.9) (2018-05-22)
+
+
+### Bug Fixes
+
+* **android:** fix lower versions compatibility, duplicated icon and splashscreen ([ecc0f0b](https://github.com/tsirlucas/PayIt/commit/ecc0f0b))
+* **functions:** fix wrong checking on onPaydayChange function ([64b0311](https://github.com/tsirlucas/PayIt/commit/64b0311))
+* **ios:** fix no permissions error on ios ([70efe92](https://github.com/tsirlucas/PayIt/commit/70efe92))
+
 <a name="1.0.8"></a>
 ## [1.0.8](https://github.com/tsirlucas/PayIt/compare/v1.0.7...v1.0.8) (2018-05-21)
 

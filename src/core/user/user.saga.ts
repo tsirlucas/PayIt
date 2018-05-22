@@ -67,13 +67,16 @@ function* signInSaga() {
       const firebaseAuth = yield FirebaseAuthService.getInstance().signIn(idToken, accessToken);
       yield storeUser(firebaseAuth._user);
     } catch (e) {
-      if (e.code !== -5 || (e.name === 'GoogleSigninError' && e.code !== 12501)) {
+      console.log({...e});
+      if ((e.code !== 12501 && e.code !== -5) || e.name !== 'GoogleSigninError') {
         SentryService.getInstance().captureException(e);
         throw e;
       }
     }
   } catch (e) {
-    throw e;
+    if (e.message !== 'Play services not available') {
+      throw e;
+    }
   } finally {
     yield put(globalActions.hideActivityIndicator());
   }

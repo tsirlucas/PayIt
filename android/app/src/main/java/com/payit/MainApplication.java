@@ -1,7 +1,6 @@
 package com.payit;
 
-import android.app.Application;
-
+import android.support.multidex.MultiDexApplication;
 import com.facebook.react.ReactApplication;
 import com.beefe.picker.PickerViewPackage;
 import io.sentry.RNSentryPackage;
@@ -24,8 +23,7 @@ import com.facebook.soloader.SoLoader;
 import java.util.Arrays;
 import java.util.List;
 
-public class MainApplication extends Application implements ReactApplication {
-
+public class MainApplication extends MultiDexApplication implements ReactApplication {
   private final ReactNativeHost mReactNativeHost = new ReactNativeHost(this) {
     @Override
     public boolean getUseDeveloperSupport() {

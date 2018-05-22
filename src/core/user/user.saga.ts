@@ -67,8 +67,7 @@ function* signInSaga() {
       const firebaseAuth = yield FirebaseAuthService.getInstance().signIn(idToken, accessToken);
       yield storeUser(firebaseAuth._user);
     } catch (e) {
-      console.log({...e});
-      if ((e.code !== 12501 && e.code !== -5) || e.name !== 'GoogleSigninError') {
+      if (e.code !== 12501 && e.code !== -5) {
         SentryService.getInstance().captureException(e);
         throw e;
       }

@@ -40,8 +40,8 @@ export const onPaydayChange = functions.firestore
   .onWrite(async (event) => {
     const oldUserValue: User = event.before.data() as User;
     const newUserValue: User = event.after.data() as User;
-
-    if (oldUserValue.payday && oldUserValue.payday !== newUserValue.payday) {
+    
+    if (oldUserValue && oldUserValue.payday !== newUserValue.payday) {
       const firestore = admin.firestore();
 
       const pendencies = await requestUserPendencies(firestore, newUserValue.uid);

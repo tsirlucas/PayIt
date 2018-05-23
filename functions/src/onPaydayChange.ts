@@ -9,7 +9,7 @@ import {requestBill} from './rest/bill';
 import {requestUserPendencies, setPendency} from './rest/pendency';
 
 const getPendenciesBills = async (firestore: Firestore, pendencies: UserPendencies) => {
-  const billsPromises = Object.keys(pendencies.data)
+  const billsPromises = Object.keys(pendencies.data || {})
     .filter((key) => pendencies.data[key].type !== 'PAID')
     .map(async (key) => await requestBill(firestore, pendencies.data[key].billId));
 

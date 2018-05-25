@@ -1,3 +1,13 @@
+<a name="1.0.10"></a>
+## [1.0.10](https://github.com/tsirlucas/PayIt/compare/v1.0.9...v1.0.10) (2018-05-25)
+
+
+### Bug Fixes
+
+* **ActivityIndicator:** hiding indicator when app goes on background and back to foreground ([995d7da](https://github.com/tsirlucas/PayIt/commit/995d7da))
+* **android:** remove support for 4.1 ([40216bb](https://github.com/tsirlucas/PayIt/commit/40216bb))
+* **functions:** fix error on onPaydayChange ([533c3bb](https://github.com/tsirlucas/PayIt/commit/533c3bb))
+
 <a name="1.0.9"></a>
 ## [1.0.9](https://github.com/tsirlucas/PayIt/compare/v1.0.8...v1.0.9) (2018-05-22)
 

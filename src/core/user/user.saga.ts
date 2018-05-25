@@ -137,30 +137,28 @@ function* setPaydaySaga(action: Action<{value: number; edit: boolean}>) {
 }
 
 function createAuthChannel() {
-  return eventChannel((emit) => FirebaseAuthService.getInstance().watchAuth(emit));
+  return eventChannel((emit) =>
+    FirebaseAuthService.getInstance().watchAuth((user: User) => {
+      setTimeout(() => emit(user), 100);
+    }),
+  );
 }
 
 function* checkAuthSaga() {
   try {
-    yield put(globalActions.showActivityIndicator());
+    const authChannel = yield call(createAuthChannel);
 
-    const authChannel = createAuthChannel();
     while (true) {
       const change = yield take(authChannel);
-
       if (change.uid) {
         yield storeUser(change._user);
       } else {
         yield call(Actions.reset, 'authentication');
       }
-      yield put(globalActions.hideActivityIndicator());
       yield call(SplashScreen.hide);
     }
   } catch (e) {
     throw e;
-  } finally {
-    yield put(globalActions.hideActivityIndicator());
-    yield call(SplashScreen.hide);
   }
 }
 

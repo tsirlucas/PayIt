@@ -5942,9 +5942,9 @@ redux-act@1.7.4:
   version "1.7.4"
   resolved "https://registry.yarnpkg.com/redux-act/-/redux-act-1.7.4.tgz#0dd7c6daaca98649540a3d42c259814b048bd8e1"
 
-redux-saga@0.16.0:
-  version "0.16.0"
-  resolved "https://registry.yarnpkg.com/redux-saga/-/redux-saga-0.16.0.tgz#0a231db0a1489301dd980f6f2f88d8ced418f724"
+redux-saga@0.16.1:
+  version "0.16.1"
+  resolved "https://registry.yarnpkg.com/redux-saga/-/redux-saga-0.16.1.tgz#aa43d2ac029dab57f7f522b143f7db179a9e1324"
 
 redux@3.7.2:
   version "3.7.2"
@@ -6226,9 +6226,9 @@ sax@~1.1.1:
   version "1.1.6"
   resolved "https://registry.yarnpkg.com/sax/-/sax-1.1.6.tgz#5d616be8a5e607d54e114afae55b7eaf2fcc3240"
 
-semantic-release@15.4.1:
-  version "15.4.1"
-  resolved "https://registry.yarnpkg.com/semantic-release/-/semantic-release-15.4.1.tgz#47d4fc3b4c00252b78988f3dcfc22f2a4a02ccc4"
+semantic-release@15.4.2:
+  version "15.4.2"
+  resolved "https://registry.yarnpkg.com/semantic-release/-/semantic-release-15.4.2.tgz#25e15c831d00db30b91a41b489ae6a5871e13764"
   dependencies:
     "@semantic-release/commit-analyzer" "^5.0.0"
     "@semantic-release/error" "^2.2.0"

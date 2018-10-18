@@ -588,9 +588,9 @@
   version "10.1.2"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-10.1.2.tgz#1b928a0baa408fc8ae3ac012cc81375addc147c6"
 
-"@types/react-native-google-signin@0.12.2":
-  version "0.12.2"
-  resolved "https://registry.yarnpkg.com/@types/react-native-google-signin/-/react-native-google-signin-0.12.2.tgz#efd475b501246995060edd630b868f267e8166db"
+"@types/react-native-google-signin@1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@types/react-native-google-signin/-/react-native-google-signin-1.0.0.tgz#ddcb81e7c5f1a3529e0d0ad52c2e3ba128b8c8e4"
   dependencies:
     "@types/react" "*"
     "@types/react-native" "*"
@@ -6226,9 +6226,9 @@ sax@~1.1.1:
   version "1.1.6"
   resolved "https://registry.yarnpkg.com/sax/-/sax-1.1.6.tgz#5d616be8a5e607d54e114afae55b7eaf2fcc3240"
 
-semantic-release@15.4.1:
-  version "15.4.1"
-  resolved "https://registry.yarnpkg.com/semantic-release/-/semantic-release-15.4.1.tgz#47d4fc3b4c00252b78988f3dcfc22f2a4a02ccc4"
+semantic-release@15.4.2:
+  version "15.4.2"
+  resolved "https://registry.yarnpkg.com/semantic-release/-/semantic-release-15.4.2.tgz#25e15c831d00db30b91a41b489ae6a5871e13764"
   dependencies:
     "@semantic-release/commit-analyzer" "^5.0.0"
     "@semantic-release/error" "^2.2.0"

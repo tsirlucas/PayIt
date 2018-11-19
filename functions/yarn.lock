@@ -1480,9 +1480,9 @@ firebase-admin@5.12.0:
     jsonwebtoken "8.1.0"
     node-forge "0.7.4"
 
-firebase-functions-test@0.1.2:
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/firebase-functions-test/-/firebase-functions-test-0.1.2.tgz#5310da772497625aaa461d61e045daea3b2f2e91"
+firebase-functions-test@0.1.5:
+  version "0.1.5"
+  resolved "https://registry.yarnpkg.com/firebase-functions-test/-/firebase-functions-test-0.1.5.tgz#6b5369f457c97500b27d3af34ae6633f5d206010"
   dependencies:
     "@types/lodash" "^4.14.104"
     lodash "^4.17.5"

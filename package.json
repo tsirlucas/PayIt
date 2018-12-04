@@ -55,7 +55,7 @@
     "react-native-picker": "4.3.5",
     "react-native-prompt-android": "0.3.3",
     "react-native-router-flux": "4.0.0-beta.31",
-    "react-native-sentry": "0.37.0",
+    "react-native-sentry": "0.40.0",
     "react-native-splash-screen": "3.0.6",
     "react-native-vector-icons": "4.6.0",
     "react-native-wheel-picker-android": "1.1.2",

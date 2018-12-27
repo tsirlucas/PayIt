@@ -452,13 +452,14 @@
     node-fetch "^2.1.1"
     url-template "^2.0.8"
 
-"@semantic-release/changelog@2.0.2":
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/@semantic-release/changelog/-/changelog-2.0.2.tgz#9972738dc97cf8b516f4200b8ee92e708e415d65"
+"@semantic-release/changelog@3.0.2":
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/@semantic-release/changelog/-/changelog-3.0.2.tgz#b09a8e0d072ef54d2bc7a5c82f6112dc3c8ae85d"
+  integrity sha512-pDUaBNAuPAqQ+ArHwvR160RG2LbfyIVz9EJXgxH0V547rlx/hCs0Sp7L4Rtzi5Z+d6CHcv9g2ynxplE1xAzp2g==
   dependencies:
     "@semantic-release/error" "^2.1.0"
-    aggregate-error "^1.0.0"
-    fs-extra "^6.0.0"
+    aggregate-error "^2.0.0"
+    fs-extra "^7.0.0"
     lodash "^4.17.4"
 
 "@semantic-release/commit-analyzer@^5.0.0":
@@ -692,6 +693,14 @@ aggregate-error@^1.0.0:
   resolved "https://registry.yarnpkg.com/aggregate-error/-/aggregate-error-1.0.0.tgz#888344dad0220a72e3af50906117f48771925fac"
   dependencies:
     clean-stack "^1.0.0"
+    indent-string "^3.0.0"
+
+aggregate-error@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/aggregate-error/-/aggregate-error-2.0.0.tgz#65bd82beba40097eacb2f1077a5b55c593b18abc"
+  integrity sha512-xA1VQPApQdDehIIpS3gBFkMGDRb9pDYwZPVUOoX8A0lU3GB0mjiACqsa9ByBurU53erhjamf5I4VNRitCfXhjg==
+  dependencies:
+    clean-stack "^2.0.0"
     indent-string "^3.0.0"
 
 ajv@^5.1.0:
@@ -2052,6 +2061,11 @@ clean-stack@^1.0.0:
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/clean-stack/-/clean-stack-1.3.0.tgz#9e821501ae979986c46b1d66d2d432db2fd4ae31"
 
+clean-stack@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/clean-stack/-/clean-stack-2.0.0.tgz#301bfa9e8dd2d3d984c0e542f7aa67b996f63e0a"
+  integrity sha512-VEoL9Qh7I8s8iHnV53DaeWSt8NJ0g3khMfK6NiCPB7H657juhro+cSw2O88uo3bo0c0X5usamtXk0/Of0wXa5A==
+
 cli-cursor@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/cli-cursor/-/cli-cursor-2.1.0.tgz#b35dac376479facc3e94747d41d0d0f5238ffcb5"
@@ -3063,6 +3077,15 @@ fs-extra@^2.0.0:
 fs-extra@^6.0.0:
   version "6.0.1"
   resolved "https://registry.yarnpkg.com/fs-extra/-/fs-extra-6.0.1.tgz#8abc128f7946e310135ddc93b98bddb410e7a34b"
+  dependencies:
+    graceful-fs "^4.1.2"
+    jsonfile "^4.0.0"
+    universalify "^0.1.0"
+
+fs-extra@^7.0.0:
+  version "7.0.1"
+  resolved "https://registry.yarnpkg.com/fs-extra/-/fs-extra-7.0.1.tgz#4f189c44aa123b895f722804f55ea23eadc348e9"
+  integrity sha512-YJDaCJZEnBmcbw13fvdAM9AwNOJwOzrE4pqMqBq5nFiEqXUqHwlK4B+3pUw6JNvfSPtX05xFHtYy/1ni01eGCw==
   dependencies:
     graceful-fs "^4.1.2"
     jsonfile "^4.0.0"
@@ -6226,9 +6249,10 @@ sax@~1.1.1:
   version "1.1.6"
   resolved "https://registry.yarnpkg.com/sax/-/sax-1.1.6.tgz#5d616be8a5e607d54e114afae55b7eaf2fcc3240"
 
-semantic-release@15.4.1:
-  version "15.4.1"
-  resolved "https://registry.yarnpkg.com/semantic-release/-/semantic-release-15.4.1.tgz#47d4fc3b4c00252b78988f3dcfc22f2a4a02ccc4"
+semantic-release@15.4.2:
+  version "15.4.2"
+  resolved "https://registry.yarnpkg.com/semantic-release/-/semantic-release-15.4.2.tgz#25e15c831d00db30b91a41b489ae6a5871e13764"
+  integrity sha512-pcxwKxu/PgVnW6TTEmwo8s6k4YahxnOmq7xhamgYHlnXom3e9rfvo7Hq8odWrfryv4LNFhJbg3HDvSLT59aZhw==
   dependencies:
     "@semantic-release/commit-analyzer" "^5.0.0"
     "@semantic-release/error" "^2.2.0"

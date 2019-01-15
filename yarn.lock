@@ -5710,9 +5710,10 @@ react-native-vector-icons@~4.5.0:
     prop-types "^15.5.10"
     yargs "^8.0.2"
 
-react-native-wheel-picker-android@1.1.2:
-  version "1.1.2"
-  resolved "https://registry.yarnpkg.com/react-native-wheel-picker-android/-/react-native-wheel-picker-android-1.1.2.tgz#c5d842fb7a0899bb5637bdfca68cc26419f62a48"
+react-native-wheel-picker-android@2.0.4:
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/react-native-wheel-picker-android/-/react-native-wheel-picker-android-2.0.4.tgz#6df86cc2b8ad02d8023d15b4b50c2e03768e5e4f"
+  integrity sha512-bX3A5d3QGX4Rf6uam1GwGEEkxOk9hXHKA4KepLIlqDZfusNU78jHO+5U3jx8hGmI8Gn3zzRxFX8jMn7CzGfQcg==
   dependencies:
     moment "2.22.0"
 
@@ -6226,9 +6227,10 @@ sax@~1.1.1:
   version "1.1.6"
   resolved "https://registry.yarnpkg.com/sax/-/sax-1.1.6.tgz#5d616be8a5e607d54e114afae55b7eaf2fcc3240"
 
-semantic-release@15.4.1:
-  version "15.4.1"
-  resolved "https://registry.yarnpkg.com/semantic-release/-/semantic-release-15.4.1.tgz#47d4fc3b4c00252b78988f3dcfc22f2a4a02ccc4"
+semantic-release@15.4.2:
+  version "15.4.2"
+  resolved "https://registry.yarnpkg.com/semantic-release/-/semantic-release-15.4.2.tgz#25e15c831d00db30b91a41b489ae6a5871e13764"
+  integrity sha512-pcxwKxu/PgVnW6TTEmwo8s6k4YahxnOmq7xhamgYHlnXom3e9rfvo7Hq8odWrfryv4LNFhJbg3HDvSLT59aZhw==
   dependencies:
     "@semantic-release/commit-analyzer" "^5.0.0"
     "@semantic-release/error" "^2.2.0"

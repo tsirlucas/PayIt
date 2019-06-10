@@ -62,7 +62,7 @@
     "react-redux": "5.0.7",
     "redux": "3.7.2",
     "redux-act": "1.7.4",
-    "redux-saga": "0.16.0",
+    "redux-saga": "1.0.3",
     "utility-types": "2.0.0",
     "vanilla-masker": "1.2.0"
   },

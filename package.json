@@ -18,7 +18,7 @@
   "devDependencies": {
     "@semantic-release/changelog": "2.0.2",
     "@semantic-release/exec": "2.2.4",
-    "@semantic-release/git": "5.0.0",
+    "@semantic-release/git": "7.0.15",
     "@types/es6-promise": "3.3.0",
     "@types/jest": "22.2.3",
     "@types/node": "10.1.2",

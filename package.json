@@ -59,7 +59,7 @@
     "react-native-splash-screen": "3.0.6",
     "react-native-vector-icons": "4.6.0",
     "react-native-wheel-picker-android": "1.1.2",
-    "react-redux": "5.0.7",
+    "react-redux": "7.2.0",
     "redux": "3.7.2",
     "redux-act": "1.7.4",
     "redux-saga": "0.16.0",

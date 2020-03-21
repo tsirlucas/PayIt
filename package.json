@@ -61,7 +61,7 @@
     "react-native-wheel-picker-android": "1.1.2",
     "react-redux": "5.0.7",
     "redux": "3.7.2",
-    "redux-act": "1.7.4",
+    "redux-act": "1.8.0",
     "redux-saga": "0.16.0",
     "utility-types": "2.0.0",
     "vanilla-masker": "1.2.0"

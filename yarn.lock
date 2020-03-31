@@ -588,6 +588,11 @@
   version "10.1.2"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-10.1.2.tgz#1b928a0baa408fc8ae3ac012cc81375addc147c6"
 
+"@types/prop-types@*":
+  version "15.7.3"
+  resolved "https://registry.yarnpkg.com/@types/prop-types/-/prop-types-15.7.3.tgz#2ab0d5da2e5815f94b0b9d4b95d1e5f243ab2ca7"
+  integrity sha512-KfRL3PuHmqQLOG+2tGpRO26Ctg+Cq1E01D2DMriKEATHgWLfeNDmq9e29Q9WIky0dQ3NPkd1mzYH8Lm936Z9qw==
+
 "@types/react-native-google-signin@0.12.2":
   version "0.12.2"
   resolved "https://registry.yarnpkg.com/@types/react-native-google-signin/-/react-native-google-signin-0.12.2.tgz#efd475b501246995060edd630b868f267e8166db"
@@ -639,10 +644,12 @@
   dependencies:
     csstype "^2.2.0"
 
-"@types/react@16.3.12":
-  version "16.3.12"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-16.3.12.tgz#68d9146f3e9797e38ffbf22f7ed1dde91a2cfd2e"
+"@types/react@16.9.29":
+  version "16.9.29"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-16.9.29.tgz#41c0353b5ea916cdb7a7e89b80b09b268c87a2f8"
+  integrity sha512-aE5sV9XVqKvIR8Lqa73hXvlqBzz5hBG0jtV9jZ1uuEWRmW8KN/mdQQmsYlPx6z/b2xa8zR3jtk7WoT+2/m4suA==
   dependencies:
+    "@types/prop-types" "*"
     csstype "^2.2.0"
 
 JSONStream@^1.0.4:
@@ -6226,9 +6233,10 @@ sax@~1.1.1:
   version "1.1.6"
   resolved "https://registry.yarnpkg.com/sax/-/sax-1.1.6.tgz#5d616be8a5e607d54e114afae55b7eaf2fcc3240"
 
-semantic-release@15.4.1:
-  version "15.4.1"
-  resolved "https://registry.yarnpkg.com/semantic-release/-/semantic-release-15.4.1.tgz#47d4fc3b4c00252b78988f3dcfc22f2a4a02ccc4"
+semantic-release@15.4.2:
+  version "15.4.2"
+  resolved "https://registry.yarnpkg.com/semantic-release/-/semantic-release-15.4.2.tgz#25e15c831d00db30b91a41b489ae6a5871e13764"
+  integrity sha512-pcxwKxu/PgVnW6TTEmwo8s6k4YahxnOmq7xhamgYHlnXom3e9rfvo7Hq8odWrfryv4LNFhJbg3HDvSLT59aZhw==
   dependencies:
     "@semantic-release/commit-analyzer" "^5.0.0"
     "@semantic-release/error" "^2.2.0"

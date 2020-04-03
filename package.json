@@ -20,7 +20,7 @@
     "@semantic-release/exec": "2.2.4",
     "@semantic-release/git": "5.0.0",
     "@types/es6-promise": "3.3.0",
-    "@types/jest": "22.2.3",
+    "@types/jest": "25.2.0",
     "@types/node": "10.1.2",
     "@types/react": "16.3.12",
     "@types/react-native": "0.55.13",
